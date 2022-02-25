@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { Canvas } from "@react-three/fiber";
+import { ContactShadows, OrbitControls } from "@react-three/drei";
+import SceneOne from "./components/SceneOne";
+import "./styles.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Canvas camera={{ position: [0, 0, -10], fov: 15 }}>
+      <OrbitControls />
+      {/* <ambientLight castShadow /> */}
+      <pointLight castShadow />
+      <spotLight castShadow position={[0, 20, 1]} />
+      <Suspense fallback={null}>
+        <SceneOne />
+        <ContactShadows />
+      </Suspense>
+    </Canvas>
   );
-}
+};
 
 export default App;
