@@ -2,20 +2,21 @@ import React from "react";
 import { a } from "@react-spring/three";
 import { Switch, Route } from "wouter";
 import SceneOne from "../components/SceneOne";
-import SceneTow from "../Pages/SceneTwo";
-import Main from "../Pages/Main";
+import SceneTwo from "../Pages/SceneTwo";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
 
 const Layouts = ({ transition }) => {
   return transition(({ opacity, ...props }, location) => (
     <a.group {...props}>
       <Switch location={location}>
         <Route path="/">
-          <spotLight position={[0, 20, 0]} />
-          <ambientLight />
+          <PerspectiveCamera />
           <SceneOne />
         </Route>
         <Route path="/1">
-          <SceneTow />
+          <OrbitControls />
+          <SceneTwo />
         </Route>
       </Switch>
     </a.group>

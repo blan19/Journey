@@ -1,14 +1,33 @@
-import { Html, useGLTF } from "@react-three/drei";
+import { Html, ScrollControls, useGLTF, useScroll } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 import React, { useRef } from "react";
 import ScenePage from "./ScenePage";
+import * as THREE from "three";
 
-const Model = (props) => {
+const Model = ({ ...props }) => {
+  const { mouse, camera } = useThree();
+  const vec = new THREE.Vector3();
+  const scroll = useScroll();
   const { nodes, materials } = useGLTF("/gltf/firstScene.glb");
   const group = useRef(null);
-  console.log(nodes);
+  useFrame(({ camera }) => {
+    const offset = 1 - scroll.offset;
+    camera.position.x = -1 * scroll.offset + 1;
+    camera.position.z = 5 * offset + -3;
+    camera.position.y = 1.5 * offset - 1;
+    if (scroll.offset > 0.2) {
+      group.current.rotation.y = 10.2 - scroll.offset;
+    }
+    group.current.position.x = -scroll.offset * 3;
+    camera.position.lerp(
+      vec.set(mouse.x * 2, mouse.y * 1, camera.position.z),
+      0.02
+    );
+  });
   return (
     <group
       position={[0, -6, 0]}
+      rotation={[0, 10, 0]}
       ref={group}
       receiveShadow
       {...props}
@@ -24,11 +43,11 @@ const Model = (props) => {
           material={nodes["ComputerScreen"].material}
         >
           <Html
-            scale={[0.22, 0.32, 0.8]}
+            scale={[0.241, 0.375, 0.8]}
             className="content"
             rotation-x={Math.PI / 2}
             rotation-z={-Math.PI / 2}
-            position={[0.05, 0.45, 0]}
+            position={[0.005, 0.499013, -0.01]}
             transform
             occlude
           >
@@ -44,7 +63,11 @@ const Model = (props) => {
 };
 
 const SceneOne = () => {
-  return <Model />;
+  return (
+    <ScrollControls pages={3}>
+      <Model />
+    </ScrollControls>
+  );
 };
 
 export default SceneOne;

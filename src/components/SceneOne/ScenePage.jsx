@@ -1,3 +1,4 @@
+import { useThree } from "@react-three/fiber";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useLocation } from "wouter";
@@ -8,13 +9,13 @@ const ScenePage = () => {
   const onClick = () => {
     setPage((state) => !state);
   };
-  // useEffect(() => {
-  //   if (page) {
-  //     setTimeout(() => {
-  //       setLocation("/1");
-  //     }, 2000);
-  //   }
-  // }, [page]);
+  useEffect(() => {
+    if (page) {
+      setTimeout(() => {
+        setLocation("/1");
+      }, 3000);
+    }
+  }, [page, setLocation]);
   return (
     <ScenePageContainer>
       {page ? (
