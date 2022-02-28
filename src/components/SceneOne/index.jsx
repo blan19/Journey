@@ -1,8 +1,14 @@
-import { Html, ScrollControls, useGLTF, useScroll } from "@react-three/drei";
+import {
+  ScrollControls,
+  useGLTF,
+  useHelper,
+  useScroll,
+} from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import React, { useRef } from "react";
-import ScenePage from "./ScenePage";
 import * as THREE from "three";
+import Laptop from "./Laptop";
+import { BoxHelper } from "three";
 
 const Model = ({ ...props }) => {
   const { mouse, camera } = useThree();
@@ -10,20 +16,21 @@ const Model = ({ ...props }) => {
   const scroll = useScroll();
   const { nodes, materials } = useGLTF("/gltf/firstScene.glb");
   const group = useRef(null);
-  useFrame(({ camera }) => {
-    const offset = 1 - scroll.offset;
-    camera.position.x = -1 * scroll.offset + 1;
-    camera.position.z = 5 * offset + -3;
-    camera.position.y = 1.5 * offset - 1;
-    if (scroll.offset > 0.2) {
-      group.current.rotation.y = 10.2 - scroll.offset;
-    }
-    group.current.position.x = -scroll.offset * 3;
-    camera.position.lerp(
-      vec.set(mouse.x * 2, mouse.y * 1, camera.position.z),
-      0.02
-    );
-  });
+  useHelper(group, BoxHelper, "cyan");
+  // useFrame(({ camera }) => {
+  //   const offset = 1 - scroll.offset;
+  //   camera.position.x = -1 * scroll.offset + 1;
+  //   camera.position.z = 5 * offset + -3;
+  //   camera.position.y = 1.5 * offset - 1;
+  //   if (scroll.offset > 0.2) {
+  //     group.current.rotation.y = 10.2 - scroll.offset;
+  //   }
+  //   group.current.position.x = -scroll.offset * 3;
+  //   camera.position.lerp(
+  //     vec.set(mouse.x * 2, mouse.y * 1, camera.position.z),
+  //     0.02
+  //   );
+  // });
   return (
     <group
       position={[0, -6, 0]}
@@ -33,30 +40,7 @@ const Model = ({ ...props }) => {
       {...props}
       dispose={null}
     >
-      <group receiveShadow>
-        <primitive object={nodes["Keyboard"]} />
-        <mesh
-          position={[-2.7, 4.78, 5.875]}
-          rotation={[Math.PI / 2, Math.PI * 0.5, 0]}
-          scale={[0.525, 0.5, 0.8]}
-          geometry={nodes["ComputerScreen"].geometry}
-          material={nodes["ComputerScreen"].material}
-        >
-          <Html
-            scale={[0.241, 0.375, 0.8]}
-            className="content"
-            rotation-x={Math.PI / 2}
-            rotation-z={-Math.PI / 2}
-            position={[0.005, 0.499013, -0.01]}
-            transform
-            occlude
-          >
-            <div className="wrapper">
-              <ScenePage />
-            </div>
-          </Html>
-        </mesh>
-      </group>
+      <Laptop />
       <primitive receiveShadow object={nodes["models"]} />
     </group>
   );

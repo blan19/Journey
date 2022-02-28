@@ -87,10 +87,12 @@ const ScenePage = () => {
             <div className="desc">
               <table>
                 <tbody>
-                  <td>수험번호</td>
-                  <td>20223430</td>
-                  <td>지원자명</td>
-                  <td>슝슝이</td>
+                  <tr>
+                    <td>수험번호</td>
+                    <td>20223430</td>
+                    <td>지원자명</td>
+                    <td>슝슝이</td>
+                  </tr>
                 </tbody>
               </table>
             </div>

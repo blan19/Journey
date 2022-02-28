@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense } from "react";
+import React, { Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTransition } from "@react-spring/core";
 import { useLocation } from "wouter";
@@ -46,12 +46,12 @@ const App = () => {
     config: () => (n) => n === "opacity" && { friction: 60 },
   });
   return (
-    <Canvas>
+    <Canvas concurrent>
       {/* <Rig /> */}
       <Suspense fallback={null}>
         <color attach="background" args={["#DFD3C3"]} />
-        <spotLight intensity={0.6} position={[0, 20, -5]} />
-        <ambientLight intensity={0.4} />
+        {/* <spotLight intensity={0.6} position={[0, 20, -5]} /> */}
+        {/* <ambientLight intensity={0.4} /> */}
         {/* <pointLight intensity={0.1} /> */}
         <Layouts transition={transition} />
       </Suspense>

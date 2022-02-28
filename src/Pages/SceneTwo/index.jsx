@@ -6,11 +6,11 @@ const Model = ({ ...props }) => {
   const { camera } = useThree();
   const { scene } = useGLTF("/gltf/secondScene.glb");
   const group = useRef(null);
-  useEffect(() => {
-    camera.position.set([0, 0, 0]);
-    group.current.position.set(0, -6, -3);
-    group.current.rotation.set(0, 10.5, 0);
-  }, []);
+  // useEffect(() => {
+  //   camera.position.set([0, 0, 0]);
+  //   group.current.position.set(0, -6, -3);
+  //   group.current.rotation.set(0, 10.5, 0);
+  // }, []);
   useFrame(({ camera }) => {});
   return <primitive ref={group} dispose={null} object={scene} {...props} />;
 };
