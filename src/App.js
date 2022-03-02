@@ -6,11 +6,6 @@ import * as THREE from "three";
 import "./styles.css";
 import Layouts from "./Layouts";
 
-const perpective = {
-  "/": [-1, 1.5, 5],
-  "/1": [0, 0, 0],
-};
-
 function Rig() {
   const { camera, mouse } = useThree();
   const vec = new THREE.Vector3();
@@ -46,13 +41,9 @@ const App = () => {
     config: () => (n) => n === "opacity" && { friction: 60 },
   });
   return (
-    <Canvas concurrent>
-      {/* <Rig /> */}
+    <Canvas concurrent shadows>
       <Suspense fallback={null}>
         <color attach="background" args={["#DFD3C3"]} />
-        {/* <spotLight intensity={0.6} position={[0, 20, -5]} /> */}
-        {/* <ambientLight intensity={0.4} /> */}
-        {/* <pointLight intensity={0.1} /> */}
         <Layouts transition={transition} />
       </Suspense>
     </Canvas>

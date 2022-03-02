@@ -1,28 +1,37 @@
+import * as THREE from "three";
 import { useGLTF } from "@react-three/drei";
-import { useFrame, useThree } from "@react-three/fiber";
-import React, { useEffect, useRef } from "react";
+import { useFrame, useThree, applyProps } from "@react-three/fiber";
+import React, { useLayoutEffect, useRef } from "react";
 import Laptop from "../../components/SceneOne/Laptop";
 
-const Model = ({ ...props }) => {
+const Model = (props) => {
   const group = useRef();
   const camera = useThree((state) => state.camera);
-  const { nodes } = useGLTF("/gltf/newFirstScene.glb");
-  useEffect(() => {
+  const { scene, nodes } = useGLTF("/gltf/newFirstScene.glb");
+  useLayoutEffect(() => {
     camera.position.set(0, 0.7, 1);
+    console.log(nodes);
+    scene.traverse((o) => {
+      if (o.isMesh) {
+        applyProps(o, {
+          castShadow: true,
+          // receiveShadow: true,
+          // "material-envMapIntensity": 0.3,
+        });
+      }
+    });
   }, []);
   useFrame(() => {});
   return (
     <>
-      {/* <PerspectiveCamera position={[0, 20, -5]} /> */}
       <group
         receiveShadow
+        castShadow
         ref={group}
         {...props}
-        // position={[0, -0.5, 3]}
         rotation={[0, 0.75, 0]}
       >
-        <primitive object={nodes.background} />
-        <primitive object={nodes.models} />
+        <primitive object={scene} dispose={null} {...props}></primitive>
         <Laptop />
       </group>
     </>

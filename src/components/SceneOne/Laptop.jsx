@@ -13,7 +13,7 @@ function Laptop(props) {
   });
   return (
     <group
-      position={[0.07, 0.47, -0.57]}
+      position={[0.07, 0.46, -0.57]}
       scale={[0.03, 0.03, 0.03]}
       ref={group}
       {...props}
