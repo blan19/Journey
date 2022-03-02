@@ -3,10 +3,12 @@ import * as THREE from "three";
 import { a } from "@react-spring/three";
 import { Switch, Route } from "wouter";
 import SceneTwo from "../Pages/SceneTwo";
+import SceneThree from "../Pages/SceneThree";
 import {
   ContactShadows,
   Environment,
   OrbitControls,
+  PerspectiveCamera,
   useHelper,
 } from "@react-three/drei";
 import SceneOne from "../Pages/SceneOne";
@@ -18,8 +20,7 @@ const Layouts = ({ transition }) => {
     <a.group {...props}>
       <Switch location={location}>
         <Route path="/">
-          <OrbitControls />
-          {/* <ambientLight intensity={0.2} /> */}
+          <ambientLight intensity={0.2} />
           <spotLight
             ref={spotLight}
             castShadow
@@ -28,12 +29,22 @@ const Layouts = ({ transition }) => {
             // angle={-10}
             // distance={100}
           />
+          <OrbitControls
+            enableZoom={false}
+            maxPolarAngle={1}
+            minPolarAngle={1}
+            enableRotate={false}
+            minZoom={1}
+          />
           <SceneOne />
-          <ContactShadows />
         </Route>
         <Route path="/1">
           <OrbitControls />
           <SceneTwo />
+        </Route>
+        <Route path="/2">
+          <OrbitControls />
+          <SceneThree />
         </Route>
       </Switch>
     </a.group>

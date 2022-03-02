@@ -1,16 +1,10 @@
 import React, { useRef } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
 import { Html, useGLTF } from "@react-three/drei";
 import ScenePage from "./ScenePage";
-import zoomFit from "../../lib/zoomFIt";
 
 function Laptop(props) {
   const group = useRef();
-  const { camera } = useThree();
   const { nodes, materials } = useGLTF("/gltf/mac-draco.glb");
-  useFrame((state) => {
-    const a = state.clock.getElapsedTime();
-  });
   return (
     <group
       position={[0.07, 0.46, -0.57]}
