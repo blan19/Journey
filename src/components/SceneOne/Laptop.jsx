@@ -1,10 +1,16 @@
 import React, { useRef } from "react";
-import { Html, useGLTF } from "@react-three/drei";
+import { Html, useGLTF, useScroll } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import ScenePage from "./ScenePage";
 
-function Laptop(props) {
+function Laptop({ ...props }) {
   const group = useRef();
+  const monitor = useRef();
+  const { offset } = useScroll();
   const { nodes, materials } = useGLTF("/gltf/mac-draco.glb");
+  useFrame(() => {
+    // monitor.current.rotation.set(-0.425 + offset, 0, 0);
+  });
   return (
     <group
       position={[0.07, 0.46, -0.57]}
@@ -13,7 +19,7 @@ function Laptop(props) {
       {...props}
       dispose={null}
     >
-      <group rotation-x={-0.425} position={[0, -0.04, 0.41]}>
+      <group ref={monitor} position={[0, -0.04, 0.41]}>
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             material={materials.aluminium}
@@ -29,7 +35,7 @@ function Laptop(props) {
               rotation-x={-Math.PI / 2}
               position={[0, 0.05, -0.09]}
               transform
-              // occlude
+              occlude
             >
               <div className="wrapper">
                 <ScenePage />
@@ -61,4 +67,6 @@ function Laptop(props) {
     </group>
   );
 }
+
 export default Laptop;
+// rotation-x={-0.425}

@@ -36,6 +36,7 @@ const Layouts = ({ transition }) => {
             enableRotate={false}
             minZoom={1}
           />
+          {/* <OrbitControls /> */}
           <SceneOne />
         </Route>
         <Route path="/1">

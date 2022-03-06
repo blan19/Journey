@@ -1,22 +1,21 @@
-import * as THREE from "three";
 import {
   ScrollControls,
   useGLTF,
   useMatcapTexture,
   useScroll,
+  Html,
 } from "@react-three/drei";
 import { useFrame, useThree, applyProps } from "@react-three/fiber";
 import React, { useLayoutEffect, useRef } from "react";
-import Laptop from "../../components/SceneOne/Laptop";
+import ScenePage from "../../components/SceneOne/ScenePage";
 
 const Model = (props) => {
   const group = useRef();
-  const laptop = useRef();
+  const monitor = useRef();
   const camera = useThree((state) => state.camera);
-  const scroll = useScroll();
-  const { scene, nodes } = useGLTF("/gltf/newFirstScene.glb");
-  const [matcap] = useMatcapTexture("584F3A_BEC3BD_C5A57D_A39073");
-  console.log(scroll);
+  const { nodes, materials } = useGLTF("/gltf/mac-draco.glb");
+  const { scene } = useGLTF("/gltf/newFirstScene.glb");
+  const Scroll = useScroll();
   // camera
   // initialize
   useLayoutEffect(() => {
@@ -43,8 +42,9 @@ const Model = (props) => {
       }
     });
   }, []);
+  //animate
   useFrame(() => {
-    const offset = 1 - scroll.offset;
+    monitor.current.rotation.set(-0.425 + Scroll.offset * 2, 0, 0);
   });
   return (
     <>
@@ -58,8 +58,60 @@ const Model = (props) => {
         rotation={[0, 0, 0]}
         position={[-0.05, -0.15, 1.05]}
       >
+        <group
+          position={[0.07, 0.46, -0.57]}
+          scale={[0.03, 0.03, 0.03]}
+          ref={group}
+          {...props}
+          dispose={null}
+        >
+          <group ref={monitor} position={[0, -0.04, 0.41]}>
+            <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
+              <mesh
+                material={materials.aluminium}
+                geometry={nodes["Cube008"].geometry}
+              />
+              <mesh
+                material={materials["matte.001"]}
+                geometry={nodes["Cube008_1"].geometry}
+              />
+              <mesh geometry={nodes["Cube008_2"].geometry}>
+                <Html
+                  className="content"
+                  rotation-x={-Math.PI / 2}
+                  position={[0, 0.05, -0.09]}
+                  transform
+                  occlude
+                >
+                  <div className="wrapper">
+                    <ScenePage />
+                  </div>
+                </Html>
+              </mesh>
+            </group>
+          </group>
+          <mesh
+            material={materials.keys}
+            geometry={nodes.keyboard.geometry}
+            position={[1.79, 0, 3.45]}
+          />
+          <group position={[0, -0.1, 3.39]}>
+            <mesh
+              material={materials.aluminium}
+              geometry={nodes["Cube002"].geometry}
+            />
+            <mesh
+              material={materials.trackpad}
+              geometry={nodes["Cube002_1"].geometry}
+            />
+          </group>
+          <mesh
+            material={materials.touchbar}
+            geometry={nodes.touchbar.geometry}
+            position={[0, -0.03, 1.2]}
+          />
+        </group>
         <primitive object={scene} dispose={null} {...props}></primitive>
-        <Laptop ref={laptop} />
       </group>
     </>
   );
