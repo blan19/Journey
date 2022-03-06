@@ -12,6 +12,7 @@ import {
   useHelper,
 } from "@react-three/drei";
 import SceneOne from "../Pages/SceneOne";
+import Posts from "../Pages/Posts";
 
 const Layouts = ({ transition }) => {
   const spotLight = useRef();
@@ -46,6 +47,9 @@ const Layouts = ({ transition }) => {
         <Route path="/2">
           <OrbitControls />
           <SceneThree />
+        </Route>
+        <Route path="/posts">
+          <Posts />
         </Route>
       </Switch>
     </a.group>

@@ -1,10 +1,11 @@
 import React, { Suspense } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useTransition } from "@react-spring/core";
-import { useLocation } from "wouter";
+import { Route, useLocation } from "wouter";
 import * as THREE from "three";
 import "./styles.css";
 import Layouts from "./Layouts";
+import Posts from "./Pages/Posts";
 
 function Rig() {
   const { camera, mouse } = useThree();
