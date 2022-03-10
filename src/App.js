@@ -5,6 +5,7 @@ import { Physics } from "@react-three/cannon";
 import "./styles.css";
 import { Player } from "./components/common/Player";
 import Ground from "./components/common/Ground";
+import Guest from "./Pages/Guest";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Physics gravity={[0, -30, 0]}>
         <Player />
         <Ground />
+        <Guest />
       </Physics>
       <PointerLockControls />
     </Canvas>
