@@ -3,12 +3,9 @@ import React, { useRef } from "react";
 
 const Model = (props) => {
   const group = useRef();
-  const { nodes } = useGLTF("/gltf/level-react-draco.glb");
-  return (
-    <group ref={group} {...props}>
-      <mesh geometry={nodes.Level.geometry} material={nodes.Level.material} />
-    </group>
-  );
+  const { scene } = useGLTF("/gltf/fixedRoom.glb");
+  console.log(scene);
+  return <primitive scale={[0.1, 0.1, 0.1]} object={scene} />;
 };
 
 const SceneThree = () => {

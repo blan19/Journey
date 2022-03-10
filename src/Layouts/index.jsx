@@ -46,6 +46,12 @@ const Layouts = ({ transition }) => {
         </Route>
         <Route path="/2">
           <OrbitControls />
+          <spotLight position={[0, 10, 0]} />
+          <SceneThree />
+        </Route>
+        <Route path="/3">
+          <OrbitControls />
+          <spotLight position={[0, 10, 0]} />
           <SceneThree />
         </Route>
         <Route path="/posts">

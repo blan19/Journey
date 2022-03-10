@@ -1,52 +1,23 @@
-import React, { Suspense } from "react";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useTransition } from "@react-spring/core";
-import { Route, useLocation } from "wouter";
-import * as THREE from "three";
+import React from "react";
+import { Canvas } from "@react-three/fiber";
+import { PointerLockControls, Sky } from "@react-three/drei";
+import { Physics } from "@react-three/cannon";
 import "./styles.css";
-import Layouts from "./Layouts";
-import Posts from "./Pages/Posts";
-
-function Rig() {
-  const { camera, mouse } = useThree();
-  const vec = new THREE.Vector3();
-  return useFrame(() =>
-    camera.position.lerp(
-      vec.set(-mouse.x * 0.5, -mouse.y * 0.5, camera.position.z),
-      0.02
-    )
-  );
-}
+import { Player } from "./components/common/Player";
+import Ground from "./components/common/Ground";
 
 const App = () => {
-  const [location] = useLocation();
-  const transition = useTransition(location, {
-    from: {
-      position: [0, 0, -20],
-      rotation: [0, Math.PI, 0],
-      scale: [0, 0, 0],
-      opacity: 0,
-    },
-    enter: {
-      position: [0, 0, 0],
-      rotation: [0, 0, 0],
-      scale: [1, 1, 1],
-      opacity: 1,
-    },
-    leave: {
-      position: [0, 0, -10],
-      rotation: [0, -Math.PI, 0],
-      scale: [0, 0, 0],
-      opacity: 0,
-    },
-    config: () => (n) => n === "opacity" && { friction: 60 },
-  });
   return (
-    <Canvas concurrent shadows>
-      <Suspense fallback={null}>
-        <color attach="background" args={["#DFD3C3"]} />
-        <Layouts transition={transition} />
-      </Suspense>
+    <Canvas shadows gl={{ alpha: false }} camera={{ fov: 45 }}>
+      <Sky sunPosition={[100, 20, 100]} />
+      <ambientLight intensity={0.5} />
+      <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
+      <fog color="#262837" near={1} far={15} />
+      <Physics gravity={[0, -30, 0]}>
+        <Player />
+        <Ground />
+      </Physics>
+      <PointerLockControls />
     </Canvas>
   );
 };
