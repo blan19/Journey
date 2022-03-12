@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/styled": "^11.8.1",
     "@react-spring/core": "^9.4.3",
     "@react-spring/three": "^9.4.3",
     "@react-three/cannon": "^4.9.0",
