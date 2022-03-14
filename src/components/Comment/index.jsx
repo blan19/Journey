@@ -68,19 +68,18 @@ const testData = [
 const onClickRight = () => {
   console.log("click");
 };
-const Comment = () => {
-  return (
+const Comment = ({ posts }) => {
+  return posts ? (
     <CommentContainer>
       <MdOutlineKeyboardArrowLeft className="left" />
       <div className="box-container">
-        {testData.map((test) => (
-          <div className="post-item">
+        {posts.map((post) => (
+          <div key={post.content} className="post-item">
             <div className="top">
-              <div>{test.name}</div>
-              <div>{test.id}</div>
+              <div>{post.name}</div>
             </div>
             <hr />
-            <div>{test.content}</div>
+            <div>{post.content}</div>
           </div>
         ))}
       </div>
@@ -88,6 +87,8 @@ const Comment = () => {
         <MdOutlineKeyboardArrowRight className="right" />
       </div>
     </CommentContainer>
+  ) : (
+    <div>loading..</div>
   );
 };
 

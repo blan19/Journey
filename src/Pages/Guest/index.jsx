@@ -1,9 +1,10 @@
 import { useGLTF, Html } from "@react-three/drei";
 // import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Comment from "../../components/Comment";
+import { firebaseDb } from "../../lib/clientApp";
 
-function Board() {
+function Board({ posts }) {
   const { scene, nodes } = useGLTF("/gltf/boardChanged.glb");
   const gltf = useGLTF("/gltf/boardChanged.glb");
 
@@ -25,7 +26,7 @@ function Board() {
           position={[0.6, 3.6, 6.5]}
         >
           <div className="wrapper">
-            <Comment />
+            <Comment posts={posts} />
           </div>
         </Html>
       </mesh>
@@ -107,9 +108,27 @@ function Table() {
 // }
 
 const Guest = () => {
+  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState(null);
+  const getPosts = useCallback(async () => {
+    setLoading(true);
+    try {
+      const snapsoht = await firebaseDb.collection("posts").get();
+      const posts = snapsoht.docs.map((doc) => doc.data());
+      setPosts(posts);
+      setLoading(true);
+    } catch (e) {
+      console.error(e);
+    }
+  }, []);
+
+  useEffect(() => {
+    getPosts();
+    console.log(posts);
+  }, []);
   return (
     <>
-      <Board />
+      <Board posts={posts} />
       <Table />
     </>
   );
