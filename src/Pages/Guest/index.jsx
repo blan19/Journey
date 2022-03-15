@@ -1,35 +1,49 @@
 import { useGLTF, Html } from "@react-three/drei";
 // import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Comment from "../../components/Comment";
 import { firebaseDb } from "../../lib/clientApp";
+import * as dat from "dat.gui";
 
 function Board({ posts }) {
+  const board = useRef();
   const { scene, nodes } = useGLTF("/gltf/boardChanged.glb");
   const gltf = useGLTF("/gltf/boardChanged.glb");
 
+  useEffect(() => {
+    // const gui = new dat.GUI();
+    // gui
+    //   .add(board.current.position, "z")
+    //   .min(10)
+    //   .max(10)
+    //   .step(0.01)
+    //   .name("board posion z");
+    // gui
+    //   .add(board.current.position, "x")
+    //   .min(10)
+    //   .max(10)
+    //   .step(0.01)
+    //   .name("board posion x");
+  }, []);
+
   return (
     <group
+      ref={board}
       scale={[0.1, 0.1, 0.1]}
-      position={[2, 1, 1]}
-      rotation={[0, Math.PI * 0.82, 0]}
+      position={[1, 0.7, 0]}
+      rotation={[0, 0, 0]}
     >
       <primitive object={scene}></primitive>
-      <mesh
-        geometry={nodes["Plane"].geometry}
-        material={nodes["Plane"].material}
+      <Html
+        transform
+        occlude
+        rotation={[0, Math.PI / 2, Math.PI * 2]}
+        position={[0.6, 3.6, 6.5]}
       >
-        <Html
-          transform
-          occlude
-          rotation={[0, Math.PI * 0.5, 0]}
-          position={[0.6, 3.6, 6.5]}
-        >
-          <div className="wrapper">
-            <Comment posts={posts} />
-          </div>
-        </Html>
-      </mesh>
+        <div className="wrapper">
+          <Comment posts={posts} />
+        </div>
+      </Html>
     </group>
   );
 }
@@ -129,7 +143,7 @@ const Guest = () => {
   return (
     <>
       <Board posts={posts} />
-      <Table />
+      {/* <Table /> */}
     </>
   );
 };
