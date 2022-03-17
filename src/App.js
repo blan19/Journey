@@ -7,10 +7,11 @@ import "./styles.css";
 import { Player } from "./components/common/Player";
 import Ground from "./components/common/Ground";
 import Guest from "./Pages/Guest";
+import Road from "./components/common/Road";
 
 const App = () => {
   return (
-    <Canvas shadows gl={{ alpha: false }} camera={{ fov: 45 }}>
+    <Canvas shadows gl={{ alpha: false, antialias: true }} camera={{ fov: 45 }}>
       <primitive object={new THREE.AxesHelper(100)} />
       <gridHelper />
       <Sky sunPosition={[100, 20, 100]} />
@@ -19,10 +20,10 @@ const App = () => {
       <fog color="#262837" near={1} far={15} />
       <Physics gravity={[0, -30, 0]}>
         <Player />
+        <Road />
         <Ground />
         <Guest />
       </Physics>
-      <PointerLockControls />
     </Canvas>
   );
 };

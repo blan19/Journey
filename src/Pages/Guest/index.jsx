@@ -30,15 +30,16 @@ function Board({ posts }) {
     <group
       ref={board}
       scale={[0.1, 0.1, 0.1]}
-      position={[1, 0.7, 0]}
-      rotation={[0, 0, 0]}
+      position={[0, 0.7, -5]}
+      rotation={[0, -Math.PI / 2, 0]}
+      onClick={() => console.log("click")}
     >
       <primitive object={scene}></primitive>
       <Html
         transform
-        occlude
+        // occlude
         rotation={[0, Math.PI / 2, Math.PI * 2]}
-        position={[0.6, 3.6, 6.5]}
+        position={[0.65, 3.6, 6.5]}
       >
         <div className="wrapper">
           <Comment posts={posts} />
