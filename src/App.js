@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Canvas shadows gl={{ alpha: false, antialias: true }} camera={{ fov: 45 }}>
       <primitive object={new THREE.AxesHelper(100)} />
-      <gridHelper />
+      <gridHelper args={[100, 100]} />
       <Sky sunPosition={[100, 20, 100]} />
       <ambientLight intensity={0.5} />
       <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
