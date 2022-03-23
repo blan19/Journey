@@ -8,16 +8,16 @@ export default function Ground(props) {
     ...props,
   }));
   const [front] = usePlane(() => ({
-    position: [0, 25, -50],
+    position: [0, 18.75, -37.5],
     ...props,
   }));
   const [left] = usePlane(() => ({
-    position: [-50, 25, 0],
+    position: [-37.5, 18.75, 0],
     rotation: [0, Math.PI / 2, 0],
     ...props,
   }));
   const [right] = usePlane(() => ({
-    position: [50, 25, 0],
+    position: [37.5, 18.75, 0],
     rotation: [0, -Math.PI / 2, 0],
     ...props,
   }));
@@ -30,23 +30,27 @@ export default function Ground(props) {
   return (
     <group>
       <mesh ref={front} receiveShadow>
-        <planeGeometry args={[100, 50]} />
+        <planeGeometry args={[75, 37.5]} />
         <meshStandardMaterial fog color="#d1e4e7" />
       </mesh>
-      <mesh receiveShadow rotation={[0, Math.PI, 0]} position={[0, 25, 50]}>
-        <planeGeometry args={[100, 50]} />
+      <mesh
+        receiveShadow
+        rotation={[0, Math.PI, 0]}
+        position={[0, 18.75, 37.5]}
+      >
+        <planeGeometry args={[75, 37.5]} />
         <meshStandardMaterial color="gray" />
       </mesh>
       <mesh ref={floor} receiveShadow>
-        <planeGeometry args={[100, 100]} />
+        <planeGeometry args={[75, 75]} />
         <meshStandardMaterial fog color="#f3f1e3" />
       </mesh>
       <mesh ref={left} receiveShadow>
-        <planeGeometry args={[100, 50]} />
+        <planeGeometry args={[75, 37.5]} />
         <meshStandardMaterial fog color="gray" />
       </mesh>
       <mesh ref={right} receiveShadow>
-        <planeGeometry args={[100, 50]} />
+        <planeGeometry args={[75, 37.5]} />
         <meshStandardMaterial fog color="gray" />
       </mesh>
     </group>

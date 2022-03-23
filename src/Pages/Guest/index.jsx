@@ -32,7 +32,6 @@ function Board({ posts }) {
       scale={[0.1, 0.1, 0.1]}
       position={[0, 0.7, -5]}
       rotation={[0, -Math.PI / 2, 0]}
-      onClick={() => console.log("click")}
     >
       <primitive object={scene}></primitive>
       <Html
@@ -50,38 +49,30 @@ function Board({ posts }) {
 }
 
 function Table() {
-  const { scene, nodes } = useGLTF("/gltf/table1.glb");
-  // const gltf = useGLTF("/gltf/papertable.glb");
-  useEffect(() => {
-    console.log(nodes);
-  }, []);
+  const group = useRef();
+  useEffect(() => {}, []);
 
   return (
-    <group scale={[0.01, 0.01, 0.01]} position={[0, 1, 0]}>
+    <group ref={group} position={[-1, 0, -4]}>
+      {/* table */}
+      <mesh position={[0, 0.5, 0]} scale={[1, 1, 1]}>
+        <meshStandardMaterial color="orange" />
+        <cylinderGeometry args={[0.25, 0.25, 0.025, 100]} />
+      </mesh>
+      {/* column */}
+      <mesh position={[0, 0.25, 0]} scale={[1, 1, 1]}>
+        <meshStandardMaterial color="gray" />
+        <cylinderGeometry args={[0.035, 0.035, 0.5, 100]} />
+      </mesh>
+      {/* bottom */}
       <mesh
-        material={nodes["table001"].material}
-        geometry={nodes["table001"].geometry}
-      ></mesh>
-      <mesh
-        material={nodes["table001_1"].material}
-        geometry={nodes["table001_1"].geometry}
-      ></mesh>
-      <mesh
-        material={nodes["table001_2"].material}
-        geometry={nodes["table001_2"].geometry}
-      ></mesh>
-      <mesh
-        material={nodes["table001_3"].material}
-        geometry={nodes["table001_3"].geometry}
-      ></mesh>
-      <mesh
-        material={nodes["table001_4"].material}
-        geometry={nodes["table001_4"].geometry}
-      ></mesh>
-      <mesh
-        material={nodes["table001_5"].material}
-        geometry={nodes["table001_5"].geometry}
-      ></mesh>
+        position={[0, 0, 0]}
+        scale={[1, 1, 1]}
+        rotation={[0, 0, Math.PI / 2]}
+      >
+        <meshStandardMaterial color="gray" />
+        <boxGeometry args={[0.025, 0.25, 0.25]} />
+      </mesh>
     </group>
   );
 }
@@ -144,7 +135,7 @@ const Guest = () => {
   return (
     <>
       <Board posts={posts} />
-      {/* <Table /> */}
+      <Table />
     </>
   );
 };

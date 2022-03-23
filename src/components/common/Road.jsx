@@ -63,7 +63,7 @@ export default function Road() {
         <boxBufferGeometry args={[50, 0.1, 1]} />
         <meshStandardMaterial color="skyblue" />
       </mesh> */}
-      <Room position={[-46, -3, -15]} rotation={[0, Math.PI * 0.5, 0]} />
+      <Room position={[-33.5, -5, -14.65]} rotation={[0, Math.PI * 0.5, 0]} />
     </group>
   );
 }
