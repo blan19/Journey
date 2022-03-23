@@ -8,49 +8,42 @@ export default function Ground(props) {
     ...props,
   }));
   const [front] = usePlane(() => ({
-    position: [0, 18.75, -37.5],
+    position: [0, 12.5, -35],
     ...props,
   }));
   const [left] = usePlane(() => ({
-    position: [-37.5, 18.75, 0],
+    position: [-25, 12.5, 0],
     rotation: [0, Math.PI / 2, 0],
     ...props,
   }));
   const [right] = usePlane(() => ({
-    position: [37.5, 18.75, 0],
+    position: [25, 12.5, 0],
     rotation: [0, -Math.PI / 2, 0],
     ...props,
   }));
-  // const [back] = usePlane(() => ({
-  //   position: [0, 25, 100],
-  //   ...props,
-  // }));
   const texture = useLoader(THREE.TextureLoader, "/background/grass.jpg");
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   return (
     <group>
       <mesh ref={front} receiveShadow>
-        <planeGeometry args={[75, 37.5]} />
+        <planeGeometry args={[50, 25]} />
         <meshStandardMaterial fog color="#d1e4e7" />
       </mesh>
-      <mesh
-        receiveShadow
-        rotation={[0, Math.PI, 0]}
-        position={[0, 18.75, 37.5]}
-      >
-        <planeGeometry args={[75, 37.5]} />
+      {/* back */}
+      <mesh receiveShadow rotation={[0, Math.PI, 0]} position={[0, 12.5, 35]}>
+        <planeGeometry args={[50, 25]} />
         <meshStandardMaterial color="gray" />
       </mesh>
       <mesh ref={floor} receiveShadow>
-        <planeGeometry args={[75, 75]} />
+        <planeGeometry args={[50, 70]} />
         <meshStandardMaterial fog color="#f3f1e3" />
       </mesh>
       <mesh ref={left} receiveShadow>
-        <planeGeometry args={[75, 37.5]} />
+        <planeGeometry args={[70, 25]} />
         <meshStandardMaterial fog color="gray" />
       </mesh>
       <mesh ref={right} receiveShadow>
-        <planeGeometry args={[75, 37.5]} />
+        <planeGeometry args={[70, 25]} />
         <meshStandardMaterial fog color="gray" />
       </mesh>
     </group>

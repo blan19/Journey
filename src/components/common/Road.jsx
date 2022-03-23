@@ -1,6 +1,4 @@
 import React from "react";
-import * as THREE from "three";
-import { useSphere } from "@react-three/cannon";
 import Room from "./Room";
 
 export default function Road() {

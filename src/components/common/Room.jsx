@@ -9,14 +9,24 @@ export default function Room({ position, rotation }) {
   }, []);
 
   return (
-    <group ref={group}>
+    <group ref={group} position={[-23.8, 0.7, -10.85]}>
+      {/* room */}
       <primitive
-        position={position}
-        rotation={rotation}
-        scale={[0.3, 0.3, 0.3]}
-        object={scene}
+        position={[0, 0, 0]}
+        rotation={[0, 0, 0]}
+        scale={[0.05, 0.05, 0.05]}
+        object={nodes["models"]}
       />
-      <primitive object={nodes["models"]} />
+      {/* laptop */}
+      <group>
+        <primitive position={[5, 0, 0]} object={nodes["laptopBottom"]} />
+        <mesh
+          position={[5, 0, 5]}
+          geometry={nodes["laptopScreen"].geometry}
+          material={nodes["laptopScreen"].material}
+        />
+      </group>
     </group>
   );
 }
+// position={[-23.8, -15, -10.85]}
