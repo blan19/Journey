@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { PointerLockControls, Sky } from "@react-three/drei";
@@ -8,10 +8,45 @@ import { Player } from "./components/common/Player";
 import Ground from "./components/common/Ground";
 import Guest from "./Pages/Guest";
 import Road from "./components/common/Road";
+import MouseReticle from "./components/common/MouseReticle";
 
 const App = () => {
+  const controlsRef = useRef();
+  const isLocked = useRef(false);
   return (
-    <Canvas shadows gl={{ alpha: false, antialias: true }} camera={{ fov: 45 }}>
+    <Canvas
+      shadows
+      gl={{ alpha: false, antialias: true }}
+      camera={{ fov: 45 }}
+      raycaster={{
+        computeOffsets: (_, { size: { width, height } }) => {
+          if (isLocked.current) {
+            return {
+              offsetX: width / 2,
+              offsetY: height / 2,
+            };
+          } else {
+            return null;
+          }
+        },
+      }}
+    >
+      <MouseReticle />
+      <PointerLockControls
+        onUpdate={() => {
+          if (controlsRef.current) {
+            controlsRef.current.addEventListener("lock", () => {
+              console.log("lock");
+              isLocked.current = true;
+            });
+            controlsRef.current.addEventListener("unlock", () => {
+              console.log("unlock");
+              isLocked.current = false;
+            });
+          }
+        }}
+        ref={controlsRef}
+      />
       <primitive object={new THREE.AxesHelper(100)} />
       <gridHelper args={[100, 100]} />
       {/* <Sky sunPosition={[100, 20, 100]} /> */}

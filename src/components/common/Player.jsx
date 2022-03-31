@@ -3,7 +3,6 @@ import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
 import { useSphere } from "@react-three/cannon";
 import { useThree, useFrame } from "@react-three/fiber";
-import { PointerLockControls } from "@react-three/drei";
 
 const SPEED = 5;
 const keys = {
@@ -80,7 +79,6 @@ export const Player = (props) => {
   });
   return (
     <>
-      <PointerLockControls />
       <mesh ref={ref} />
       <group
       // ref={axe}
