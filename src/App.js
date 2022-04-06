@@ -3,12 +3,10 @@ import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { PointerLockControls, Sky } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
-import "./styles.css";
 import { Player } from "./components/common/Player";
-import Ground from "./components/common/Ground";
-import Guest from "./Pages/Guest";
-import Road from "./components/common/Road";
 import MouseReticle from "./components/common/MouseReticle";
+import "./styles.css";
+import Map from "./components/common/Map";
 
 const App = () => {
   const controlsRef = useRef();
@@ -55,10 +53,8 @@ const App = () => {
       <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
       <fog color="#262837" near={1} far={15} />
       <Physics gravity={[0, -30, 0]}>
+        <Map />
         <Player />
-        <Road />
-        <Ground />
-        <Guest />
       </Physics>
     </Canvas>
   );
