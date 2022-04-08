@@ -2,6 +2,7 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 import StartPhysics from "./StartPhysics";
 import SceneOnePhysics from "./SceneOnePhysics";
+import SceneTwoPhysics from "./SceneTwoPhysics";
 
 export default function Map() {
   const { scene } = useGLTF("/gltf/FinalWork.glb");
@@ -9,6 +10,7 @@ export default function Map() {
     <>
       <StartPhysics />
       <SceneOnePhysics />
+      <SceneTwoPhysics />
 
       <group
         scale={[0.1, 0.1, 0.1]}

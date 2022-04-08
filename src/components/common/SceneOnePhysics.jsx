@@ -53,7 +53,7 @@ const SceneOnePhysics = (props) => {
   const [wall1] = useBox(() => ({
     mass: 0,
     position: [2.45, 2, -9.65],
-    args: [0.00001, 3, 3],
+    args: [0.0001, 3, 3],
     ...props,
   }));
   const [wall2] = useBox(() => ({
@@ -107,9 +107,9 @@ const SceneOnePhysics = (props) => {
         <boxGeometry args={[3, 0.5, 3]} />
         <meshStandardMaterial color="black" />
       </mesh>
-      <mesh position={[2.45, 2, -9.65]}>
-        <boxGeometry args={[0.05, 3, 3]} />
-        <meshStandardMaterial color="black" />
+      <mesh ref={wall1} position={[2.45, 2, -9.65]}>
+        <boxGeometry args={[0.0001, 3, 3]} />
+        <meshStandardMaterial color="green" />
       </mesh>
       <mesh ref={wall2} position={[6.45, 2, -9.65]}>
         <boxGeometry args={[0.05, 3, 3]} />
