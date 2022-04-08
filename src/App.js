@@ -7,6 +7,7 @@ import { Player } from "./components/common/Player";
 import MouseReticle from "./components/common/MouseReticle";
 import "./styles.css";
 import Map from "./components/common/Map";
+import Ground from "./components/common/Ground";
 
 const App = () => {
   const controlsRef = useRef();
@@ -29,7 +30,7 @@ const App = () => {
         },
       }}
     >
-      <MouseReticle />
+      {/* <MouseReticle /> */}
       <PointerLockControls
         onUpdate={() => {
           if (controlsRef.current) {
@@ -53,6 +54,7 @@ const App = () => {
       <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
       <fog color="#262837" near={1} far={15} />
       <Physics gravity={[0, -30, 0]}>
+        <Ground />
         <Map />
         <Player />
       </Physics>
