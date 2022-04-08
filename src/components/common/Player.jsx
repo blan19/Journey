@@ -45,7 +45,7 @@ const usePlayerControls = () => {
 
 export const Player = (props) => {
   const [ref, api] = useSphere(() => ({
-    mass: 0,
+    mass: 1,
     type: "Dynamic",
     args: [1.5],
     position: [0, 1, 0],
