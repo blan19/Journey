@@ -3,6 +3,8 @@ import { useGLTF } from "@react-three/drei";
 import StartPhysics from "./StartPhysics";
 import SceneOnePhysics from "./SceneOnePhysics";
 import SceneTwoPhysics from "./SceneTwoPhysics";
+import SceneFourPhysics from "./SceneFourPhysics";
+import SceneFivePhysics from "./SceneFivePhysics";
 
 export default function Map() {
   const { scene } = useGLTF("/gltf/FinalWork.glb");
@@ -11,6 +13,8 @@ export default function Map() {
       <StartPhysics />
       <SceneOnePhysics />
       <SceneTwoPhysics />
+      <SceneFourPhysics />
+      <SceneFivePhysics />
 
       <group
         scale={[0.1, 0.1, 0.1]}
