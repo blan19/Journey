@@ -2,38 +2,6 @@ import React from "react";
 import { useBox } from "@react-three/cannon";
 
 const SceneThreePhysics = (props) => {
-  // const [water] = useBox(() => ({
-  //   mass: 0,
-  //   position: [0.8, 0.2, -28.9],
-  //   args: [3.5, 0.2, 3.5],
-  //   ...props,
-  // }));
-
-  // const [floor2] = useBox(() => ({
-  //   mass: 0,
-  //   position: [4, 0.8, -28.8],
-  //   args: [0.5, 0.5, 5.9],
-  //   ...props,
-  // }));
-  //   const [leg] = useBox(() => ({
-  //     mass: 0,
-  //     position: [1, 0.5, -27],
-  //     args: [0.2, 0.2, 0.6],
-  //     ...props,
-  //   }));
-  //   const [top] = useBox(() => ({
-  //     mass: 0,
-  //     position: [0.8, 1.4, -28.9],
-  //     args: [1.75, 0.2, 1.75],
-  //     ...props,
-  //   }));
-  //   const [desk] = useBox(() => ({
-  //     mass: 0,
-  //     position: [0.8, 2, -29.2],
-  //     args: [1.2, 2, 0.05],
-  //     ...props,
-  //   }));
-
   const [floor_left] = useBox(() => ({
     mass: 0,
     position: [-1.9, 0.8, -28.8],
@@ -73,7 +41,7 @@ const SceneThreePhysics = (props) => {
   }));
   const [desk] = useBox(() => ({
     mass: 0,
-    position: [1, 3, -30],
+    position: [1, 3, -29.5],
     args: [1, 5, 0.001],
     ...props,
   }));
@@ -116,7 +84,7 @@ const SceneThreePhysics = (props) => {
         <boxGeometry args={[2, 0.1, 2]} />
         <meshStandardMaterial color="red" />
       </mesh>
-      <mesh ref={desk} position={[1, 1.8, -29.25]}>
+      <mesh ref={desk} position={[1, 1.8, -29.5]}>
         <boxGeometry args={[1, 5, 0.001]} />
         <meshStandardMaterial color="red" />
       </mesh>
@@ -124,7 +92,7 @@ const SceneThreePhysics = (props) => {
         <boxGeometry args={[4, 0.1, 4]} />
         <meshStandardMaterial color="red" />
       </mesh>
-      <mesh position={[2.7, 1.2, -28.8]}>
+      <mesh ref={boat} position={[2.7, 1.2, -28.8]}>
         <boxGeometry args={[0.2, 0.1, 1.3]} />
         <meshStandardMaterial color="red" />
       </mesh>
