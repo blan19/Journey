@@ -30,7 +30,7 @@ const App = () => {
         },
       }}
     >
-      {/* <MouseReticle /> */}
+      <MouseReticle />
       <PointerLockControls
         onUpdate={() => {
           if (controlsRef.current) {

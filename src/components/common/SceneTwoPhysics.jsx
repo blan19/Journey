@@ -33,10 +33,19 @@ const SceneTwoPhysics = (props) => {
 
   const [wall_2] = useBox(() => ({
     mass: 0,
-    position: [0, 3, -22],
+    position: [-1, 3, -22],
     args: [3.5, 1.5, 0.02],
     ...props,
   }));
+
+  const [stair] = useBox(() => ({
+    mass: 0,
+    position: [2.45, 1.5, -24],
+    rotation: [Math.PI * -1.575, 0, 0],
+    args: [0.7, 4.5, 0.001],
+    ...props,
+  }));
+
   return (
     <group>
       <mesh
@@ -61,9 +70,14 @@ const SceneTwoPhysics = (props) => {
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial />
       </mesh>
-      <mesh position={[0, 3, -21.25]}>
-        <boxGeometry args={[0, 0, 0]} />
-        <meshStandardMaterial />
+      <mesh position={[-1, 3, -21.25]}>
+        <boxGeometry args={[3.5, 1.5, 0.02]} />
+        <meshStandardMaterial color="red" />
+      </mesh>
+      {/* stair */}
+      <mesh position={[2.45, 1.5, -24]} rotation={[Math.PI * -1.575, 0, 0]}>
+        <boxGeometry args={[0.7, 4.5, 0.001]} />
+        <meshStandardMaterial color="red" />
       </mesh>
     </group>
   );

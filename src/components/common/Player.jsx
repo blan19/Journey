@@ -1,7 +1,7 @@
 import React from "react";
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
-import { useSphere } from "@react-three/cannon";
+import { useBox, useSphere, useCylinder } from "@react-three/cannon";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 
@@ -44,10 +44,17 @@ const usePlayerControls = () => {
 };
 
 export const Player = (props) => {
+  // const [ref, api] = useSphere(() => ({
+  //   mass: 1,
+  //   type: "Dynamic",
+  //   args: [1.5],
+  //   position: [0, 1, 0],
+  //   ...props,
+  // }));
   const [ref, api] = useSphere(() => ({
     mass: 1,
     type: "Dynamic",
-    args: [1.5],
+    args: [1.25],
     position: [0, 1, 0],
     ...props,
   }));
