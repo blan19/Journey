@@ -1,5 +1,6 @@
-import { useBox, usePlane } from "@react-three/cannon";
-import React from "react";
+import React, { useMemo } from "react";
+import { useBox } from "@react-three/cannon";
+import * as THREE from "three";
 
 const SceneOnePhysics = (props) => {
   const [floor1] = useBox(() => ({
@@ -69,6 +70,12 @@ const SceneOnePhysics = (props) => {
     ...props,
   }));
 
+  // 라이트
+  const one_1 = useMemo(
+    () => new THREE.SpotLight("white", 1, 100, Math.PI / 4),
+    []
+  );
+
   return (
     <>
       <mesh ref={floor1} position={[4, 0.4, -8]}>
@@ -77,7 +84,7 @@ const SceneOnePhysics = (props) => {
       </mesh>
       <mesh ref={floor2} position={[0.1, 0.4, -8]}>
         <boxGeometry args={[0.8, 0.4, 5.6]} />
-        <meshStandardMaterial color="red" />s
+        <meshStandardMaterial color="red" />
       </mesh>
       <mesh ref={leg} position={[1.4, 0.55, -6.6]}>
         <boxGeometry args={[1.6, 0.1, 0.8]} />
@@ -119,6 +126,13 @@ const SceneOnePhysics = (props) => {
         <boxGeometry args={[3, 3, 0.1]} />
         <meshStandardMaterial color="black" />
       </mesh>
+      {/* 라이트 */}
+      <spotLight
+        ref={one_1}
+        position={[0, 10, -8]}
+        args={["white", 0.2, 100, Math.PI / 4]}
+      />
+      <primitive object={one_1.target} position={[0.1, 0.4, -8]} />
     </>
   );
 };

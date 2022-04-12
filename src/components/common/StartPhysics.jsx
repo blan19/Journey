@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useRef, useMemo } from "react";
 import { useBox } from "@react-three/cannon";
+import * as THREE from "three";
+import { useHelper } from "@react-three/drei";
 
 const StartPhysics = (props) => {
   const [ref1] = useBox(() => ({
@@ -27,6 +29,13 @@ const StartPhysics = (props) => {
     ...props,
   }));
 
+  // 라이트
+  const entry_2 = useMemo(
+    () => new THREE.SpotLight("white", 0.25, 8, Math.PI / 5),
+    []
+  );
+  const entry_1 = useRef();
+
   return (
     <>
       <mesh ref={ref1} position={[0, 0.35, 0]}>
@@ -45,6 +54,12 @@ const StartPhysics = (props) => {
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
+
+      {/* 라이트 - 1 */}
+      <spotLight ref={entry_1} position={[0, 3, 0]} args={["white", 1, 2.5]} />
+      {/* 라이트 - 2 */}
+      <primitive object={entry_2} position={[-1, 3.5, 0]} />
+      <primitive object={entry_2.target} position={[3, 2, 0]} />
     </>
   );
 };

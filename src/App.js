@@ -14,8 +14,16 @@ const App = () => {
   const isLocked = useRef(false);
   return (
     <Canvas
+      frameloop="demand"
       shadows
-      gl={{ alpha: false, antialias: true }}
+      performance={{ min: 0.5, max: 1 }}
+      gl={{
+        alpha: false,
+        antialias: true,
+        toneMappingExposure: 1,
+        toneMapping: THREE.ACESFilmicToneMapping,
+        outputEncoding: THREE.sRGBEncoding,
+      }}
       camera={{ fov: 45 }}
       raycaster={{
         computeOffsets: (_, { size: { width, height } }) => {
@@ -48,9 +56,9 @@ const App = () => {
       />
       <primitive object={new THREE.AxesHelper(100)} />
       <gridHelper args={[100, 100]} />
-      {/* <Sky sunPosition={[100, 20, 100]} /> */}
       <Sky sunPosition={[0, 100, 0]} />
       <ambientLight intensity={0.5} />
+      <directionalLight args={["gray", 1]} />
       <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
       <fog color="#262837" near={1} far={15} />
       <Physics gravity={[0, -30, 0]}>
