@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import StartPhysics from "./StartPhysics";
 import SceneOnePhysics from "./SceneOnePhysics";
@@ -9,6 +9,9 @@ import SceneFivePhysics from "./SceneFivePhysics";
 
 export default function Map() {
   const { scene } = useGLTF("/gltf/FinalWork.glb");
+  // useEffect(() => {
+  //   console.log(scene);
+  // }, []);
   return (
     <>
       <StartPhysics />
