@@ -54,12 +54,6 @@ const StartPhysics = (props) => {
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
-
-      {/* 라이트 - 1 */}
-      <spotLight ref={entry_1} position={[0, 3, 0]} args={["white", 1, 2.5]} />
-      {/* 라이트 - 2 */}
-      <primitive object={entry_2} position={[-1, 3.5, 0]} />
-      <primitive object={entry_2.target} position={[3, 2, 0]} />
     </>
   );
 };

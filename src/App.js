@@ -57,7 +57,9 @@ const App = () => {
       />
       <primitive object={new THREE.AxesHelper(100)} />
       <gridHelper args={[100, 100]} />
+
       <ambientLight intensity={0.2} />
+
       <directionalLight args={["gray", 1]} />
       <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
       <fog color="#262837" near={1} far={15} />

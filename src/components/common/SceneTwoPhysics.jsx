@@ -57,12 +57,12 @@ const SceneTwoPhysics = (props) => {
         <meshStandardMaterial />
       </mesh>
       <mesh ref={floor_1} position={[-0.6, 1.4, -18]}>
-        <boxGeometry args={[3, 0.4, 5]} />
+        <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
       {/* room */}
       <mesh ref={floor_2} position={[0.65, 2, -19.75]}>
-        <boxGeometry args={[6, 0.4, 3.25]} />
+        <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
       {/* wall */}
@@ -71,12 +71,12 @@ const SceneTwoPhysics = (props) => {
         <meshStandardMaterial />
       </mesh>
       <mesh position={[-1, 3, -21.25]}>
-        <boxGeometry args={[3.5, 1.5, 0.02]} />
+        <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
       {/* stair */}
       <mesh position={[2.45, 1.5, -24]} rotation={[Math.PI * -1.575, 0, 0]}>
-        <boxGeometry args={[0.7, 4.5, 0.001]} />
+        <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
     </group>
