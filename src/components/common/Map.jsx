@@ -8,7 +8,8 @@ import SceneFourPhysics from "./SceneFourPhysics";
 import SceneFivePhysics from "./SceneFivePhysics";
 
 export default function Map() {
-  const { scene } = useGLTF("/gltf/FinalWork.glb");
+  // const { scene } = useGLTF("/gltf/FinalWork.glb");
+  const { scene } = useGLTF("/gltf/mapWithLowPolyTree.glb");
   return (
     <>
       <StartPhysics />
