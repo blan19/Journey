@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import { useGLTF } from "@react-three/drei";
+import * as THREE from "three";
+import { useGLTF, useAnimations } from "@react-three/drei";
 import StartPhysics from "./StartPhysics";
 import SceneOnePhysics from "./SceneOnePhysics";
 import SceneTwoPhysics from "./SceneTwoPhysics";
@@ -9,8 +10,12 @@ import SceneFivePhysics from "./SceneFivePhysics";
 
 export default function Map() {
   // const { scene } = useGLTF("/gltf/FinalWork.glb");
-  const { scene } = useGLTF("/gltf/mapWithLowPolyTree.glb");
+  const { scene, animations, nodes } = useGLTF("/gltf/mapWithLowPolyTree.glb");
+  const { actions } = useAnimations(animations, scene);
 
+  // useEffect(() => {
+  //   actions.pencilAction.play();
+  // }, []);
   return (
     <>
       <StartPhysics />
