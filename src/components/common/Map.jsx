@@ -11,7 +11,7 @@ import Pencil from "../animationModels/Pencil";
 
 export default function Map() {
   // const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
-  const { scene, animations, nodes } = useGLTF("/gltf/MapWithLowPolyTree.glb");
+  const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
   const { actions } = useAnimations(animations, scene);
 
   return (

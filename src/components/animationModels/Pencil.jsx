@@ -1,12 +1,36 @@
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Pencil = ({ actions }) => {
+  const [active, setActive] = useState(false);
   const onPencilClick = () => {
     actions.pencilAction.play();
+    console.log(active);
+    setTimeout(() => {
+      actions.S2NewspaperAni1.play();
+    }, 145);
+
+    setTimeout(() => {
+      actions.S2NewspaperAni2.play();
+    }, 195);
+
+    setTimeout(() => {
+      actions.S2NewspaperAni3.play();
+    }, 230);
+    setTimeout(() => {
+      actions.S2NewspaperAni4.play();
+    }, 275);
   };
 
+  useEffect(() => {
+    actions.pencilAction.repetitions = 1;
+    actions.S2NewspaperAni1.repetitions = 1;
+    actions.S2NewspaperAni2.repetitions = 1;
+    actions.S2NewspaperAni3.repetitions = 1;
+    actions.S2NewspaperAni4.repetitions = 1;
+    console.log(actions.S2NewspaperAni4);
+  }, []);
   return (
     <>
       <mesh
