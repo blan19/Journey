@@ -13,6 +13,7 @@ import Clouds from "./components/Clouds";
 const App = () => {
   const controlsRef = useRef();
   const isLocked = useRef(false);
+
   return (
     <Canvas
       frameloop="demand"
@@ -49,6 +50,10 @@ const App = () => {
             });
             controlsRef.current.addEventListener("unlock", () => {
               console.log("unlock");
+              isLocked.current = false;
+            });
+            controlsRef.current.addEventListener("click", () => {
+              console.log("lock");
               isLocked.current = false;
             });
           }
