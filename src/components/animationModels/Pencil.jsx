@@ -3,10 +3,8 @@ import { Canvas } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 
 const Pencil = ({ actions }) => {
-  const [active, setActive] = useState(false);
   const onPencilClick = () => {
     actions.pencilAction.play();
-    console.log(active);
     setTimeout(() => {
       actions.S2NewspaperAni1.play();
     }, 145);
@@ -21,15 +19,37 @@ const Pencil = ({ actions }) => {
     setTimeout(() => {
       actions.S2NewspaperAni4.play();
     }, 275);
+    setTimeout(() => {
+      actions.S2NewspaperAni1.paused = true;
+    }, 2650);
+    setTimeout(() => {
+      actions.S2NewspaperAni2.paused = true;
+    }, 4400);
+    setTimeout(() => {
+      actions.S2NewspaperAni3.paused = true;
+    }, 6100);
+    setTimeout(() => {
+      actions.S2NewspaperAni4.paused = true;
+    }, 7850);
+    setTimeout(() => {
+      actions.pencilAction.paused = true;
+      console.log(actions.pencilAction);
+    }, 8000);
+    // setTimeout(() => {}, 8000);
   };
 
   useEffect(() => {
-    actions.pencilAction.repetitions = 1;
-    actions.S2NewspaperAni1.repetitions = 1;
-    actions.S2NewspaperAni2.repetitions = 1;
-    actions.S2NewspaperAni3.repetitions = 1;
-    actions.S2NewspaperAni4.repetitions = 1;
-    console.log(actions.S2NewspaperAni4);
+    // actions.pencilAction.repetitions = 1;
+    // actions.S2NewspaperAni1.repetitions = 1;
+    // actions.S2NewspaperAni2.repetitions = 1;
+    // actions.S2NewspaperAni3.repetitions = 1;
+    // actions.S2NewspaperAni4.repetitions = 1;
+
+    console.log(actions.pencilAction);
+    // actions.S2NewspaperAni1.clampWhenFinished = true;
+    // actions.S2NewspaperAni2.clampWhenFinished = true;
+    // actions.S2NewspaperAni3.clampWhenFinished = true;
+    // actions.S2NewspaperAni4.clampWhenFinished = true;
   }, []);
   return (
     <>
