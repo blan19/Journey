@@ -52,10 +52,10 @@ const App = () => {
               console.log("unlock");
               isLocked.current = false;
             });
-            controlsRef.current.addEventListener("click", () => {
-              console.log("lock");
-              isLocked.current = false;
-            });
+            // controlsRef.current.addEventListener("click", () => {
+            //   console.log("lock");
+            //   isLocked.current = false;
+            // });
           }
         }}
         ref={controlsRef}
@@ -71,7 +71,7 @@ const App = () => {
       <Physics gravity={[0, -30, 0]}>
         <Clouds />
         <Ground />
-        <Map />
+        <Map control={controlsRef} />
         <Player />
       </Physics>
     </Canvas>

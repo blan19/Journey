@@ -1,9 +1,8 @@
 import React from "react";
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
-import { useBox, useSphere, useCylinder } from "@react-three/cannon";
+import { useSphere } from "@react-three/cannon";
 import { useThree, useFrame } from "@react-three/fiber";
-import { useGLTF } from "@react-three/drei";
 
 const SPEED = 10;
 const keys = {
