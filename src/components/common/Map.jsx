@@ -7,15 +7,13 @@ import SceneTwoPhysics from "./SceneTwoPhysics";
 import SceneThreePhysics from "./SceneThreePhysics";
 import SceneFourPhysics from "./SceneFourPhysics";
 import SceneFivePhysics from "./SceneFivePhysics";
+import Pencil from "../animationModels/Pencil";
 
 export default function Map() {
-  // const { scene } = useGLTF("/gltf/FinalWork.glb");
-  const { scene, animations, nodes } = useGLTF("/gltf/mapWithLowPolyTree.glb");
+  // const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
+  const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
   const { actions } = useAnimations(animations, scene);
 
-  // useEffect(() => {
-  //   actions.pencilAction.play();
-  // }, []);
   return (
     <>
       <StartPhysics />
@@ -32,6 +30,8 @@ export default function Map() {
       >
         <primitive object={scene} />
       </group>
+
+      <Pencil actions={actions} />
     </>
   );
 }

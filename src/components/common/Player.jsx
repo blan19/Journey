@@ -5,7 +5,7 @@ import { useBox, useSphere, useCylinder } from "@react-three/cannon";
 import { useThree, useFrame } from "@react-three/fiber";
 import { useGLTF } from "@react-three/drei";
 
-const SPEED = 3;
+const SPEED = 10;
 const keys = {
   KeyW: "forward",
   KeyS: "backward",
