@@ -8,6 +8,7 @@ import SceneThreePhysics from "./SceneThreePhysics";
 import SceneFourPhysics from "./SceneFourPhysics";
 import SceneFivePhysics from "./SceneFivePhysics";
 import Pencil from "../animationModels/Pencil";
+import Keyboard from "../animationModels/Keyboard";
 
 export default function Map() {
   // const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
@@ -32,6 +33,7 @@ export default function Map() {
       </group>
 
       <Pencil actions={actions} />
+      <Keyboard actions={actions} />
     </>
   );
 }
