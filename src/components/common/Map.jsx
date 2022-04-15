@@ -9,8 +9,9 @@ import SceneFourPhysics from "./SceneFourPhysics";
 import SceneFivePhysics from "./SceneFivePhysics";
 import Pencil from "../animationModels/Pencil";
 import Keyboard from "../animationModels/Keyboard";
+import Laptop from "../Laptop";
 
-export default function Map() {
+export default function Map({ control }) {
   // const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
   const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
   const { actions } = useAnimations(animations, scene);
@@ -32,6 +33,7 @@ export default function Map() {
         <primitive object={scene} />
       </group>
 
+      <Laptop control={control} />
       <Pencil actions={actions} />
       <Keyboard actions={actions} />
     </>
