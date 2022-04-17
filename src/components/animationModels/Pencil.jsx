@@ -1,9 +1,21 @@
 import { useGLTF, useAnimations } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 
 const Pencil = ({ actions }) => {
   const onPencilClick = () => {
+    actions.pencilAction.repetitions = 1;
+    actions.S2NewspaperAni1.repetitions = 1;
+    actions.S2NewspaperAni2.repetitions = 1;
+    actions.S2NewspaperAni3.repetitions = 1;
+    actions.S2NewspaperAni4.repetitions = 1;
+
+    actions.pencilAction.clampWhenFinished = true;
+    actions.S2NewspaperAni1.clampWhenFinished = true;
+    actions.S2NewspaperAni2.clampWhenFinished = true;
+    actions.S2NewspaperAni3.clampWhenFinished = true;
+    actions.S2NewspaperAni4.clampWhenFinished = true;
+
     actions.pencilAction.play();
     setTimeout(() => {
       actions.S2NewspaperAni1.play();
@@ -19,38 +31,26 @@ const Pencil = ({ actions }) => {
     setTimeout(() => {
       actions.S2NewspaperAni4.play();
     }, 275);
+
     setTimeout(() => {
-      actions.S2NewspaperAni1.paused = true;
-    }, 2650);
-    setTimeout(() => {
-      actions.S2NewspaperAni2.paused = true;
-    }, 4400);
-    setTimeout(() => {
-      actions.S2NewspaperAni3.paused = true;
-    }, 6100);
-    setTimeout(() => {
-      actions.S2NewspaperAni4.paused = true;
-    }, 7850);
-    setTimeout(() => {
-      actions.pencilAction.paused = true;
       console.log(actions.pencilAction);
+      actions.pencilAction.stop();
+      actions.S2NewspaperAni1.stop();
+      actions.S2NewspaperAni2.stop();
+      actions.S2NewspaperAni3.stop();
+      actions.S2NewspaperAni4.stop();
     }, 8000);
-    // setTimeout(() => {}, 8000);
   };
 
-  useEffect(() => {
-    // actions.pencilAction.repetitions = 1;
-    // actions.S2NewspaperAni1.repetitions = 1;
-    // actions.S2NewspaperAni2.repetitions = 1;
-    // actions.S2NewspaperAni3.repetitions = 1;
-    // actions.S2NewspaperAni4.repetitions = 1;
-
-    console.log(actions.pencilAction);
-    // actions.S2NewspaperAni1.clampWhenFinished = true;
-    // actions.S2NewspaperAni2.clampWhenFinished = true;
-    // actions.S2NewspaperAni3.clampWhenFinished = true;
-    // actions.S2NewspaperAni4.clampWhenFinished = true;
-  }, []);
+  useFrame(() => {
+    if (actions.pencilAction.paused) {
+      actions.pencilAction.reset();
+      actions.S2NewspaperAni1.reset();
+      actions.S2NewspaperAni2.reset();
+      actions.S2NewspaperAni3.reset();
+      actions.S2NewspaperAni4.reset();
+    }
+  });
   return (
     <>
       <mesh
