@@ -8,6 +8,7 @@ import SceneThreePhysics from "./SceneThreePhysics";
 import SceneFourPhysics from "./SceneFourPhysics";
 import SceneFivePhysics from "./SceneFivePhysics";
 import Pencil from "../animationModels/Pencil";
+import Keyboard from "../animationModels/Keyboard";
 import Laptop from "../Laptop";
 
 export default function Map({ control }) {
@@ -34,6 +35,7 @@ export default function Map({ control }) {
 
       <Laptop control={control} />
       <Pencil actions={actions} />
+      <Keyboard actions={actions} />
     </>
   );
 }

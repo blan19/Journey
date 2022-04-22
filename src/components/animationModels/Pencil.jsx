@@ -1,12 +1,22 @@
 import { useGLTF, useAnimations } from "@react-three/drei";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import React, { useEffect, useRef, useState } from "react";
 
 const Pencil = ({ actions }) => {
-  const [active, setActive] = useState(false);
   const onPencilClick = () => {
+    actions.pencilAction.repetitions = 1;
+    actions.S2NewspaperAni1.repetitions = 1;
+    actions.S2NewspaperAni2.repetitions = 1;
+    actions.S2NewspaperAni3.repetitions = 1;
+    actions.S2NewspaperAni4.repetitions = 1;
+
+    actions.pencilAction.clampWhenFinished = true;
+    actions.S2NewspaperAni1.clampWhenFinished = true;
+    actions.S2NewspaperAni2.clampWhenFinished = true;
+    actions.S2NewspaperAni3.clampWhenFinished = true;
+    actions.S2NewspaperAni4.clampWhenFinished = true;
+
     actions.pencilAction.play();
-    console.log(active);
     setTimeout(() => {
       actions.S2NewspaperAni1.play();
     }, 145);
@@ -21,16 +31,26 @@ const Pencil = ({ actions }) => {
     setTimeout(() => {
       actions.S2NewspaperAni4.play();
     }, 275);
+
+    setTimeout(() => {
+      console.log(actions.pencilAction);
+      actions.pencilAction.stop();
+      actions.S2NewspaperAni1.stop();
+      actions.S2NewspaperAni2.stop();
+      actions.S2NewspaperAni3.stop();
+      actions.S2NewspaperAni4.stop();
+    }, 8000);
   };
 
-  useEffect(() => {
-    actions.pencilAction.repetitions = 1;
-    actions.S2NewspaperAni1.repetitions = 1;
-    actions.S2NewspaperAni2.repetitions = 1;
-    actions.S2NewspaperAni3.repetitions = 1;
-    actions.S2NewspaperAni4.repetitions = 1;
-    console.log(actions.S2NewspaperAni4);
-  }, []);
+  useFrame(() => {
+    if (actions.pencilAction.paused) {
+      actions.pencilAction.reset();
+      actions.S2NewspaperAni1.reset();
+      actions.S2NewspaperAni2.reset();
+      actions.S2NewspaperAni3.reset();
+      actions.S2NewspaperAni4.reset();
+    }
+  });
   return (
     <>
       <mesh
