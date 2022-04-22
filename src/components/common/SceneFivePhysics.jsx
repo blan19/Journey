@@ -1,5 +1,7 @@
 import React from "react";
 import { useBox, usePlane } from "@react-three/cannon";
+import { Html } from "@react-three/drei";
+import Webcam from "react-webcam";
 
 const SceneFivePhysics = (props) => {
   const [stairs] = useBox(() => ({
@@ -33,6 +35,8 @@ const SceneFivePhysics = (props) => {
   }));
 
   // 벤치
+
+  // * Webcam
   return (
     <group>
       <mesh
@@ -54,13 +58,24 @@ const SceneFivePhysics = (props) => {
       </mesh>
       {/* 졸업모 */}
       <mesh ref={cap} position={[-3.1, 3.5, -49]}>
-        <boxGeometry args={[0.5, 0.5, 0.5]} />
+        <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
-      <mesh position={[-2, 4, -49]}>
-        <boxGeometry args={[0.5, 1, 0.1]} />
-        <meshStandardMaterial color="red" />
-      </mesh>
+      {/* Webcam */}
+      <group>
+        <mesh position={[-4.5, 4.5, -49]} rotation={[0, Math.PI / 2, 0]}>
+          <boxGeometry args={[2, 1.5, 0.1]} />
+          <Html
+            occlude
+            transform
+            position={[0, 0, 0.1]}
+            rotation={[0, Math.PI, 0]}
+          >
+            <Webcam audio={false} width={150} height={50} />
+          </Html>
+          {/* <meshStandardMaterial color="red" /> */}
+        </mesh>
+      </group>
     </group>
   );
 };
