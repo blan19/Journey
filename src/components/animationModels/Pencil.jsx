@@ -1,6 +1,4 @@
-import { useGLTF, useAnimations } from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef, useState } from "react";
+import { useFrame } from "@react-three/fiber";
 
 const Pencil = ({ actions }) => {
   const onPencilClick = () => {
@@ -54,7 +52,7 @@ const Pencil = ({ actions }) => {
   return (
     <>
       <mesh
-        scale={[0.009, 0.13, 0.007]}
+        scale={[0.02, 0.13, 0.007]}
         onClick={onPencilClick}
         position={[-0.96, 2.9, -20.8]}
         rotation={[Math.PI / 2, 0, 2.795]}
