@@ -1,20 +1,20 @@
 import React from "react";
-import { Choose, When, OtherWise } from "./lib/Condition";
+import { Choose, When, OtherWise, If } from "./lib/Condition";
 import Mobile from "./View/Mobile";
 import Browser from "./View/Browser";
-import { isMobile } from "react-device-detect";
+import { isMobile, isBrowser } from "react-device-detect";
 import "./styles.css";
 
 const App = () => {
   return (
-    <Choose>
-      <When condition={isMobile}>
+    <>
+      <If condition={isMobile}>
         <Mobile />
-      </When>
-      <OtherWise>
+      </If>
+      <If condition={isBrowser}>
         <Browser />
-      </OtherWise>
-    </Choose>
+      </If>
+    </>
   );
 };
 
