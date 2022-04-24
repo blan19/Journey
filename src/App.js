@@ -1,20 +1,20 @@
 import React from "react";
-import { BrowserView, MobileView } from "react-device-detect";
-import "./styles.css";
+import { Choose, When, OtherWise } from "./lib/Condition";
 import Mobile from "./View/Mobile";
 import Browser from "./View/Browser";
 import "./styles.css";
+import { isMobile } from "react-device-detect";
 
 const App = () => {
   return (
-    <>
-      <BrowserView style={{ width: "100%", height: "100%" }}>
-        <Browser />
-      </BrowserView>
-      <MobileView>
+    <Choose>
+      <When condition={isMobile}>
         <Mobile />
-      </MobileView>
-    </>
+      </When>
+      <OtherWise>
+        <Browser />
+      </OtherWise>
+    </Choose>
   );
 };
 
