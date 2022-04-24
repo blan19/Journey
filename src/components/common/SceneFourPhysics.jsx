@@ -52,7 +52,7 @@ const SceneFourPhysics = (props) => {
   const [stone_stair4] = useBox(() => ({
     mass: 0,
     position: [1.4, 2.3, -38.75],
-    args: [0.4, 1, 4.5],
+    args: [0.8, 1, 4.5],
     ...props,
   }));
 

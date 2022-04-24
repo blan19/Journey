@@ -1,0 +1,9 @@
+.text {
+  border: 1px dashed white;
+  line-height: 1rem;
+  height: 1rem;
+  border-radius: 30%;
+  color: white;
+  font-size: 0.3rem;
+  font-weight: lighter;
+}
