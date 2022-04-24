@@ -26,20 +26,6 @@ const Scene4Models = () => {
 
   return (
     <>
-      {IsLightOn ? (
-        <group>
-          <SpotLight
-            ref={light}
-            distance={2}
-            position={[-2, 4.45, -39]}
-            intensity={0.3}
-            color={"blue"}
-            angle={0.1}
-          />
-        </group>
-      ) : (
-        <></>
-      )}
       <group>
         <mesh
           onClick={onStageClick}
@@ -55,15 +41,15 @@ const Scene4Models = () => {
           />
           <Html transform>
             <div onClick={onStageClick} className="text">
-              Click
+              click
             </div>
           </Html>
         </mesh>
       </group>
-      <Drum />
-      <Piano />
-      <Mic />
-      <Guitar />
+      <Drum light={IsLightOn} />
+      <Piano light={IsLightOn} />
+      <Mic light={IsLightOn} />
+      <Guitar light={IsLightOn} />
     </>
   );
 };
