@@ -1,0 +1,11 @@
+.text {
+  border: 1px solid white;
+  border-radius: 50%;
+  width: 1.15rem;
+  height: 1.15rem;
+  color: white;
+  font-weight: lighter;
+  font-size: xx-small;
+  text-align: center;
+  line-height: 1.15rem;
+}
