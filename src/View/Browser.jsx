@@ -4,6 +4,7 @@ import { Canvas } from "@react-three/fiber";
 import { PointerLockControls } from "@react-three/drei";
 import { Physics } from "@react-three/cannon";
 import { Player, Map, MouseReticle, Clouds, Ground } from "../components";
+import "../styles.css";
 
 const Browser = () => {
   const controlsRef = useRef();
