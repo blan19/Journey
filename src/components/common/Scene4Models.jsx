@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Drum from "../animationModels/Drum";
 import Guitar from "../animationModels/Guitar";
 import Mic from "../animationModels/Mic";
-import Piano from "../animationModels/Piano";
 import { SpotLight, useGLTF, useHelper } from "@react-three/drei";
 import * as THREE from "three";
 import { Html } from "@react-three/drei";
@@ -47,7 +46,6 @@ const Scene4Models = () => {
         </mesh>
       </group>
       <Drum light={IsLightOn} />
-      <Piano light={IsLightOn} />
       <Mic light={IsLightOn} />
       <Guitar light={IsLightOn} />
     </>
