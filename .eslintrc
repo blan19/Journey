@@ -1,0 +1,25 @@
+{
+  "plugins": ["react", "jsx-a11y", "import", "jsx-control-statements"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:jsx-control-statements/recommended"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "react/jsx-no-undef": [2, { "allowGlobals": true }]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": { "extensions": [".js", ".jsx"] }
+    }
+  }
+}
