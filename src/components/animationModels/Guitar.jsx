@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { SpotLight } from "@react-three/drei";
 
 const Guitar = ({ light }) => {
   const { scene } = useGLTF("/gltf/Eguitar.glb");
 
+  const lightRef = useRef();
+
+  useEffect(() => {
+    console.log(lightRef);
+  }, []);
   return (
     <>
       {light ? (
-        <group>
+        <group ref={lightRef}>
           <SpotLight
             target={scene}
-            // position={[-2.4, 4.45, -39.7]}
+            ref={lightRef}
             position={[-3.4, 4.6, -38.85]}
-            color={"FEEEAD"}
+            color={"#ffecc4"}
+            anglePower={7}
+            radiusTop={0.02}
           />
         </group>
       ) : (

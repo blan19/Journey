@@ -11,9 +11,10 @@ const Mic = ({ light }) => {
         <group>
           <SpotLight
             target={scene}
-            // position={[-2.4, 4.45, -38.8]}
             position={[-3.4, 4.6, -38.85]}
-            color={"FEEEAD"}
+            color={"#ffecc4"}
+            anglePower={7}
+            radiusTop={0.02}
           />
         </group>
       ) : (
