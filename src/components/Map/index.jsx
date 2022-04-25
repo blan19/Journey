@@ -1,16 +1,17 @@
 import React, { useEffect } from "react";
 import * as THREE from "three";
 import { useGLTF, useAnimations } from "@react-three/drei";
-import StartPhysics from "./StartPhysics";
-import SceneOnePhysics from "./SceneOnePhysics";
-import SceneTwoPhysics from "./SceneTwoPhysics";
-import SceneThreePhysics from "./SceneThreePhysics";
-import SceneFourPhysics from "./SceneFourPhysics";
-import SceneFivePhysics from "./SceneFivePhysics";
-import Pencil from "../animationModels/Pencil";
-import Keyboard from "../animationModels/Keyboard";
-import Laptop from "../Laptop";
-import Scene4Models from "./Scene4Models";
+import {
+  SceneStrat,
+  SceneOnePhysics,
+  SceneTwoPhysics,
+  SceneThreePhysics,
+  SceneFourPhysics,
+  SceneFourModel,
+  SceneFivePhysics,
+} from "../Scene";
+import { Pencil, Keyboard } from "../animationModels";
+import { Laptop } from "../common";
 
 export default function Map({ control }) {
   // const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
@@ -19,7 +20,7 @@ export default function Map({ control }) {
 
   return (
     <>
-      <StartPhysics />
+      <SceneStrat />
       <SceneOnePhysics />
       <SceneTwoPhysics />
       <SceneThreePhysics />
@@ -37,7 +38,7 @@ export default function Map({ control }) {
       <Laptop control={control} />
       <Pencil actions={actions} />
       <Keyboard actions={actions} />
-      <Scene4Models />
+      <SceneFourModel />
     </>
   );
 }

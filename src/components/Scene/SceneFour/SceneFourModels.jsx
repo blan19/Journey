@@ -1,15 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import Drum from "../animationModels/Drum";
-import Guitar from "../animationModels/Guitar";
-import Mic from "../animationModels/Mic";
+import { Drum, Guitar, Mic } from "../../animationModels";
+import { Html } from "@react-three/drei";
 import { SpotLight, useGLTF, useHelper } from "@react-three/drei";
 import * as THREE from "three";
-import { Html } from "@react-three/drei";
 import "./styles.css";
 import { useFrame } from "@react-three/fiber";
 import { Vector3 } from "three";
 
-const Scene4Models = () => {
+const SceneFourModel = () => {
   const light = useRef();
   // useHelper(light, THREE.SpotLightHelper, "cyan");
 
@@ -52,4 +50,4 @@ const Scene4Models = () => {
   );
 };
 
-export default Scene4Models;
+export default SceneFourModel;

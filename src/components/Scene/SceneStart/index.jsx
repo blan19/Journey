@@ -3,7 +3,7 @@ import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
 import { useHelper } from "@react-three/drei";
 
-const StartPhysics = (props) => {
+const SceneStrat = (props) => {
   const [ref1] = useBox(() => ({
     mass: 0,
     position: [0.1, 0.35, 0],
@@ -58,4 +58,4 @@ const StartPhysics = (props) => {
   );
 };
 
-export default StartPhysics;
+export default SceneStrat;

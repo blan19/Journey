@@ -1,5 +1,5 @@
 import React from "react";
-import { Choose, When, OtherWise, If } from "./lib/Condition";
+import { If } from "./lib/Condition";
 import Mobile from "./View/Mobile";
 import Browser from "./View/Browser";
 import { isMobile, isBrowser } from "react-device-detect";
