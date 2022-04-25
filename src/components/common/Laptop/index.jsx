@@ -4,7 +4,9 @@ import ScenePage from "./SceneOnePage";
 import useStore from "../../../store";
 
 function Laptop({ control, ...props }) {
-  const { register, setRegister } = useStore((state) => state);
+  const { register, setRegister, isLocked, setIsLockedFalse } = useStore(
+    (state) => state
+  );
   const group = useRef();
   const { nodes, materials } = useGLTF("/gltf/mac-draco.glb");
   const [rotation, setRotation] = useState(false);
@@ -13,14 +15,13 @@ function Laptop({ control, ...props }) {
     e.stopPropagation();
   }, []);
 
+  const escHandle = () => {};
+
   const onUnLock = useCallback(
     (e) => {
-      console.log(e);
       setRotation((prev) => !prev);
-      setRegister();
       control.current.unlock();
-      console.log(control.current);
-      // console.log(control.current);
+      setRegister();
     },
     [control, setRegister]
   );
@@ -42,7 +43,7 @@ function Laptop({ control, ...props }) {
       <group
         rotation-x={rotation ? 1.57 : -0.425}
         position={[0, -0.04, 0.41]}
-        onClick={onUnLock}
+        onClick={(e) => onUnLock(e)}
       >
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh
