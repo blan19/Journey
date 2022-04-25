@@ -1,22 +1,35 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Html, useGLTF } from "@react-three/drei";
 import ScenePage from "./SceneOnePage";
+import useStore from "../../../store";
 
 function Laptop({ control, ...props }) {
+  const { register, setRegister } = useStore((state) => state);
   const group = useRef();
   const { nodes, materials } = useGLTF("/gltf/mac-draco.glb");
   const [rotation, setRotation] = useState(false);
 
-  const onUnLock = useCallback(() => {
-    setRotation((prev) => !prev);
-    // console.log("click");
-    control.current.unlock();
-    // console.log(control.current);
-  }, [control]);
+  const onStopPropagation = useCallback((e) => {
+    e.stopPropagation();
+  }, []);
+
+  const onUnLock = useCallback(
+    (e) => {
+      console.log(e);
+      setRotation((prev) => !prev);
+      setRegister();
+      control.current.unlock();
+      console.log(control.current);
+      // console.log(control.current);
+    },
+    [control, setRegister]
+  );
+
+  const onClick = useCallback(() => {}, []);
 
   useEffect(() => {
-    console.log(rotation);
-  }, [rotation]);
+    console.log(register);
+  }, [register]);
   return (
     <group
       position={[4.65, 1.8, -10.75]}
@@ -24,9 +37,13 @@ function Laptop({ control, ...props }) {
       ref={group}
       {...props}
       dispose={null}
-      onClick={onUnLock}
+      onClick={onStopPropagation}
     >
-      <group rotation-x={rotation ? 1.57 : -0.425} position={[0, -0.04, 0.41]}>
+      <group
+        rotation-x={rotation ? 1.57 : -0.425}
+        position={[0, -0.04, 0.41]}
+        onClick={onUnLock}
+      >
         <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
           <mesh
             material={materials.aluminium}
@@ -37,7 +54,7 @@ function Laptop({ control, ...props }) {
             geometry={nodes["Cube008_1"].geometry}
           />
           <mesh geometry={nodes["Cube008_2"].geometry}>
-            <Html
+            {/* <Html
               className="content"
               rotation-x={-Math.PI / 2}
               position={[0, 0.05, -0.09]}
@@ -47,7 +64,7 @@ function Laptop({ control, ...props }) {
               <div className="wrapper">
                 <ScenePage />
               </div>
-            </Html>
+            </Html> */}
           </mesh>
         </group>
       </group>

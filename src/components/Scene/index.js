@@ -1,5 +1,5 @@
 import SceneStrat from "./SceneStart";
-import { SceneOnePhysics } from "./SceneOne";
+import { SceneOnePhysics, SceneOneRegister } from "./SceneOne";
 import { SceneTwoPhysics } from "./SceneTwo";
 import { SceneThreePhysics } from "./SceneThree";
 import { SceneFourModel, SceneFourPhysics } from "./SceneFour";
@@ -12,4 +12,5 @@ export {
   SceneFourPhysics,
   SceneFourModel,
   SceneFivePhysics,
+  SceneOneRegister,
 };

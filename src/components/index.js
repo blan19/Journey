@@ -1,9 +1,9 @@
 import Clouds from "./Clouds";
 import Map from "./Map";
 import { Player } from "./common/Player";
-import MouseReticle from "./common/MouseReticle";
 import Ground from "./common/Ground";
 import { Laptop } from "./common";
 import Click from "./Click";
+import Cursor from "./Cursor";
 
-export { Clouds, Player, MouseReticle, Ground, Laptop, Click, Map };
+export { Clouds, Player, Ground, Laptop, Click, Map, Cursor };

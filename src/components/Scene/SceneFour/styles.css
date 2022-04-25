@@ -1,5 +1,6 @@
 .text {
   border: 1px solid white;
+  border-style: dotted;
   border-radius: 50%;
   width: 1.15rem;
   height: 1.15rem;

@@ -1,2 +1,3 @@
 import SceneOnePhysics from "./SceneOnePhysics";
-export { SceneOnePhysics };
+import SceneOneRegister from "./SceneOneRegister";
+export { SceneOnePhysics, SceneOneRegister };
