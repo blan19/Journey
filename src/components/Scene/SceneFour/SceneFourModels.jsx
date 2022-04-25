@@ -28,20 +28,19 @@ const SceneFourModel = () => {
           onClick={onStageClick}
           position={[-3, 3, -40]}
           rotation={[0, Math.PI * 0.5, 0]}
+          scale={[0.21, 0.21, 0.21]}
         >
-          <boxGeometry />
-          <meshStandardMaterial
-            args={[0.5, 0.5, 0.5]}
-            color={"red"}
-            opacity={0}
-            transparent
-          />
-          <Html transform>
-            <div onClick={onStageClick} className="text">
-              click
-            </div>
-          </Html>
+          <circleGeometry />
+          <meshStandardMaterial color={"red"} opacity={0} transparent />
         </mesh>
+        <Html
+          position={[-3, 3, -40]}
+          rotation={[0, Math.PI * 0.5, 0]}
+          scale={[0.5, 0.5, 0.5]}
+          transform
+        >
+          <div className="text">click</div>
+        </Html>
       </group>
       <Drum light={IsLightOn} />
       <Mic light={IsLightOn} />
