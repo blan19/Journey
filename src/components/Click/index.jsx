@@ -1,6 +1,6 @@
 import React from "react";
 
-const Click = () => {
+const Click = (props) => {
   return (
     <div>
       <h1>asdas</h1>

@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useBox, usePlane } from "@react-three/cannon";
 import { Html } from "@react-three/drei";
 import Webcam from "react-webcam";
+import { CountContainer } from "./styles";
+import { If } from "../../../lib/Condition";
 
 const SceneFivePhysics = (props) => {
   const [stairs] = useBox(() => ({
@@ -37,6 +39,26 @@ const SceneFivePhysics = (props) => {
   // 벤치
 
   // * Webcam
+  const webcamRef = useRef(null);
+  const [count, setCount] = useState({ count: 3, show: false });
+  const onCapture = useCallback(() => {
+    setTimeout(() => {
+      setCount((prev) => ({ ...prev, count: 3, show: true }));
+      setTimeout(() => {
+        setCount((prev) => ({ ...prev, count: 2 }));
+        setTimeout(() => {
+          setCount((prev) => ({ ...prev, count: 1 }));
+          setTimeout(() => {
+            setCount((prev) => ({ ...prev, show: false }));
+            setTimeout(() => {
+              const imageSrc = webcamRef.current.getScreenshot();
+              console.log(imageSrc);
+            }, 0);
+          }, 1000);
+        }, 1000);
+      }, 1000);
+    }, 1000);
+  }, []);
   return (
     <group>
       <mesh
@@ -63,18 +85,43 @@ const SceneFivePhysics = (props) => {
       </mesh>
       {/* Webcam */}
       <group>
-        <mesh position={[-4.5, 4.5, -49]} rotation={[0, Math.PI / 2, 0]}>
+        <mesh
+          position={[-1.5, 4.25, -51]}
+          rotation={[0, 0, 0]}
+          onClick={onCapture}
+        >
           <boxGeometry args={[2, 1.5, 0.1]} />
           <Html
             occlude
             transform
-            position={[0, 0, 0.1]}
+            position={[0, -0.05, 0.1]}
             rotation={[0, Math.PI, 0]}
           >
-            <Webcam audio={false} width={150} height={50} />
+            <Webcam
+              audio={false}
+              width={150}
+              height={50}
+              ref={webcamRef}
+              // videoConstraints={{ facingMode: { exact: "environment" } }}
+            />
           </Html>
           {/* <meshStandardMaterial color="red" /> */}
         </mesh>
+        <If condition={count.show}>
+          <mesh position={[-1.5, 5.25, -51]} rotation={[0, 0, 0]}>
+            <boxGeometry args={[0, 0, 0]} />
+            <Html
+              occlude
+              transform
+              position={[0, -0.05, 0.1]}
+              rotation={[0, 0, 0]}
+            >
+              <CountContainer>
+                <span>{count.count}</span>
+              </CountContainer>
+            </Html>
+          </mesh>
+        </If>
       </group>
     </group>
   );

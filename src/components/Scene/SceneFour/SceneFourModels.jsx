@@ -17,10 +17,6 @@ const SceneFourModel = () => {
     setIsLightOn(!IsLightOn);
   };
 
-  useEffect(() => {
-    console.log(IsLightOn);
-  }, [IsLightOn]);
-
   return (
     <>
       <group>

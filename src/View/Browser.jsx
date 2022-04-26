@@ -63,7 +63,6 @@ const Browser = () => {
                 // });
               }
             }}
-            onUnlock={(e) => console.log(e.target)}
             ref={controlsRef}
           />
         )}

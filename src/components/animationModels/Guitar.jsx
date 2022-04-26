@@ -6,10 +6,6 @@ const Guitar = ({ light }) => {
   const { scene } = useGLTF("/gltf/Eguitar.glb");
 
   const lightRef = useRef();
-
-  useEffect(() => {
-    console.log(lightRef);
-  }, []);
   return (
     <>
       {light ? (

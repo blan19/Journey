@@ -27,10 +27,6 @@ function Laptop({ control, ...props }) {
   );
 
   const onClick = useCallback(() => {}, []);
-
-  useEffect(() => {
-    console.log(register);
-  }, [register]);
   return (
     <group
       position={[4.65, 1.8, -10.75]}
