@@ -8,12 +8,13 @@ import "./styles.css";
 const App = () => {
   return (
     <>
-      <If condition={isMobile}>
+      <Mobile />
+      {/* <If condition={isMobile}>
         <Mobile />
       </If>
       <If condition={isBrowser}>
         <Browser />
-      </If>
+      </If> */}
     </>
   );
 };

@@ -1,10 +1,11 @@
 import React from "react";
+import MobileMain from "../components/mobile/main/MobileMain";
 
 const Mobile = () => {
   return (
-    <div>
-      <h1>Hi is Mobile..?</h1>
-    </div>
+    <>
+      <MobileMain />
+    </>
   );
 };
 
