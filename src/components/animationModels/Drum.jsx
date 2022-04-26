@@ -8,16 +8,23 @@ import * as THREE from "three";
 const Drum = ({ light, box }) => {
   const { scene } = useGLTF("/gltf/drum.glb");
 
-  const obj = useRef();
   const lightRef = useRef();
+  // useFrame(() => {
+  //   lightRef.current.target
+  // });
+
+  useEffect(() => {
+    if (light) {
+      console.log(lightRef.current);
+    }
+  }, []);
   return (
     <>
       {light ? (
         <>
           <group>
             <SpotLight
-              ref={lightRef}
-              target={obj}
+              target={scene}
               position={[-3.4, 4.6, -38.85]}
               color={"#ffecc4"}
               anglePower={7}
