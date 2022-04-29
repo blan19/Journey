@@ -114,7 +114,10 @@ const MobileEpisode = ({ src, title, content, idx, left }) => {
             <p>{title}</p>
             <div className="mobile-episode-circle"></div>
           </div>
-          <div className="mobile-episode-content">{content}</div>
+          <div className="mobile-episode-content">
+            {content}
+            <div className="mobile-episode-divider"></div>
+          </div>
         </div>
       </MobileIntroWrapper>
     </MobileEpisodeContainer>

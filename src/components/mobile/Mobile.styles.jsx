@@ -162,6 +162,12 @@ const MobileEpisodeContainer = styled.section`
     p {
       margin-top: 1rem;
     }
+    .mobile-episode-divider {
+      margin-top: 3rem;
+      width: 6rem;
+      height: 0.3rem;
+      background-color: var(--color-subColor);
+    }
   }
 `;
 
