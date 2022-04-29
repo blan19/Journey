@@ -1,25 +1,27 @@
 import React from "react";
-import "./styles.css";
+import { Link } from "wouter";
 import { AiOutlinePicture } from "react-icons/ai";
 import { MdPermContactCalendar } from "react-icons/md";
+import { MobileMainContainer } from "../Mobile.styles";
+
 const MobileMain = () => {
   return (
-    <div className="container">
-      <div className="title">The Time We Passed</div>
-      <div className="teamName">Gazigazi</div>
-      <div className="route-button">
-        <button className="intro-button">
-          <AiOutlinePicture className="icon" />
-          <div>작품소개</div>
-          <AiOutlinePicture className="none" />
-        </button>
-        <button className="post-button">
-          <MdPermContactCalendar className="icon" />
-          <div>방명록</div>
-          <MdPermContactCalendar className="none" />
-        </button>
+    <MobileMainContainer>
+      <div className="mobile-main-title">
+        <h1>The Time We Passed</h1>
+        <p>팀 가지가지</p>
       </div>
-    </div>
+      <nav className="mobile-main-nav">
+        <Link to="/intro">
+          <AiOutlinePicture className="icon" />
+          <span>작품소개</span>
+        </Link>
+        <Link to="/posts">
+          <MdPermContactCalendar className="icon" />
+          <span>방명록</span>
+        </Link>
+      </nav>
+    </MobileMainContainer>
   );
 };
 
