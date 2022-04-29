@@ -11,7 +11,7 @@ import { BiArrowBack } from "react-icons/bi";
 import { Choose, If, OtherWise, When } from "../../../lib/Condition";
 
 const Register = () => {
-  const { register, setRegister } = useStore((state) => state);
+  const { register, setRegister, setControlFalse } = useStore((state) => state);
   const [show, setShow] = useState({ loading: false, show: false });
 
   const onLoading = useCallback(() => {
@@ -25,9 +25,10 @@ const Register = () => {
   }, []);
 
   const onBack = useCallback(() => {
+    setControlFalse();
     setRegister();
     setShow((prev) => ({ ...prev, loading: false, show: false }));
-  }, [setRegister]);
+  }, [setControlFalse, setRegister]);
 
   useEffect(() => {
     return () => setShow((prev) => ({ ...prev, loading: false, show: false }));

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import * as THREE from "three";
+import React from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import {
   SceneStrat,
@@ -25,7 +24,7 @@ export default function Map({ control }) {
       <SceneTwoPhysics />
       <SceneThreePhysics />
       <SceneFourPhysics />
-      <SceneFivePhysics />
+      <SceneFivePhysics controlsRef={control} />
 
       <group
         scale={[0.1, 0.1, 0.1]}

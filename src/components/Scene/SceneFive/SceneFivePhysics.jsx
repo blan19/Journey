@@ -1,11 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useBox, usePlane } from "@react-three/cannon";
+import React, { useCallback, useRef, useState } from "react";
+import { useThree } from "@react-three/fiber";
+import { useBox } from "@react-three/cannon";
 import { Html } from "@react-three/drei";
 import Webcam from "react-webcam";
 import { CountContainer } from "./styles";
 import { If } from "../../../lib/Condition";
+import useStore from "../../../store";
 
-const SceneFivePhysics = (props) => {
+const SceneFivePhysics = ({ controlsRef, ...props }) => {
   const [stairs] = useBox(() => ({
     mass: 0,
     position: [-2.1, 2.3, -43.5],
@@ -39,7 +41,9 @@ const SceneFivePhysics = (props) => {
   // 벤치
 
   // * Webcam
+  const { gl } = useThree();
   const webcamRef = useRef(null);
+  const { setImage, setControlTrue, setEnd } = useStore((state) => state);
   const [count, setCount] = useState({ count: 3, show: false });
   const onCapture = useCallback(() => {
     setTimeout(() => {
@@ -51,14 +55,16 @@ const SceneFivePhysics = (props) => {
           setTimeout(() => {
             setCount((prev) => ({ ...prev, show: false }));
             setTimeout(() => {
-              const imageSrc = webcamRef.current.getScreenshot();
-              console.log(imageSrc);
+              setImage(gl.domElement.toDataURL());
+              controlsRef.current.unlock();
+              setControlTrue();
+              setEnd();
             }, 0);
           }, 1000);
         }, 1000);
       }, 1000);
     }, 1000);
-  }, []);
+  }, [controlsRef, gl.domElement, setControlTrue, setEnd, setImage]);
   return (
     <group>
       <mesh
@@ -75,7 +81,7 @@ const SceneFivePhysics = (props) => {
       </mesh>
       {/* 백마상 */}
       <mesh ref={horse} position={[-3, 3.5, -51.4]}>
-        <boxGeometry args={[2, 1, 0.1]} />
+        <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
       {/* 졸업모 */}
@@ -97,15 +103,8 @@ const SceneFivePhysics = (props) => {
             position={[0, -0.05, 0.1]}
             rotation={[0, Math.PI, 0]}
           >
-            <Webcam
-              audio={false}
-              width={150}
-              height={50}
-              ref={webcamRef}
-              // videoConstraints={{ facingMode: { exact: "environment" } }}
-            />
+            <Webcam audio={false} width={150} height={50} ref={webcamRef} />
           </Html>
-          {/* <meshStandardMaterial color="red" /> */}
         </mesh>
         <If condition={count.show}>
           <mesh position={[-1.5, 5.25, -51]} rotation={[0, 0, 0]}>

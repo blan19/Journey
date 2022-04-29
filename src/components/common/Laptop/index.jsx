@@ -1,12 +1,9 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Html, useGLTF } from "@react-three/drei";
-import ScenePage from "./SceneOnePage";
+import React, { useCallback, useRef, useState } from "react";
+import { useGLTF } from "@react-three/drei";
 import useStore from "../../../store";
 
 function Laptop({ control, ...props }) {
-  const { register, setRegister, isLocked, setIsLockedFalse } = useStore(
-    (state) => state
-  );
+  const { setRegister, setControlTrue } = useStore((state) => state);
   const group = useRef();
   const { nodes, materials } = useGLTF("/gltf/mac-draco.glb");
   const [rotation, setRotation] = useState(false);
@@ -15,18 +12,16 @@ function Laptop({ control, ...props }) {
     e.stopPropagation();
   }, []);
 
-  const escHandle = () => {};
-
   const onUnLock = useCallback(
     (e) => {
       setRotation((prev) => !prev);
       control.current.unlock();
+      setControlTrue();
       setRegister();
     },
-    [control, setRegister]
+    [control, setControlTrue, setRegister]
   );
 
-  const onClick = useCallback(() => {}, []);
   return (
     <group
       position={[4.65, 1.8, -10.75]}
@@ -50,19 +45,7 @@ function Laptop({ control, ...props }) {
             material={materials["matte.001"]}
             geometry={nodes["Cube008_1"].geometry}
           />
-          <mesh geometry={nodes["Cube008_2"].geometry}>
-            {/* <Html
-              className="content"
-              rotation-x={-Math.PI / 2}
-              position={[0, 0.05, -0.09]}
-              transform
-              occlude
-            >
-              <div className="wrapper">
-                <ScenePage />
-              </div>
-            </Html> */}
-          </mesh>
+          <mesh geometry={nodes["Cube008_2"].geometry}></mesh>
         </group>
       </group>
       <mesh

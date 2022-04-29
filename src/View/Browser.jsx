@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { PointerLockControls } from "@react-three/drei";
@@ -8,14 +8,18 @@ import "../styles.css";
 import { SceneOneRegister } from "../components/Scene";
 import useStore from "../store";
 import { PerspectiveCamera } from "@react-three/drei";
+import SceneFiveEnd from "../components/Scene/SceneFive/SceneFiveEnd";
 
 const Browser = () => {
   const canvas = useRef();
   const camera = useRef();
   const controlsRef = useRef();
-  const { isLocked, setIsLockedTrue, setIsLockedFalse, register } = useStore(
+  const { isLocked, setIsLockedTrue, setIsLockedFalse, control } = useStore(
     (state) => state
   );
+  useEffect(() => {
+    console.log(control);
+  }, [control]);
   return (
     <>
       <Cursor />
@@ -29,6 +33,7 @@ const Browser = () => {
           toneMappingExposure: 1,
           toneMapping: THREE.ACESFilmicToneMapping,
           outputEncoding: THREE.sRGBEncoding,
+          preserveDrawingBuffer: true,
         }}
         camera={{ fov: 45 }}
         raycaster={{
@@ -45,7 +50,7 @@ const Browser = () => {
         }}
         ref={canvas}
       >
-        {register === false && (
+        {control === false && (
           <PointerLockControls
             onUpdate={() => {
               if (controlsRef.current) {
@@ -57,17 +62,11 @@ const Browser = () => {
                   console.log("unlock");
                   setIsLockedFalse();
                 });
-                // controlsRef.current.addEventListener("click", () => {
-                //   console.log("lock");
-                //   isLocked.current = false;
-                // });
               }
             }}
             ref={controlsRef}
           />
         )}
-        {/* <primitive object={new THREE.AxesHelper(100)} /> */}
-        {/* <gridHelper args={[100, 100]} /> */}
         <ambientLight intensity={0.2} />
         <directionalLight args={["gray", 1]} />
         <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
@@ -81,6 +80,7 @@ const Browser = () => {
         </Physics>
       </Canvas>
       <SceneOneRegister />
+      <SceneFiveEnd />
     </>
   );
 };
