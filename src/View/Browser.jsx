@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from "react";
+import React, { useRef } from "react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { PointerLockControls } from "@react-three/drei";
@@ -9,14 +9,13 @@ import {
   Clouds,
   Cursor,
   SceneFiveEnd,
-  Start,
-  Loading,
   SceneOneRegister,
 } from "../components";
 import "../styles.css";
 import useStore from "../store";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useScreenshot } from "use-react-screenshot";
+import Start from "../components/Start";
 import { If } from "../lib/Condition";
 
 const Browser = () => {
@@ -24,14 +23,15 @@ const Browser = () => {
   const canvas = useRef();
   const camera = useRef();
   const controlsRef = useRef();
-  const { isLocked, setIsLockedTrue, setIsLockedFalse, control } = useStore(
-    (state) => state
-  );
+  const { isLocked, setIsLockedTrue, setIsLockedFalse, control, start } =
+    useStore((state) => state);
   const [image, takeImage] = useScreenshot();
   const getImage = () => takeImage(container.current);
+
   return (
     <div id="container" ref={container}>
-      <Suspense fallback={Loading}>
+      <Start />
+      <If condition={start}>
         <Cursor />
         <Canvas
           frameloop="demand"
@@ -89,12 +89,9 @@ const Browser = () => {
             <Player />
           </Physics>
         </Canvas>
-        <If condition={controlsRef.current}>
-          <Start control={controlsRef} />
-        </If>
         <SceneOneRegister />
         <SceneFiveEnd image={image} />
-      </Suspense>
+      </If>
     </div>
   );
 };

@@ -1,21 +1,13 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback } from "react";
 import useStore from "../../store";
 import { StartContainer } from "./Start.style";
 
-const Start = ({ control }) => {
-  const { start, setStart, setControlTrue, setControlFalse } = useStore(
-    (state) => state
-  );
+const Start = () => {
+  const { start, setStart } = useStore((state) => state);
 
   const onStart = useCallback(() => {
-    setControlFalse();
     setStart();
-  }, [setControlFalse, setStart]);
-
-  useEffect(() => {
-    control.current.unlock();
-    setControlTrue();
-  }, []);
+  }, [setStart]);
 
   if (start) {
     return null;
