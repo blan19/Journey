@@ -8,7 +8,6 @@ const store = (set) => ({
   start: false,
   end: false,
   isLocked: false,
-  loading: false,
   image: null,
   posts: null,
   setRegister: () => set((state) => ({ register: !state.register })),
@@ -26,7 +25,6 @@ const store = (set) => ({
     const posts = snapshot.docs.map((doc) => doc.data());
     set({ posts });
   },
-  setLoading: () => set((state) => ({ loading: !state.loading })),
   setStart: () => set((state) => ({ start: !state.start })),
 });
 

@@ -1,2 +1,3 @@
 import SceneFivePhysics from "./SceneFivePhysics";
-export { SceneFivePhysics };
+import SceneFiveEnd from "./SceneFiveEnd";
+export { SceneFivePhysics, SceneFiveEnd };

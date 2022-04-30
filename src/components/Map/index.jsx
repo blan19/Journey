@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import {
   SceneStrat,
@@ -11,16 +11,10 @@ import {
 } from "../Scene";
 import { Pencil, Keyboard } from "../animationModels";
 import { Laptop } from "../common";
-import useStore from "../../store";
 
 export default function Map({ control, getImage, image }) {
   const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
   const { actions } = useAnimations(animations, scene);
-  const { setLoading } = useStore((state) => state);
-
-  useEffect(() => {
-    setLoading();
-  }, []);
 
   return (
     <>
