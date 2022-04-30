@@ -1,5 +1,7 @@
+import { async } from "@firebase/util";
 import create from "zustand";
 import { devtools } from "zustand/middleware";
+import { firebaseDb } from "../lib/clientApp";
 
 const store = (set) => ({
   control: false,
@@ -7,6 +9,7 @@ const store = (set) => ({
   end: false,
   isLocked: false,
   image: null,
+  posts: null,
   setRegister: () => set((state) => ({ register: !state.register })),
   setIsLockedTrue: () => set(() => ({ isLocked: true })),
   setIsLockedFalse: () => set(() => ({ isLocked: false })),
@@ -14,6 +17,14 @@ const store = (set) => ({
   setControlFalse: () => set(() => ({ control: false })),
   setImage: (src) => set(() => ({ image: src })),
   setEnd: () => set((state) => ({ end: !state.end })),
+  getPosts: async () => {
+    const snapshot = await firebaseDb
+      .collection("posts")
+      .orderBy("createAt", "desc")
+      .get();
+    const posts = snapshot.docs.map((doc) => doc.data());
+    set({ posts });
+  },
 });
 
 const useStore = create(devtools(store));

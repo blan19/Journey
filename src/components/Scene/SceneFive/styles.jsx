@@ -44,6 +44,28 @@ const SceneFiveEndContainer = styled.div`
           height: 200px;
         }
       }
+      .end-button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        margin-top: 50px;
+        margin-bottom: 20px;
+        button {
+          cursor: pointer;
+          border: 1px solid #e5e5e5;
+          background-color: #fff;
+          color: #000;
+          padding: 10px 20px;
+          border-radius: 5px;
+          &:hover {
+            border: 1px solid lightgray;
+          }
+        }
+        p {
+          font-size: 15px;
+        }
+      }
     }
   }
 `;

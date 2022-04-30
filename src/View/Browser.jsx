@@ -9,19 +9,19 @@ import { SceneOneRegister } from "../components/Scene";
 import useStore from "../store";
 import { PerspectiveCamera } from "@react-three/drei";
 import SceneFiveEnd from "../components/Scene/SceneFive/SceneFiveEnd";
-
+import { useScreenshot } from "use-react-screenshot";
 const Browser = () => {
+  const container = useRef(null);
   const canvas = useRef();
   const camera = useRef();
   const controlsRef = useRef();
   const { isLocked, setIsLockedTrue, setIsLockedFalse, control } = useStore(
     (state) => state
   );
-  useEffect(() => {
-    console.log(control);
-  }, [control]);
+  const [image, takeImage] = useScreenshot();
+  const getImage = () => takeImage(container.current);
   return (
-    <>
+    <div id="container" ref={container}>
       <Cursor />
       <Canvas
         frameloop="demand"
@@ -75,13 +75,13 @@ const Browser = () => {
         <Physics gravity={[0, -30, 0]}>
           <Clouds />
           <Ground />
-          <Map control={controlsRef} />
+          <Map control={controlsRef} getImage={getImage} image={image} />
           <Player />
         </Physics>
       </Canvas>
       <SceneOneRegister />
-      <SceneFiveEnd />
-    </>
+      <SceneFiveEnd image={image} />
+    </div>
   );
 };
 

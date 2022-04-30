@@ -1,15 +1,39 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
+import dayjs from "dayjs";
+import { dataUrlToFile } from "../../../lib/utils/dataUrlToFile";
 import useStore from "../../../store";
 import { SceneFiveEndContainer } from "./styles";
+import uploadTask from "../../../lib/utils/uploadTask";
+import { firebaseDb, firebaseNow } from "../../../lib/clientApp";
 
-const SceneFiveEnd = () => {
-  const { image, end, setEnd, setControlFalse } = useStore((state) => state);
-  const onClick = useCallback(() => {
-    console.log("asd");
+const SceneFiveEnd = ({ image }) => {
+  const [loading, setLoading] = useState(false);
+  const { end, setEnd, setControlFalse } = useStore((state) => state);
+  const onBack = useCallback(() => {
     setControlFalse();
     setEnd();
   }, [setControlFalse, setEnd]);
   const onStopPropagation = (e) => e.stopPropagation();
+  const onClick = useCallback(async () => {
+    setLoading(true);
+    try {
+      const file = await dataUrlToFile(
+        image,
+        dayjs(new Date()).format("YYYY-MM-DD-HH:mm")
+      ).then((res) => res);
+      const url = await uploadTask("Post/", file);
+      await firebaseDb
+        .collection("posts")
+        .doc(file.name)
+        .set({ url, createAt: firebaseNow, title: file.name })
+        .then(() => {
+          console.log("upload store iamge");
+          setLoading(false);
+        });
+    } catch (e) {
+      console.log(e);
+    }
+  }, [image]);
   return (
     <SceneFiveEndContainer visible={end}>
       <div className="end-wrapper" onClick={onStopPropagation}>
@@ -21,9 +45,18 @@ const SceneFiveEnd = () => {
             <img src={image} alt="thumbnail" />
           </div>
           <div className="end-button">
-            <button type="button" onClick={onClick}>
-              Cancle
-            </button>
+            {loading ? (
+              <p>loading..</p>
+            ) : (
+              <>
+                <button type="button" onClick={onBack}>
+                  Retry
+                </button>
+                <button type="button" onClick={onClick}>
+                  Done
+                </button>
+              </>
+            )}
           </div>
         </form>
       </div>

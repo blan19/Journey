@@ -2,6 +2,7 @@ import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
+import { uploadBytesResumable } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDjKNjbpyUEbV5xRDfzxEsW935GmENGGvw",
@@ -22,7 +23,14 @@ const firebaseDb = firebase.firestore();
 const firebaseNow = firebase.firestore.Timestamp.now();
 const firebaseStorage = firebase.storage();
 
-export { firebaseApp, firebaseAuth, firebaseDb, firebaseNow, firebaseStorage };
+export {
+  firebaseApp,
+  firebaseAuth,
+  firebaseDb,
+  firebaseNow,
+  firebaseStorage,
+  uploadBytesResumable,
+};
 
 console.log(
   firebaseApp.name ? "Firebase Mode Activated!" : "Firebase not working :("

@@ -1,5 +1,4 @@
 import React, { useCallback, useRef, useState } from "react";
-import { useThree } from "@react-three/fiber";
 import { useBox } from "@react-three/cannon";
 import { Html } from "@react-three/drei";
 import Webcam from "react-webcam";
@@ -7,7 +6,7 @@ import { CountContainer } from "./styles";
 import { If } from "../../../lib/Condition";
 import useStore from "../../../store";
 
-const SceneFivePhysics = ({ controlsRef, ...props }) => {
+const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
   const [stairs] = useBox(() => ({
     mass: 0,
     position: [-2.1, 2.3, -43.5],
@@ -41,7 +40,6 @@ const SceneFivePhysics = ({ controlsRef, ...props }) => {
   // 벤치
 
   // * Webcam
-  const { gl } = useThree();
   const webcamRef = useRef(null);
   const { setImage, setControlTrue, setEnd } = useStore((state) => state);
   const [count, setCount] = useState({ count: 3, show: false });
@@ -55,16 +53,17 @@ const SceneFivePhysics = ({ controlsRef, ...props }) => {
           setTimeout(() => {
             setCount((prev) => ({ ...prev, show: false }));
             setTimeout(() => {
-              setImage(gl.domElement.toDataURL());
               controlsRef.current.unlock();
               setControlTrue();
+              getImage();
+              setImage(image);
               setEnd();
             }, 0);
           }, 1000);
         }, 1000);
       }, 1000);
     }, 1000);
-  }, [controlsRef, gl.domElement, setControlTrue, setEnd, setImage]);
+  }, [controlsRef, getImage, image, setControlTrue, setEnd, setImage]);
   return (
     <group>
       <mesh

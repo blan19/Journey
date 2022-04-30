@@ -172,7 +172,42 @@ const MobileEpisodeContainer = styled.section`
 `;
 
 // * Mobile Posts
-const MobilePostsContainer = styled.div``;
+const MobilePostsContainer = styled.div`
+  padding: 2rem 5rem;
+  .posts-header {
+    width: 100%;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    svg {
+      position: absolute;
+      font-size: var(--font-title-2);
+      left: 0;
+      cursor: pointer;
+    }
+    h1 {
+      text-align: center;
+      font-size: var(--font-title-2);
+    }
+  }
+`;
+
+const MobilePostsItemContainer = styled.li`
+  margin-top: 5rem;
+  h1 {
+  }
+  p {
+    font-size: var(--font-main-1);
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  img {
+    width: 100%;
+    border-radius: 0.5rem;
+  }
+`;
 
 export {
   MobileMainContainer,
@@ -181,4 +216,5 @@ export {
   MobileIntroSection,
   MobileIntroWrapper,
   MobileEpisodeContainer,
+  MobilePostsItemContainer,
 };

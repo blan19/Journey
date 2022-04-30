@@ -12,7 +12,7 @@ import {
 import { Pencil, Keyboard } from "../animationModels";
 import { Laptop } from "../common";
 
-export default function Map({ control }) {
+export default function Map({ control, getImage, image }) {
   // const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
   const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
   const { actions } = useAnimations(animations, scene);
@@ -24,7 +24,11 @@ export default function Map({ control }) {
       <SceneTwoPhysics />
       <SceneThreePhysics />
       <SceneFourPhysics />
-      <SceneFivePhysics controlsRef={control} />
+      <SceneFivePhysics
+        controlsRef={control}
+        getImage={getImage}
+        image={image}
+      />
 
       <group
         scale={[0.1, 0.1, 0.1]}
