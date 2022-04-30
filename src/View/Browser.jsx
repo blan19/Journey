@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { Suspense, useRef } from "react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { PointerLockControls } from "@react-three/drei";
@@ -10,6 +10,8 @@ import useStore from "../store";
 import { PerspectiveCamera } from "@react-three/drei";
 import SceneFiveEnd from "../components/Scene/SceneFive/SceneFiveEnd";
 import { useScreenshot } from "use-react-screenshot";
+import Start from "../components/Start";
+import { If } from "../lib/Condition";
 const Browser = () => {
   const container = useRef(null);
   const canvas = useRef();
@@ -72,13 +74,18 @@ const Browser = () => {
         <pointLight castShadow intensity={0.8} position={[100, 100, 100]} />
         <fog color="#262837" near={1} far={15} />
         <PerspectiveCamera ref={camera} />
-        <Physics gravity={[0, -30, 0]}>
-          <Clouds />
-          <Ground />
-          <Map control={controlsRef} getImage={getImage} image={image} />
-          <Player />
-        </Physics>
+        <Suspense fallback={null}>
+          <Physics gravity={[0, -30, 0]}>
+            <Clouds />
+            {/* <Ground /> */}
+            <Map control={controlsRef} getImage={getImage} image={image} />
+            <Player />
+          </Physics>
+        </Suspense>
       </Canvas>
+      <If condition={controlsRef.current}>
+        <Start control={controlsRef} />
+      </If>
       <SceneOneRegister />
       <SceneFiveEnd image={image} />
     </div>

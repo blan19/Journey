@@ -3,7 +3,6 @@ import styled from "styled-components";
 const CountContainer = styled.div``;
 
 const TitleContainer = styled.div`
-  /* background-color: #fff; */
   font-size: 10px;
 `;
 

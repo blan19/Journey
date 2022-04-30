@@ -6,12 +6,10 @@ const Clouds = (props) => {
     <group>
       {/* 하늘 */}
       <Sky
-        // sunPosition={[0, 100, 0]}
         azimuth={0.25}
         turbidity={8}
         mieCoefficient={0.005}
         mieDirectionalG={0.8}
-        // rayleigh={6}
         rayleigh={2}
         inclination={0.49}
       />

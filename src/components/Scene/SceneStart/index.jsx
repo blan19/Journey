@@ -1,7 +1,6 @@
 import React, { useRef, useMemo } from "react";
 import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
-import { useHelper } from "@react-three/drei";
 
 const SceneStrat = (props) => {
   const [ref1] = useBox(() => ({
@@ -28,13 +27,6 @@ const SceneStrat = (props) => {
     args: [1, 0.3, 2.8],
     ...props,
   }));
-
-  // 라이트
-  const entry_2 = useMemo(
-    () => new THREE.SpotLight("white", 0.25, 8, Math.PI / 5),
-    []
-  );
-  const entry_1 = useRef();
 
   return (
     <>

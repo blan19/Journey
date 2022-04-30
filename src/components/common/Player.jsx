@@ -64,6 +64,12 @@ export const Player = (props) => {
   useFrame((state) => {
     // move
     ref.current.getWorldPosition(camera.position);
+    // y-position
+    if (camera.position.y <= -30) {
+      camera.position.set(0, 2, 0);
+      ref.current.copy(camera.position);
+    }
+    // move
     frontVector.set(0, 0, Number(backward) - Number(forward));
     sideVector.set(Number(left) - Number(right), 0, 0);
     direction
