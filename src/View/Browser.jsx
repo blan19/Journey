@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from "react";
+import React, { Suspense, useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { PointerLockControls } from "@react-three/drei";
@@ -30,7 +30,7 @@ const Browser = () => {
   const getImage = () => takeImage(container.current);
 
   return (
-    <div id="container" ref={container}>
+    <div id="container" ref={container} style={{ zIndex: "96733899" }}>
       <Start />
       <If condition={start}>
         <Suspense fallback={<Loading />}>

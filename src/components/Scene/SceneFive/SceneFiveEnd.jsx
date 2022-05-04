@@ -8,11 +8,14 @@ import { firebaseDb, firebaseNow } from "../../../lib/clientApp";
 
 const SceneFiveEnd = ({ image }) => {
   const [loading, setLoading] = useState(false);
-  const { end, setEnd, setControlFalse } = useStore((state) => state);
+  const { end, setEnd, setControlFalse, setImgMesh } = useStore(
+    (state) => state
+  );
   const onBack = useCallback(() => {
+    setImgMesh(null);
     setControlFalse();
     setEnd();
-  }, [setControlFalse, setEnd]);
+  }, [setControlFalse, setEnd, setImgMesh]);
   const onStopPropagation = (e) => e.stopPropagation();
   const onClick = useCallback(async () => {
     setLoading(true);
