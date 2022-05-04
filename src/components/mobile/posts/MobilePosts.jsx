@@ -33,7 +33,7 @@ const MobilePosts = () => {
   }, [setLocation]);
   useEffect(() => {
     getPosts();
-  }, []);
+  }, [getPosts]);
   return (
     <MobilePostsContainer>
       <div className="posts-header">
