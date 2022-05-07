@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef } from "react";
+import React, { Suspense, useRef } from "react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { PointerLockControls } from "@react-three/drei";
@@ -16,8 +16,9 @@ import "../styles.css";
 import useStore from "../store";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useScreenshot } from "use-react-screenshot";
-import Start from "../components/Start";
 import { If } from "../lib/Condition";
+import Start from "../components/Start";
+import Music from "../components/Music";
 
 const Browser = () => {
   const container = useRef(null);
@@ -91,6 +92,7 @@ const Browser = () => {
               <Player />
             </Physics>
           </Canvas>
+          <Music />
           <SceneOneRegister />
           <SceneFiveEnd image={image} />
         </Suspense>
