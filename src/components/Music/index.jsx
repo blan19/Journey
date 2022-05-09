@@ -2,7 +2,7 @@ import React from "react";
 
 const Music = () => {
   return (
-    <audio autoPlay>
+    <audio autoPlay loop>
       <source src="/music/bgm.mp3" />
     </audio>
   );
