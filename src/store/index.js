@@ -8,14 +8,14 @@ const store = (set) => ({
   start: false,
   end: false,
   isLocked: false,
-  image: null,
+  imgMesh: null,
   posts: null,
   setRegister: () => set((state) => ({ register: !state.register })),
   setIsLockedTrue: () => set(() => ({ isLocked: true })),
   setIsLockedFalse: () => set(() => ({ isLocked: false })),
   setControlTrue: () => set(() => ({ control: true })),
   setControlFalse: () => set(() => ({ control: false })),
-  setImage: (src) => set(() => ({ image: src })),
+  setImgMesh: (mesh) => set(() => ({ imgMesh: mesh })),
   setEnd: () => set((state) => ({ end: !state.end })),
   getPosts: async () => {
     const snapshot = await firebaseDb

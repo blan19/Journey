@@ -1,12 +1,18 @@
 import React, { useCallback, useRef, useState } from "react";
 import { useBox } from "@react-three/cannon";
 import { Html } from "@react-three/drei";
+import { useLoader, useThree } from "@react-three/fiber";
+import * as THREE from "three";
 import Webcam from "react-webcam";
 import { CountContainer } from "./styles";
 import { If } from "../../../lib/Condition";
 import useStore from "../../../store";
 
 const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
+  // * state
+  const { scene } = useThree();
+
+  // * pysic
   const [stairs] = useBox(() => ({
     mass: 0,
     position: [-2.1, 2.3, -43.5],
@@ -37,12 +43,34 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
     ...props,
   }));
 
-  // 벤치
-
   // * Webcam
   const webcamRef = useRef(null);
-  const { setImage, setControlTrue, setEnd } = useStore((state) => state);
+  const { setImgMesh, setControlTrue, setEnd, imgMesh } = useStore(
+    (state) => state
+  );
   const [count, setCount] = useState({ count: 3, show: false });
+
+  const init = useCallback(
+    (image) => {
+      const img = new Image();
+      img.src = image;
+      const texture = new THREE.Texture();
+      img.onload = function () {
+        texture.needsUpdate = true;
+      };
+      texture.image = img;
+      texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
+      const material = new THREE.MeshLambertMaterial({ map: texture });
+      const geometry = new THREE.BoxBufferGeometry(1.7, 1.3, 0.1);
+      const box = new THREE.Mesh(geometry, material);
+      box.position.set(-1.5, 4.25, -50.9);
+      setImgMesh(box);
+      // imgMesh.current = box;
+      // scene.add(imgMesh.current);
+    },
+    [setImgMesh]
+  );
+
   const onCapture = useCallback(() => {
     setTimeout(() => {
       setCount((prev) => ({ ...prev, count: 3, show: true }));
@@ -54,16 +82,20 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
             setCount((prev) => ({ ...prev, show: false }));
             setTimeout(() => {
               controlsRef.current.unlock();
-              setControlTrue();
-              getImage();
-              setImage(image);
-              setEnd();
-            }, 0);
+              const img = webcamRef.current.getScreenshot();
+              init(img);
+              setTimeout(() => {
+                setControlTrue();
+                getImage();
+                setEnd();
+              }, 500);
+            }, 500);
           }, 1000);
         }, 1000);
       }, 1000);
     }, 1000);
-  }, [controlsRef, getImage, image, setControlTrue, setEnd, setImage]);
+  }, [controlsRef, getImage, setControlTrue, setEnd, init]);
+
   return (
     <group>
       <mesh
@@ -100,11 +132,20 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
             occlude
             transform
             position={[0, -0.05, 0.1]}
-            rotation={[0, Math.PI, 0]}
+            rotation={[0, 0, 0]}
           >
-            <Webcam audio={false} width={150} height={50} ref={webcamRef} />
+            <Webcam
+              mirrored
+              audio={false}
+              width={150}
+              height={50}
+              minScreenshotWidth={1920}
+              minScreenshotHeight={1280}
+              ref={webcamRef}
+            />
           </Html>
         </mesh>
+        {imgMesh && <mesh {...imgMesh} />}
         <If condition={count.show}>
           <mesh position={[-1.5, 5.25, -51]} rotation={[0, 0, 0]}>
             <boxGeometry args={[0, 0, 0]} />

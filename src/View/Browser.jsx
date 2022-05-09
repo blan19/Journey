@@ -16,8 +16,9 @@ import "../styles.css";
 import useStore from "../store";
 import { PerspectiveCamera } from "@react-three/drei";
 import { useScreenshot } from "use-react-screenshot";
-import Start from "../components/Start";
 import { If } from "../lib/Condition";
+import Start from "../components/Start";
+import Music from "../components/Music";
 
 const Browser = () => {
   const container = useRef(null);
@@ -30,7 +31,7 @@ const Browser = () => {
   const getImage = () => takeImage(container.current);
 
   return (
-    <div id="container" ref={container}>
+    <div id="container" ref={container} style={{ zIndex: "96733899" }}>
       <Start />
       <If condition={start}>
         <Suspense fallback={<Loading />}>
@@ -91,6 +92,7 @@ const Browser = () => {
               <Player />
             </Physics>
           </Canvas>
+          <Music />
           <SceneOneRegister />
           <SceneFiveEnd image={image} />
         </Suspense>
