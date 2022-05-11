@@ -42,7 +42,7 @@ const SceneFiveEnd = ({ image }) => {
       <div className="end-wrapper" onClick={onStopPropagation}>
         <form>
           <div className="end-title">
-            <h1>The End</h1>
+            <h3>여러분의 앞날을 응원합니다</h3>
           </div>
           <div className="end-image">
             {image ? <img src={image} alt="thumbnail" /> : <p>loading..</p>}
@@ -52,11 +52,11 @@ const SceneFiveEnd = ({ image }) => {
               <p>loading..</p>
             ) : (
               <>
-                <button type="button" onClick={onBack}>
-                  Retry
+                <button type="button" onClick={onBack} className="font">
+                  다시 찍을래요😖
                 </button>
-                <button type="button" onClick={onClick}>
-                  Done
+                <button type="button" onClick={onClick} className="font">
+                  마음에 들어요😍
                 </button>
               </>
             )}

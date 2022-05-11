@@ -29,11 +29,12 @@ const SceneFiveEndContainer = styled.div`
       border-radius: 5px;
       padding: 1rem;
       .end-title {
-        h1 {
+        h3 {
           text-align: center;
           color: #000;
           margin: 0;
           margin: 1rem 0;
+          font-family: "NanumSquareRound";
         }
       }
       .end-image {
@@ -50,6 +51,9 @@ const SceneFiveEndContainer = styled.div`
         justify-content: space-evenly;
         margin-top: 50px;
         margin-bottom: 20px;
+        .font {
+          font-family: "NanumSquareRound";
+        }
         button {
           cursor: pointer;
           border: 1px solid #e5e5e5;
