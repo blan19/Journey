@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import { useBox } from "@react-three/cannon";
-import { Html } from "@react-three/drei";
-import { useLoader, useThree } from "@react-three/fiber";
+import { Html, useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 import Webcam from "react-webcam";
 import { CountContainer } from "./styles";
@@ -9,13 +8,7 @@ import { If } from "../../../lib/Condition";
 import useStore from "../../../store";
 
 const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
-  let now = new Date();
-  let year = now.getFullYear();
-  let month = now.getMonth() + 1;
-  let date = now.getDate();
-  // * state
-  const { scene } = useThree();
-
+  const { scene } = useGLTF("/gltf/GradHat.glb");
   // * pysic
   const [stairs] = useBox(() => ({
     mass: 0,
@@ -36,14 +29,6 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
     mass: 0,
     position: [-3, 3.5, -52.2],
     args: [2, 1, 0.01],
-    ...props,
-  }));
-
-  // 졸업모
-  const [cap] = useBox(() => ({
-    mass: 0,
-    position: [-3.1, 3.5, -49],
-    args: [0.5, 0.5, 0.5],
     ...props,
   }));
 
@@ -69,8 +54,6 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
       const box = new THREE.Mesh(geometry, material);
       box.position.set(-1.5, 4.25, -50.9);
       setImgMesh(box);
-      // imgMesh.current = box;
-      // scene.add(imgMesh.current);
     },
     [setImgMesh]
   );
@@ -120,12 +103,14 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
         <meshStandardMaterial color="red" />
       </mesh>
       {/* 졸업모 */}
-      <mesh ref={cap} position={[-3.1, 3.5, -49]}>
-        <boxGeometry args={[0, 0, 0]} />
-        <meshStandardMaterial color="red" />
-      </mesh>
+      <primitive
+        position={[8.87, 0, -54.51]}
+        scale={[0.1, 0.1, 0.1]}
+        object={scene}
+      />
       {/* Webcam */}
       <group>
+        {/* <Sparks /> */}
         <mesh
           position={[-1.5, 4.25, -51]}
           rotation={[0, 0, 0]}

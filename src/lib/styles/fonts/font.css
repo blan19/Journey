@@ -1,12 +1,4 @@
 @font-face {
-  font-family: "ChosunSm";
-  src: url("./ChosunSm.TTF");
-  unicode-range: U+AC00-D7A3;
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Minion";
   src: url("./MinionCondensed.otf") format("truetype");
   font-weight: 400;

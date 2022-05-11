@@ -91,7 +91,7 @@ const MobileMainContainer = styled.main`
       transform: translateX(-160rem);
     }
     100% {
-      transform: translateX(-16ㅇ0rem);
+      /* transform: translateX(-160rem); */
     }
     /* 102% {
       transform: translateX(0rem);
@@ -101,10 +101,12 @@ const MobileMainContainer = styled.main`
     margin-top: 7rem;
 
     span {
+      cursor: pointer;
       padding-left: 1rem;
       font-size: var(--font-sub-1);
       color: #000;
       margin-top: 3rem;
+      line-height: 1px;
       ${flexCenter}
       border: 1px solid var(--color-subColor);
       border-radius: 7rem;

@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "wouter";
-import { AiOutlinePicture } from "react-icons/ai";
-import { MdOutlineNoteAlt } from "react-icons/md";
 import { MobileMainContainer } from "../Mobile.styles";
 
 const MobileMain = () => {

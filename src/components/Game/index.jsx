@@ -1,4 +1,4 @@
-import { useGLTF } from "@react-three/drei";
+import { Text, useGLTF } from "@react-three/drei";
 import React, { useCallback } from "react";
 
 const Game = ({ position, scale }) => {
@@ -14,7 +14,26 @@ const Game = ({ position, scale }) => {
 
   return (
     <group>
-      <mesh />
+      <group position={[0, -0.05, 0]}>
+        <Text
+          position={[4.65, 2.1, -10.75]}
+          scale={[0.5, 0.5, 0.5]}
+          color="white"
+          anchorX="center"
+          anchorY="middle"
+        >
+          The Dungeon
+        </Text>
+        <Text
+          position={[4.65, 2, -10.75]}
+          scale={[0.25, 0.25, 0.25]}
+          color="white"
+          anchorX="center"
+          anchorY="middle"
+        >
+          Game Start
+        </Text>
+      </group>
       <primitive
         position={position}
         scale={scale}
