@@ -61,14 +61,28 @@ export const Player = (props) => {
   const { camera } = useThree();
   const velocity = useRef([0, 0, 0]);
   useEffect(() => api.velocity.subscribe((v) => (velocity.current = v)), []);
+
   useFrame((state) => {
     // move
     ref.current.getWorldPosition(camera.position);
     // y-position
-    if (camera.position.y <= -30) {
-      camera.position.set(0, 2, 0);
-      ref.current.copy(camera.position);
+
+    if (camera.position.y <= -10) {
+      const prePosition = camera.position;
+
+      console.log(prePosition);
+      // ref.current.position.set(prePosition.x, 1, prePosition.z);
+      camera.position.set(prePosition.x, 1, prePosition.z);
+      // ref.current.position.set(camera.position);
     }
+
+    // if (camera.position.y <= -30) {
+    //   // camera.position.set(0, 2, 0);
+    //   // ref.current.copy(camera.position);
+    //   camera.position.set(prePosition);
+    //   ref.current.position.set(prePosition);
+    // }
+
     // move
     frontVector.set(0, 0, Number(backward) - Number(forward));
     sideVector.set(Number(left) - Number(right), 0, 0);
@@ -84,6 +98,7 @@ export const Player = (props) => {
     if (jump && Math.abs(velocity.current[1].toFixed(2)) < 0.05)
       api.velocity.set(velocity.current[0], 10, velocity.current[2]);
   });
+
   return (
     <>
       <mesh ref={ref} />

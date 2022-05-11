@@ -3,7 +3,7 @@ import { useGLTF } from "@react-three/drei";
 import { SpotLight } from "@react-three/drei";
 
 const Guitar = ({ light }) => {
-  const { scene } = useGLTF("/gltf/Eguitar.glb");
+  const { scene } = useGLTF("/gltf/ElectricGuitar.glb");
 
   const lightRef = useRef();
   return (

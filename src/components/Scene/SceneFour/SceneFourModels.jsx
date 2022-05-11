@@ -6,6 +6,8 @@ import * as THREE from "three";
 import "./styles.css";
 import { useFrame } from "@react-three/fiber";
 import { Vector3 } from "three";
+import Light from "../../animationModels/Light";
+import Virtualizer from "../../common/Virtualizer";
 
 const SceneFourModel = () => {
   const light = useRef();
@@ -41,6 +43,8 @@ const SceneFourModel = () => {
       <Drum light={IsLightOn} />
       <Mic light={IsLightOn} />
       <Guitar light={IsLightOn} />
+      <Light />
+      {/* <Virtualizer show={IsLightOn} /> */}
     </>
   );
 };
