@@ -8,7 +8,7 @@ function Laptop({ control, ...props }) {
   const group = useRef();
   const screen = useRef();
   const { nodes, materials } = useGLTF("/gltf/mac-draco.glb");
-  const { nodes: screenNode } = useGLTF("/gltf/laptop.glb");
+  const { nodes: screenNode } = useGLTF("/gltf/Laptop.glb");
   const [rotation, setRotation] = useState(true);
 
   const onStopPropagation = useCallback((e) => {
