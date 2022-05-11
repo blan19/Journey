@@ -39,11 +39,9 @@ const MobileMain = () => {
       </div>
       <nav className="mobile-main-nav">
         <Link to="/intro">
-          <MdOutlineNoteAlt className="icon" />
           <span>작품소개</span>
         </Link>
         <Link to="/posts">
-          <AiOutlinePicture className="icon" />
           <span>사진보기</span>
         </Link>
       </nav>

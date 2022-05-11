@@ -14,7 +14,8 @@ const App = () => {
       <If condition={isBrowser}>
         <Browser />
       </If> */}
-      <Browser />
+      {/* <Browser /> */}
+      <Mobile />
     </>
   );
 };

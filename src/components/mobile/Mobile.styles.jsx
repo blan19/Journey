@@ -99,19 +99,20 @@ const MobileMainContainer = styled.main`
   }
   nav {
     margin-top: 7rem;
-    a {
+
+    span {
+      padding-left: 1rem;
+      font-size: var(--font-sub-1);
       color: #000;
       margin-top: 3rem;
       ${flexCenter}
       border: 1px solid var(--color-subColor);
       border-radius: 7rem;
       padding: 1rem 2rem;
+      width: 16rem;
+      height: 5rem;
       background-color: black;
       color: white;
-    }
-    span {
-      padding-left: 1rem;
-      font-size: var(--font-sub-1);
     }
     svg {
       font-size: 4rem;
