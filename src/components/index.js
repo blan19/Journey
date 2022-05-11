@@ -4,6 +4,7 @@ import Ground from "./common/Ground";
 import Click from "./Click";
 import Cursor from "./Cursor";
 import Loading from "./Start/Loading";
+import Game from "./Game";
 import { Player } from "./common/Player";
 import { Laptop } from "./common";
 import { SceneFiveEnd } from "./Scene/SceneFive";
@@ -20,4 +21,5 @@ export {
   SceneFiveEnd,
   Loading,
   SceneOneRegister,
+  Game,
 };

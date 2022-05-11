@@ -45,7 +45,7 @@ const SceneFiveEnd = ({ image }) => {
             <h1>The End</h1>
           </div>
           <div className="end-image">
-            <img src={image} alt="thumbnail" />
+            {image ? <img src={image} alt="thumbnail" /> : <p>loading..</p>}
           </div>
           <div className="end-button">
             {loading ? (

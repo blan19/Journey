@@ -1,6 +1,7 @@
 import React, { useMemo } from "react";
 import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
+import Game from "../../Game";
 
 const SceneOnePhysics = (props) => {
   const [floor1] = useBox(() => ({
@@ -135,7 +136,12 @@ const SceneOnePhysics = (props) => {
         position={[0, 10, -8]}
         args={["white", 0.2, 100, Math.PI / 4]}
       />
-      <primitive object={one_1.target} position={[0.1, 0.4, -8]} />
+      <primitive
+        object={one_1.target}
+        position={[0.1, 0.4, -8]}
+        scale={[0.2, 0.2, 0.2]}
+      />
+      <Game position={[4.65, 2, -10.8]} scale={[0.15, 0.15, 0.15]} />
     </>
   );
 };
