@@ -4,7 +4,7 @@ const StartContainer1 = styled.div`
   background-color: #efefef;
   width: 100%;
   height: 100vh;
-  border: 1px solid black;
+
   position: absolute;
   top: 0;
   left: 0;

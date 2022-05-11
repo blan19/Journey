@@ -6,15 +6,96 @@ const MobileMainContainer = styled.main`
   width: 100%;
   height: 100vh;
   ${flexColCenter}
+  background-color: #efefef;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+
   .mobile-main-title {
-    text-align: center;
-    h1 {
-      font-size: var(--font-title-1);
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .intro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .title {
+      font-size: 5rem;
+      margin-bottom: 2rem;
     }
-    p {
-      margin-top: 10rem;
-      font-size: var(--font-main-1);
+    .sub-title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
     }
+    .border {
+      .team-name {
+        font-size: 1rem;
+        margin-left: 10rem;
+      }
+    }
+  }
+
+  .photo-border {
+    display: flex;
+    justify-content: center;
+
+    .photo {
+      margin: 0;
+      padding: 0;
+      width: 40rem;
+      height: 30rem;
+      background-color: white;
+      overflow: hidden;
+      display: flex;
+
+      .slide-item {
+        animation: slide 10s infinite;
+        animation-timing-function: ease-in-out;
+        img {
+          width: 40rem;
+          height: 30rem;
+        }
+      }
+    }
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    13% {
+      transform: translateX(0);
+    }
+    20% {
+      transform: translateX(-40rem);
+    }
+    33% {
+      transform: translateX(-40rem);
+    }
+    40% {
+      transform: translateX(-80rem);
+    }
+    53% {
+      transform: translateX(-80rem);
+    }
+    60% {
+      transform: translateX(-120rem);
+    }
+    73% {
+      transform: translateX(-120rem);
+    }
+    80% {
+      transform: translateX(-160rem);
+    }
+    100% {
+      transform: translateX(-16ㅇ0rem);
+    }
+    /* 102% {
+      transform: translateX(0rem);
+    } */
   }
   nav {
     margin-top: 7rem;
@@ -23,8 +104,10 @@ const MobileMainContainer = styled.main`
       margin-top: 3rem;
       ${flexCenter}
       border: 1px solid var(--color-subColor);
-      border-radius: 0.5rem;
+      border-radius: 7rem;
       padding: 1rem 2rem;
+      background-color: black;
+      color: white;
     }
     span {
       padding-left: 1rem;
