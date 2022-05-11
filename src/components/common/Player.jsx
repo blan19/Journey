@@ -27,6 +27,7 @@ const usePlayerControls = () => {
     right: false,
     jump: false,
   });
+
   useEffect(() => {
     const handleKeyDown = (e) =>
       setMovement((m) => ({ ...m, [moveFieldByKey(e.code)]: true }));
@@ -67,14 +68,9 @@ export const Player = (props) => {
     ref.current.getWorldPosition(camera.position);
     // y-position
 
-    if (camera.position.y <= -10) {
-      const prePosition = camera.position;
-
-      console.log(prePosition);
-      // ref.current.position.set(prePosition.x, 1, prePosition.z);
-      camera.position.set(prePosition.x, 1, prePosition.z);
-      // ref.current.position.set(camera.position);
-    }
+    // const prePosition = camera.position;
+    // ref.current.position.set(prePosition.x, 1, prePosition.z);
+    // camera.position.set(prePosition.x, 1, prePosition.z);
 
     // if (camera.position.y <= -30) {
     //   // camera.position.set(0, 2, 0);

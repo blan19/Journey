@@ -9,6 +9,10 @@ import { If } from "../../../lib/Condition";
 import useStore from "../../../store";
 
 const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
+  let now = new Date();
+  let year = now.getFullYear();
+  let month = now.getMonth() + 1;
+  let date = now.getDate();
   // * state
   const { scene } = useThree();
 
@@ -128,6 +132,7 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
           onClick={onCapture}
         >
           <boxGeometry args={[2, 1.5, 0.1]} />
+
           <Html
             occlude
             transform
