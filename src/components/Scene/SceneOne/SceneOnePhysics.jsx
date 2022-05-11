@@ -22,12 +22,6 @@ const SceneOnePhysics = (props) => {
     args: [1.6, 0.1, 0.8],
     ...props,
   }));
-  //   const [tree] = useBox(() => ({
-  //     mass: 0,
-  //     position: [5.2, 1.6, -6],
-  //     args: [0.08, 2, 0.08],
-  //     ...props,
-  //   }));
   const [first] = useBox(() => ({
     mass: 0,
     position: [4.75, 0.3, -7.4],

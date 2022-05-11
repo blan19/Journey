@@ -49,8 +49,8 @@ const Register = () => {
           <div className="register-info">
             <p>지원자 정보</p>
           </div>
-          <Choose>
-            <When condition={show.show}>
+          {show.show ? (
+            <>
               <div className="register-table">
                 <table>
                   <tbody>
@@ -98,8 +98,9 @@ const Register = () => {
                   합니다.
                 </p>
               </div>
-            </When>
-            <OtherWise>
+            </>
+          ) : (
+            <>
               <div className="register-table">
                 <table>
                   <tbody>
@@ -115,8 +116,8 @@ const Register = () => {
               <div className="register-button">
                 <button onClick={onLoading}>합격 조회</button>
               </div>
-            </OtherWise>
-          </Choose>
+            </>
+          )}
         </RegisterMain>
       </RegisterContainer>
     </>

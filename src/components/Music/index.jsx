@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const Music = () => {
   return (
-    <div>
-      <h1>asdas</h1>
-    </div>
+    <audio autoPlay loop>
+      <source src="/music/bgm.mp3" />
+    </audio>
   );
 };
 
