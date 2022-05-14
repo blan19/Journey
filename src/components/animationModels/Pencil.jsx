@@ -1,6 +1,10 @@
 import { useFrame } from "@react-three/fiber";
+// import ClickWhite from "../Click";
+import { useEffect, useState } from "react";
+import ClickBlack from "../Click/ClickBlack";
 
 const Pencil = ({ actions }) => {
+  const [button, setButton] = useState(false);
   const onPencilClick = () => {
     actions.pencilAction.repetitions = 1;
     actions.S2NewspaperAni1.repetitions = 1;
@@ -14,6 +18,7 @@ const Pencil = ({ actions }) => {
     actions.S2NewspaperAni3.clampWhenFinished = true;
     actions.S2NewspaperAni4.clampWhenFinished = true;
 
+    setButton((prev) => !prev);
     actions.pencilAction.play();
     setTimeout(() => {
       actions.S2NewspaperAni1.play();
@@ -31,12 +36,13 @@ const Pencil = ({ actions }) => {
     }, 275);
 
     setTimeout(() => {
-      console.log(actions.pencilAction);
       actions.pencilAction.stop();
       actions.S2NewspaperAni1.stop();
       actions.S2NewspaperAni2.stop();
       actions.S2NewspaperAni3.stop();
       actions.S2NewspaperAni4.stop();
+      setButton((prev) => !prev);
+      console.log(button);
     }, 8000);
   };
 
@@ -49,6 +55,9 @@ const Pencil = ({ actions }) => {
       actions.S2NewspaperAni4.reset();
     }
   });
+  useEffect(() => {
+    console.log(button);
+  }, []);
   return (
     <>
       <mesh
@@ -65,6 +74,15 @@ const Pencil = ({ actions }) => {
           transparent
         />
       </mesh>
+
+      {button ? (
+        <></>
+      ) : (
+        <ClickBlack
+          position={[-1, 3, -20.8]}
+          rotation={[Math.PI * 0.5, Math.PI * 1.5, 0]}
+        />
+      )}
     </>
   );
 };

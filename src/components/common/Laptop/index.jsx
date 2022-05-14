@@ -2,6 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import useStore from "../../../store";
 import { useFrame } from "@react-three/fiber";
+import ClickWhite from "../../Click";
 
 function Laptop({ control, ...props }) {
   const { setRegister, setControlTrue } = useStore((state) => state);
@@ -34,62 +35,75 @@ function Laptop({ control, ...props }) {
   }, []);
 
   return (
-    <group
-      position={[5.2, 1.8, -10.7]}
-      scale={[0.03, 0.03, 0.03]}
-      rotation={[0, Math.PI / 0.55, 0]}
-      ref={group}
-      {...props}
-      dispose={null}
-      onClick={onStopPropagation}
-    >
-      <group ref={screen} position={[0, -0.04, 0.41]}>
-        <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
-          <group onClick={() => setRotation((prev) => !prev)}>
+    <>
+      <group>
+        {rotation ? (
+          <ClickWhite
+            position={[5.08, 1.86, -10.6]}
+            rotation={[Math.PI * 0.5, 0, Math.PI * 0.2]}
+            scale={[0.05, 0.05, 0.05]}
+          />
+        ) : (
+          <></>
+        )}
+      </group>
+      <group
+        position={[5.2, 1.8, -10.7]}
+        scale={[0.03, 0.03, 0.03]}
+        rotation={[0, Math.PI / 0.55, 0]}
+        ref={group}
+        {...props}
+        dispose={null}
+        onClick={onStopPropagation}
+      >
+        <group ref={screen} position={[0, -0.04, 0.41]}>
+          <group position={[0, 2.96, -0.13]} rotation={[Math.PI / 2, 0, 0]}>
+            <group onClick={() => setRotation((prev) => !prev)}>
+              <mesh
+                material={materials.aluminium}
+                geometry={nodes["Cube008"].geometry}
+              />
+              <mesh
+                material={materials["matte.001"]}
+                geometry={nodes["Cube008_1"].geometry}
+              />
+              <mesh geometry={nodes["Cube008_2"].geometry}></mesh>
+            </group>
             <mesh
-              material={materials.aluminium}
-              geometry={nodes["Cube008"].geometry}
+              onClick={onUnLock}
+              geometry={screenNode["Screen"].geometry}
+              material={screenNode["Screen"].material}
+              scale={[4.3, 3.8, 3]}
+              position={[0, -1.8, 0]}
             />
-            <mesh
-              material={materials["matte.001"]}
-              geometry={nodes["Cube008_1"].geometry}
-            />
-            <mesh geometry={nodes["Cube008_2"].geometry}></mesh>
           </group>
+        </group>
+        <mesh
+          material={materials.keys}
+          geometry={nodes.keyboard.geometry}
+          position={[1.79, 0, 3.45]}
+          onClick={() => setRotation((prev) => !prev)}
+        />
+        <group
+          position={[0, -0.1, 3.39]}
+          onClick={() => setRotation((prev) => !prev)}
+        >
           <mesh
-            onClick={onUnLock}
-            geometry={screenNode["Screen"].geometry}
-            material={screenNode["Screen"].material}
-            scale={[4.3, 3.8, 3]}
-            position={[0, -1.8, 0]}
+            material={materials.aluminium}
+            geometry={nodes["Cube002"].geometry}
+          />
+          <mesh
+            material={materials.trackpad}
+            geometry={nodes["Cube002_1"].geometry}
           />
         </group>
-      </group>
-      <mesh
-        material={materials.keys}
-        geometry={nodes.keyboard.geometry}
-        position={[1.79, 0, 3.45]}
-        onClick={() => setRotation((prev) => !prev)}
-      />
-      <group
-        position={[0, -0.1, 3.39]}
-        onClick={() => setRotation((prev) => !prev)}
-      >
         <mesh
-          material={materials.aluminium}
-          geometry={nodes["Cube002"].geometry}
-        />
-        <mesh
-          material={materials.trackpad}
-          geometry={nodes["Cube002_1"].geometry}
+          material={materials.touchbar}
+          geometry={nodes.touchbar.geometry}
+          position={[0, -0.03, 1.2]}
         />
       </group>
-      <mesh
-        material={materials.touchbar}
-        geometry={nodes.touchbar.geometry}
-        position={[0, -0.03, 1.2]}
-      />
-    </group>
+    </>
   );
 }
 export default Laptop;
