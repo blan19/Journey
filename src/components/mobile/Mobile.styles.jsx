@@ -67,32 +67,38 @@ const MobileMainContainer = styled.main`
     0% {
       transform: translateX(0);
     }
-    13% {
+    9% {
       transform: translateX(0);
     }
-    20% {
+    16% {
       transform: translateX(-40rem);
     }
-    33% {
+    29% {
       transform: translateX(-40rem);
     }
-    40% {
+    36% {
       transform: translateX(-80rem);
     }
-    53% {
+    49% {
       transform: translateX(-80rem);
     }
-    60% {
+    56% {
       transform: translateX(-120rem);
     }
-    73% {
+    69% {
       transform: translateX(-120rem);
     }
-    80% {
+    76% {
       transform: translateX(-160rem);
+    }
+    89% {
+      transform: translateX(-160rem);
+    }
+    96% {
+      transform: translateX(-200rem);
     }
     100% {
-      transform: translateX(-160rem);
+      transform: translateX(-200rem);
     }
   }
   nav {
