@@ -50,6 +50,7 @@ const MobileMainContainer = styled.main`
       background-color: white;
       overflow: hidden;
       display: flex;
+      border-radius: 1rem;
 
       .slide-item {
         animation: slide 10s infinite;
@@ -91,11 +92,8 @@ const MobileMainContainer = styled.main`
       transform: translateX(-160rem);
     }
     100% {
-      /* transform: translateX(-160rem); */
+      transform: translateX(-160rem);
     }
-    /* 102% {
-      transform: translateX(0rem);
-    } */
   }
   nav {
     margin-top: 7rem;

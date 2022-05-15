@@ -44,6 +44,7 @@ const StartContainer1 = styled.div`
       background-color: white;
       overflow: hidden;
       display: flex;
+      border-radius: 1rem;
 
       .slide-item {
         animation: slide 10s infinite;

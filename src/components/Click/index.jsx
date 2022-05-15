@@ -1,11 +1,22 @@
-import React from "react";
+import { useGLTF, Plane, Sphere } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import React, { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+const ClickWhite = ({ position, rotation, scale, onClick }) => {
+  const { nodes } = useGLTF("/gltf/clickWhite.glb");
 
-const Click = (props) => {
   return (
-    <div>
-      <h1>asdas</h1>
-    </div>
+    <group>
+      <mesh
+        onClick={onClick}
+        position={position}
+        rotation={rotation}
+        scale={scale}
+        geometry={nodes["whiteClick"].geometry}
+        material={nodes["whiteClick"].material}
+      ></mesh>
+    </group>
   );
 };
 
-export default Click;
+export default ClickWhite;

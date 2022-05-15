@@ -8,6 +8,8 @@ import { useFrame } from "@react-three/fiber";
 import { Vector3 } from "three";
 import Light from "../../animationModels/Light";
 import Virtualizer from "../../common/Virtualizer";
+import ClickBlack from "../../Click/ClickBlack";
+import ClickWhite from "../../Click";
 
 const SceneFourModel = () => {
   const light = useRef();
@@ -22,7 +24,18 @@ const SceneFourModel = () => {
   return (
     <>
       <group>
-        <mesh
+        <ClickWhite
+          position={[-3, 3, -40]}
+          rotation={[Math.PI * 0.5, 0, Math.PI * 1.5]}
+          scale={[0.3, 0.3, 0.3]}
+          onClick={onStageClick}
+        />
+        {/* <ClickBlack
+          position={[-3, 3, -40]}
+          rotation={[0, 0, Math.PI * 1.5]}
+          onClick={onStageClick}
+        /> */}
+        {/* <mesh
           onClick={onStageClick}
           position={[-3, 3, -40]}
           rotation={[0, Math.PI * 0.5, 0]}
@@ -30,7 +43,8 @@ const SceneFourModel = () => {
         >
           <circleGeometry />
           <meshStandardMaterial color={"red"} opacity={0} transparent />
-        </mesh>
+        </mesh> */}
+        {/* 
         <Html
           position={[-3, 3, -40]}
           rotation={[0, Math.PI * 0.5, 0]}
@@ -38,12 +52,13 @@ const SceneFourModel = () => {
           transform
         >
           <div className="text">click</div>
-        </Html>
+        </Html> */}
       </group>
+
       <Drum light={IsLightOn} />
       <Mic light={IsLightOn} />
       <Guitar light={IsLightOn} />
-      <Light />
+      {/* <Light /> */}
       {/* <Virtualizer show={IsLightOn} /> */}
     </>
   );
