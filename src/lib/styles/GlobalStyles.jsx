@@ -22,7 +22,7 @@ export default createGlobalStyle`
 
   html,
   body {
-    font-family: "ChosunSm", "Minion", --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: "Minion", --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #fff;
     font-size: 62.5%;
     @media screen and (max-width: 1280px) {
