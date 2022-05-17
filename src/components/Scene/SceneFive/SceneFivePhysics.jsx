@@ -46,6 +46,7 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
       const texture = new THREE.Texture();
       img.onload = function () {
         texture.needsUpdate = true;
+        texture.dispose();
       };
       texture.image = img;
       texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
