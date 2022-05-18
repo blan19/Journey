@@ -10,9 +10,9 @@ import { useLocation } from "wouter";
 const MobilePostsItem = ({ post }) => {
   return (
     <MobilePostsItemContainer>
-      <div className="post-title">
+      {/* <div className="post-title">
         <p>{post.title}</p>
-      </div>
+      </div> */}
       <div className="post-image">
         <img src={post.url} alt="thumbnail" />
       </div>
