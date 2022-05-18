@@ -24,7 +24,7 @@ function Laptop({ control, ...props }) {
 
   useFrame(({ clock }) => {
     if (rotation) {
-      if (screen.current.rotation.x <= 1.54) {
+      if (screen.current.rotation.x <= 1.56) {
         screen.current.rotation.x += clock.getDelta() + 0.05;
       }
     } else {

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import useStore from "../../store";
-import { StartContainer, StartContainer1 } from "./Start.style";
+import { StartContainer } from "./Start.style";
 
 const Start = () => {
   const { start, setStart } = useStore((state) => state);
@@ -13,15 +13,7 @@ const Start = () => {
     return null;
   }
   return (
-    // <StartContainer>
-    //   <div className="start-title">
-    //     <h1>The Time We Passed</h1>
-    //   </div>
-    //   <div className="start-button">
-    //     <button onClick={onStart}>시작하기...</button>
-    //   </div>
-    // </StartContainer>
-    <StartContainer1>
+    <StartContainer>
       <div className="intro">
         <div className="title">The Time We Passed</div>
         <div className="sub-title">'우리가 보내왔던 순간들'</div>
@@ -58,7 +50,7 @@ const Start = () => {
           시작하기
         </div>
       </div>
-    </StartContainer1>
+    </StartContainer>
   );
 };
 
