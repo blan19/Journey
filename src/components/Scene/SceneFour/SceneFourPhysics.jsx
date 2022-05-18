@@ -6,7 +6,7 @@ const SceneFourPhysics = (props) => {
     mass: 0,
     position: [-0.7, 1.6, -34],
     rotation: [Math.PI * 1.575, 0, 0],
-    args: [0.7, 3, 0.001],
+    args: [1.25, 3, 0.001],
     ...props,
   }));
 
@@ -51,7 +51,7 @@ const SceneFourPhysics = (props) => {
   }));
   const [stone_stair4] = useBox(() => ({
     mass: 0,
-    position: [1.4, 2.3, -38.75],
+    position: [1.7, 2.3, -38.75],
     args: [0.8, 1, 4.5],
     ...props,
   }));
@@ -84,7 +84,7 @@ const SceneFourPhysics = (props) => {
         <meshStandardMaterial color="red" />
       </mesh>
       <mesh ref={stone_stair4} position={[1.4, 2.3, -38.75]}>
-        <boxGeometry args={[0, 0, 0]} />
+        <boxGeometry args={[1.5, 1, 5]} />
         <meshStandardMaterial color="red" />
       </mesh>
       {/* 콘서트홀 */}

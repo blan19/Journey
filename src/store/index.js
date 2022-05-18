@@ -9,10 +9,9 @@ const store = (set) => ({
   end: false,
   isLocked: false,
   imgMesh: null,
-  posts: {
-    data: null,
-    last: null,
-  },
+  posts: null,
+  last: null,
+  first: null,
   setRegister: () => set((state) => ({ register: !state.register })),
   setIsLockedTrue: () => set(() => ({ isLocked: true })),
   setIsLockedFalse: () => set(() => ({ isLocked: false })),
@@ -26,9 +25,37 @@ const store = (set) => ({
       .orderBy("createAt", "desc")
       .limit(6)
       .get();
-    const last = snapshot.docs[snapshot.doc.length - 1];
-    const data = snapshot.docs.map((doc) => doc.data());
-    set({ posts: { data, last } });
+    const last = snapshot.docs[snapshot.docs.length - 1];
+    const posts = snapshot.docs.map((doc) => doc.data());
+    set({ posts, last });
+  },
+  getNext: async (end) => {
+    const snapshot = await firebaseDb
+      .collection("posts")
+      .orderBy("createAt", "desc")
+      .startAfter(end)
+      .limit(6)
+      .get();
+
+    const first = snapshot.docs[0];
+    const last = snapshot.docs[snapshot.docs.length - 1];
+    const posts = snapshot.docs.map((doc) => doc.data());
+    console.log(posts);
+    set({ posts, last, first });
+  },
+  getPrev: async (start) => {
+    const snapshot = await firebaseDb
+      .collection("posts")
+      .orderBy("createAt", "desc")
+      .endBefore(start)
+      .limitToLast(6)
+      .get();
+    const first = snapshot.docs[0];
+    const last = snapshot.docs[snapshot.docs.length - 1];
+    const posts = snapshot.docs.map((doc) => doc.data());
+    console.log(posts);
+
+    set({ posts, last, first });
   },
   setStart: () => set((state) => ({ start: !state.start })),
 });
