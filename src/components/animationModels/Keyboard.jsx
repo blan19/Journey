@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ClickWhite from "../Click";
+import ClickBlack from "../Click/ClickBlack";
 
 const Keyboard = ({ actions }) => {
   const [button, setButton] = useState(false);
@@ -100,9 +101,9 @@ const Keyboard = ({ actions }) => {
       {button ? (
         <></>
       ) : (
-        <ClickWhite
-          position={[0.93, 2.3, -29.05]}
-          rotation={[Math.PI * 0.35, 0, 0]}
+        <ClickBlack
+          position={[0.98, 2.3, -29.05]}
+          rotation={[Math.PI * 0.35, Math.PI * 1.5, 0]}
           scale={[0.05, 0.05, 0.05]}
         />
       )}

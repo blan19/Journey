@@ -79,7 +79,7 @@ const Pencil = ({ actions }) => {
         <></>
       ) : (
         <ClickBlack
-          position={[-1, 3, -20.8]}
+          position={[-0.98, 3, -20.8]}
           rotation={[Math.PI * 0.5, Math.PI * 1.5, 0]}
         />
       )}
