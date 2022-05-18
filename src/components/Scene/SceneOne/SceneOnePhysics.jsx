@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
 import Game from "../../Game";
+import ClickWhite from "../../Click";
 
 const SceneOnePhysics = (props) => {
   const [floor1] = useBox(() => ({

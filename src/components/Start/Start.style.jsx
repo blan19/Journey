@@ -44,6 +44,7 @@ const StartContainer = styled.div`
       background-color: white;
       overflow: hidden;
       display: flex;
+      border-radius: 1rem;
 
       .slide-item {
         animation: slide 10s infinite;
@@ -60,32 +61,38 @@ const StartContainer = styled.div`
     0% {
       transform: translateX(0);
     }
-    13% {
+    9% {
       transform: translateX(0);
     }
-    20% {
+    16% {
       transform: translateX(-30rem);
     }
-    33% {
+    29% {
       transform: translateX(-30rem);
     }
-    40% {
+    36% {
       transform: translateX(-60rem);
     }
-    53% {
+    49% {
       transform: translateX(-60rem);
     }
-    60% {
+    56% {
       transform: translateX(-90rem);
     }
-    73% {
+    69% {
       transform: translateX(-90rem);
     }
-    80% {
+    76% {
       transform: translateX(-120rem);
+    }
+    89% {
+      transform: translateX(-120rem);
+    }
+    96% {
+      transform: translateX(-150rem);
     }
     100% {
-      transform: translateX(-120rem);
+      transform: translateX(-150rem);
     }
   }
   .start-border {

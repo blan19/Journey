@@ -27,7 +27,6 @@ const Start = () => {
           <div className="slide-item">
             <img src="/image/1.png" alt="scene1" />
           </div>
-
           <div className="slide-item">
             <img src="/image/5.png" alt="scene2" />
           </div>
@@ -39,6 +38,9 @@ const Start = () => {
           </div>
           <div className="slide-item">
             <img src="/image/3.png" alt="scene5" />
+          </div>
+          <div className="slide-item">
+            <img src="/image/1.png" alt="scene5" />
           </div>
         </div>
       </div>

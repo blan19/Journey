@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ClickWhite from "../Click";
 
 const Keyboard = ({ actions }) => {
+  const [button, setButton] = useState(false);
   const onKeyboardClick = () => {
+    setButton((prev) => !prev);
     actions.S3CodingAni1.repetitions = 1;
     actions.S3CodingAni2.repetitions = 1;
     actions.S3CodingAni3.repetitions = 1;
@@ -77,6 +80,7 @@ const Keyboard = ({ actions }) => {
       actions.S3CodingAni10.stop();
       actions.S3CodingAni11.stop();
       actions.S3CodingAni12.stop();
+      setButton((prev) => !prev);
     }, 19200);
     //   setTimeout(() => {
     //     actions.S3CodingAni12.paused = true;
@@ -93,6 +97,15 @@ const Keyboard = ({ actions }) => {
         <boxGeometry />
         <meshStandardMaterial color={"red"} opacity={0.0} transparent />
       </mesh>
+      {button ? (
+        <></>
+      ) : (
+        <ClickWhite
+          position={[0.93, 2.3, -29.05]}
+          rotation={[Math.PI * 0.35, 0, 0]}
+          scale={[0.05, 0.05, 0.05]}
+        />
+      )}
     </>
   );
 };
