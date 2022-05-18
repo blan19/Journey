@@ -1,18 +1,9 @@
 import { useGLTF } from "@react-three/drei";
 import React from "react";
+import * as THREE from "three";
 
 const Light = () => {
-  const { scene } = useGLTF("/gltf/light.glb");
-  return (
-    <>
-      <primitive
-        object={scene}
-        position={[-3.33, 4.48, -40]}
-        rotation={[0, Math.PI * 0.5, 0]}
-        scale={[0.03, 0.03, 0.03]}
-      ></primitive>
-    </>
-  );
+  return <></>;
 };
 
 export default Light;

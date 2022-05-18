@@ -10,6 +10,7 @@ import Light from "../../animationModels/Light";
 import Virtualizer from "../../common/Virtualizer";
 import ClickBlack from "../../Click/ClickBlack";
 import ClickWhite from "../../Click";
+import Fireworks from "../../animationModels/Fireworks";
 
 const SceneFourModel = () => {
   const light = useRef();
@@ -27,7 +28,7 @@ const SceneFourModel = () => {
         <ClickWhite
           position={[-3, 3, -40]}
           rotation={[Math.PI * 0.5, 0, Math.PI * 1.5]}
-          scale={[0.3, 0.3, 0.3]}
+          scale={[0.25, 0.25, 0.25]}
           onClick={onStageClick}
         />
         {/* <ClickBlack
@@ -54,7 +55,7 @@ const SceneFourModel = () => {
           <div className="text">click</div>
         </Html> */}
       </group>
-
+      <Fireworks />
       <Drum light={IsLightOn} />
       <Mic light={IsLightOn} />
       <Guitar light={IsLightOn} />
