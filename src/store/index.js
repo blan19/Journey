@@ -40,7 +40,6 @@ const store = (set) => ({
     const first = snapshot.docs[0];
     const last = snapshot.docs[snapshot.docs.length - 1];
     const posts = snapshot.docs.map((doc) => doc.data());
-    console.log(posts);
     set({ posts, last, first });
   },
   getPrev: async (start) => {
@@ -53,7 +52,6 @@ const store = (set) => ({
     const first = snapshot.docs[0];
     const last = snapshot.docs[snapshot.docs.length - 1];
     const posts = snapshot.docs.map((doc) => doc.data());
-    console.log(posts);
 
     set({ posts, last, first });
   },

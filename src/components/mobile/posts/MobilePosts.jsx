@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useEffect,
-  useLayoutEffect,
-  useMemo,
-  useState,
-} from "react";
+import React, { useCallback, useLayoutEffect, useMemo, useState } from "react";
 import useStore from "../../../store";
 import {
   MobilePostsContainer,
@@ -12,15 +6,24 @@ import {
 } from "../Mobile.styles";
 import { BiArrowBack } from "react-icons/bi";
 import { useLocation } from "wouter";
+import Modal from "../Modal";
 
 const MobilePostsItem = ({ post }) => {
+  const [show, setShow] = useState(false);
   return (
-    <MobilePostsItemContainer>
-      <div className="post-image">
-        <img src={post.url} alt="thumbnail" />
-      </div>
-      <div className="post-divider"></div>
-    </MobilePostsItemContainer>
+    <>
+      <MobilePostsItemContainer>
+        <div className="post-image">
+          <img
+            onClick={() => setShow((prev) => !prev)}
+            src={post.url}
+            alt="thumbnail"
+          />
+        </div>
+        <div className="post-divider"></div>
+      </MobilePostsItemContainer>
+      <Modal img={post.url} show={show} setShow={setShow} />
+    </>
   );
 };
 
@@ -29,6 +32,7 @@ const MobilePosts = () => {
     (state) => state
   );
   const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const [, setLocation] = useLocation();
 
@@ -42,12 +46,14 @@ const MobilePosts = () => {
   }, [setLocation]);
 
   const onNext = useCallback(() => {
-    getNext(last);
+    setLoading(true);
+    getNext(last).then(() => setLoading(false));
     setPage((prev) => prev + 1);
   }, [getNext, last]);
 
   const onPrev = useCallback(() => {
-    getPrev(first);
+    setLoading(true);
+    getPrev(first).then(() => setLoading(false));
     setPage((prev) => prev - 1);
   }, [first, getPrev]);
 
@@ -55,16 +61,13 @@ const MobilePosts = () => {
     getPosts();
   }, []);
 
-  useEffect(() => {
-    console.log(first, last);
-  }, [first, last]);
   return (
     <MobilePostsContainer>
       <div className="posts-header">
         <BiArrowBack onClick={onPushBack} />
         <h1>방명록</h1>
       </div>
-      <ul>{memorizedPosts}</ul>
+      <ul>{loading ? <p>loading..</p> : memorizedPosts}</ul>
       <div className="posts-button">
         <button disabled={page === 1 ? true : false} onClick={onPrev}>
           이전
