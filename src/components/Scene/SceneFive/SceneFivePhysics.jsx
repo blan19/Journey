@@ -14,7 +14,7 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
     mass: 0,
     position: [-2.1, 2.3, -43.5],
     rotation: [Math.PI * 1.075, 0, 0],
-    args: [0.75, 0.05, 5],
+    args: [1.5, 0.05, 5],
     ...props,
   }));
   const [floor] = useBox(() => ({

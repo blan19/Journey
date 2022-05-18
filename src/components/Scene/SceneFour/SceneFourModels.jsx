@@ -31,31 +31,17 @@ const SceneFourModel = () => {
           scale={[0.25, 0.25, 0.25]}
           onClick={onStageClick}
         />
-        {/* <ClickBlack
-          position={[-3, 3, -40]}
-          rotation={[0, 0, Math.PI * 1.5]}
-          onClick={onStageClick}
-        /> */}
-        {/* <mesh
-          onClick={onStageClick}
-          position={[-3, 3, -40]}
+        transform
+        <mesh
+          position={[-3, 3.07, -40.2]}
           rotation={[0, Math.PI * 0.5, 0]}
-          scale={[0.21, 0.21, 0.21]}
+          scale={[0.3, 0.13, 0.55]}
+          onClick={onStageClick}
         >
-          <circleGeometry />
-          <meshStandardMaterial color={"red"} opacity={0} transparent />
-        </mesh> */}
-        {/* 
-        <Html
-          position={[-3, 3, -40]}
-          rotation={[0, Math.PI * 0.5, 0]}
-          scale={[0.5, 0.5, 0.5]}
-          transform
-        >
-          <div className="text">click</div>
-        </Html> */}
+          <boxGeometry />
+          <meshBasicMaterial color="blue" transparent opacity={0} />
+        </mesh>
       </group>
-      <Fireworks />
       <Drum light={IsLightOn} />
       <Mic light={IsLightOn} />
       <Guitar light={IsLightOn} />
