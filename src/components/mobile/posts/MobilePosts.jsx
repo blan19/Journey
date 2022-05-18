@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useLayoutEffect, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import useStore from "../../../store";
 import {
   MobilePostsContainer,
@@ -22,15 +22,22 @@ const MobilePostsItem = ({ post }) => {
 };
 
 const MobilePosts = () => {
-  const { posts, getPosts } = useStore((state) => state);
+  const {
+    posts: { data, last },
+    getPosts,
+  } = useStore((state) => state);
+
   const [, setLocation] = useLocation();
+
   const memorizedPosts = useMemo(
-    () => posts?.map((post, idx) => <MobilePostsItem key={idx} post={post} />),
-    [posts]
+    () => data?.map((post, idx) => <MobilePostsItem key={idx} post={post} />),
+    [data]
   );
+
   const onPushBack = useCallback(() => {
     setLocation("/");
   }, [setLocation]);
+
   useEffect(() => {
     getPosts();
   }, [getPosts]);

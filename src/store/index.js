@@ -9,7 +9,10 @@ const store = (set) => ({
   end: false,
   isLocked: false,
   imgMesh: null,
-  posts: null,
+  posts: {
+    data: null,
+    last: null,
+  },
   setRegister: () => set((state) => ({ register: !state.register })),
   setIsLockedTrue: () => set(() => ({ isLocked: true })),
   setIsLockedFalse: () => set(() => ({ isLocked: false })),
@@ -21,9 +24,11 @@ const store = (set) => ({
     const snapshot = await firebaseDb
       .collection("posts")
       .orderBy("createAt", "desc")
+      .limit(6)
       .get();
-    const posts = snapshot.docs.map((doc) => doc.data());
-    set({ posts });
+    const last = snapshot.docs[snapshot.doc.length - 1];
+    const data = snapshot.docs.map((doc) => doc.data());
+    set({ posts: { data, last } });
   },
   setStart: () => set((state) => ({ start: !state.start })),
 });

@@ -44,13 +44,8 @@ const usePlayerControls = () => {
 };
 
 export const Player = (props) => {
-  // const [ref, api] = useSphere(() => ({
-  //   mass: 1,
-  //   type: "Dynamic",
-  //   args: [1.5],
-  //   position: [0, 1, 0],
-  //   ...props,
-  // }));
+  const { camera } = useThree();
+  const pos = camera.position.y <= -30 ? [0, 1, 0] : camera.position;
   const [ref, api] = useSphere(() => ({
     mass: 1,
     type: "Dynamic",
@@ -59,9 +54,9 @@ export const Player = (props) => {
     ...props,
   }));
   const { forward, backward, left, right, jump } = usePlayerControls();
-  const { camera } = useThree();
   const velocity = useRef([0, 0, 0]);
   useEffect(() => api.velocity.subscribe((v) => (velocity.current = v)), []);
+  useEffect(() => {}, []);
 
   useFrame((state) => {
     // move

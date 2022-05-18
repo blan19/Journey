@@ -50,6 +50,8 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
       };
       texture.image = img;
       texture.wrapS = texture.wrapT = THREE.MirroredRepeatWrapping;
+      texture.minFilter = THREE.LinearFilter;
+      texture.magFilter = THREE.LinearFilter;
       const material = new THREE.MeshLambertMaterial({ map: texture });
       const geometry = new THREE.BoxBufferGeometry(1.7, 1.3, 0.1);
       const box = new THREE.Mesh(geometry, material);
