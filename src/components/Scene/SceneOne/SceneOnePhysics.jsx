@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
 import Game from "../../Game";
-import ClickWhite from "../../Click";
 
 const SceneOnePhysics = (props) => {
   const [floor1] = useBox(() => ({
@@ -13,8 +12,8 @@ const SceneOnePhysics = (props) => {
   }));
   const [floor2] = useBox(() => ({
     mass: 0,
-    position: [0.1, 0.3, -8],
-    args: [0.8, 0.4, 5.6],
+    position: [-0.05, 0.3, -8],
+    args: [1.5, 0.4, 5.6],
     ...props,
   }));
   const [leg] = useBox(() => ({
@@ -78,7 +77,7 @@ const SceneOnePhysics = (props) => {
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="black" />
       </mesh>
-      <mesh ref={floor2} position={[0.1, 0.4, -8]}>
+      <mesh ref={floor2} position={[0.2, 0.4, -8]}>
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>

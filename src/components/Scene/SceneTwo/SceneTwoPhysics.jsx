@@ -6,7 +6,7 @@ const SceneTwoPhysics = (props) => {
     mass: 0,
     position: [0.1, 1.2, -13],
     rotation: [Math.PI * 1.075, 0, 0],
-    args: [0.75, 0.05, 5],
+    args: [1.25, 0.05, 5],
     ...props,
   }));
 
@@ -42,7 +42,7 @@ const SceneTwoPhysics = (props) => {
     mass: 0,
     position: [2.45, 1.5, -24],
     rotation: [Math.PI * -1.575, 0, 0],
-    args: [0.7, 4.5, 0.001],
+    args: [1.25, 4.5, 0.001],
     ...props,
   }));
 
@@ -54,7 +54,7 @@ const SceneTwoPhysics = (props) => {
         rotation={[Math.PI * 1.075, 0, 0]}
       >
         <boxGeometry args={[0, 0, 0]} />
-        <meshStandardMaterial />
+        <meshStandardMaterial color="red" />
       </mesh>
       <mesh ref={floor_1} position={[-0.6, 1.4, -18]}>
         <boxGeometry args={[0, 0, 0]} />

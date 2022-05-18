@@ -1,6 +1,5 @@
-import React, { useRef, useMemo } from "react";
+import React from "react";
 import { useBox } from "@react-three/cannon";
-import * as THREE from "three";
 
 const SceneStrat = (props) => {
   const [ref1] = useBox(() => ({
@@ -24,7 +23,7 @@ const SceneStrat = (props) => {
   const [ref4] = useBox(() => ({
     mass: 0,
     position: [0, 0.3, -3.7],
-    args: [1, 0.3, 2.8],
+    args: [1.5, 0.3, 2.8],
     ...props,
   }));
 

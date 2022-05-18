@@ -4,26 +4,26 @@ import { useBox } from "@react-three/cannon";
 const SceneThreePhysics = (props) => {
   const [floor_left] = useBox(() => ({
     mass: 0,
-    position: [-1.9, 0.8, -28.8],
-    args: [0.3, 0.4, 5.9],
+    position: [-2.05, 0.8, -28.8],
+    args: [1, 0.4, 5.9],
     ...props,
   }));
   const [floor_right] = useBox(() => ({
     mass: 0,
     position: [3.9, 0.8, -28.8],
-    args: [0.3, 0.4, 5.9],
+    args: [1.25, 0.4, 5.9],
     ...props,
   }));
   const [floor_front] = useBox(() => ({
     mass: 0,
-    position: [1, 0.8, -26.2],
-    args: [5.9, 0.4, 0.3],
+    position: [1, 0.8, -25.9],
+    args: [5.9, 0.4, 1.25],
     ...props,
   }));
   const [floor_behind] = useBox(() => ({
     mass: 0,
     position: [1, 0.8, -31.7],
-    args: [5.9, 0.4, 0.3],
+    args: [5.9, 0.4, 1.25],
     ...props,
   }));
   const [bridge] = useBox(() => ({
@@ -68,7 +68,7 @@ const SceneThreePhysics = (props) => {
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
-      <mesh ref={floor_front} position={[1, 0.8, -25.9]}>
+      <mesh ref={floor_front} position={[1, 0.8, -26.2]}>
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>

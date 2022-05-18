@@ -32,6 +32,7 @@ const SceneFiveEnd = ({ image }) => {
         .then(() => {
           console.log("upload store iamge");
           setLoading(false);
+          window.location.reload();
         });
     } catch (e) {
       console.log(e);
