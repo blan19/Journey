@@ -6,16 +6,21 @@ import * as THREE from "three";
 
 const Mic = ({ light }) => {
   const { scene } = useGLTF("/gltf/mic.glb");
-  const [bottom, setBottom] = useState(3);
+  const [bottom, setBottom] = useState(0);
+  const [check, setCheck] = useState(false);
 
   const clock = new THREE.Clock();
   useFrame(() => {
     const elapsedTime = clock.getElapsedTime();
 
-    setBottom((prev) => (prev += Math.sin(elapsedTime) * 0.8));
     if (bottom > 2) {
-      setBottom((prev) => (prev = Math.sin(elapsedTime) * 0.8));
+      setCheck(true);
+    } else if (bottom < 0.5) {
+      setCheck(false);
     }
+    check
+      ? setBottom((prev) => (prev -= Math.sin(elapsedTime) * 0.8))
+      : setBottom((prev) => (prev += Math.sin(elapsedTime) * 0.8));
   });
   return (
     <>

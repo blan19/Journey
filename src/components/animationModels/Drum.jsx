@@ -1,34 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import { SpotLight } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Object3D } from "three";
 import * as THREE from "three";
 
-const Drum = ({ light, box }) => {
+const Drum = ({ light }) => {
   const { scene } = useGLTF("/gltf/drum.glb");
 
-  const lightRef = useRef();
-  // useFrame(() => {
-  //   lightRef.current.target
-  // });
+  const [check, setCheck] = useState(false);
 
-  const [bottom, setBottom] = useState(2);
+  const [bottom, setBottom] = useState(0);
 
   const clock = new THREE.Clock();
+
   useFrame(() => {
     const elapsedTime = clock.getElapsedTime();
 
-    setBottom((prev) => (prev += Math.sin(elapsedTime) * 0.8));
     if (bottom > 2) {
-      setBottom((prev) => (prev = Math.sin(elapsedTime) * 0.8));
+      setCheck(true);
+    } else if (bottom < 0.5) {
+      setCheck(false);
     }
+    check
+      ? setBottom((prev) => (prev -= Math.sin(elapsedTime) * 0.8))
+      : setBottom((prev) => (prev += Math.sin(elapsedTime) * 0.8));
   });
-  useEffect(() => {
-    if (light) {
-      console.log(lightRef.current);
-    }
-  }, []);
   return (
     <>
       {light ? (

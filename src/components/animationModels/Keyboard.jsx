@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import ClickWhite from "../Click";
+import React, { useState } from "react";
 import ClickBlack from "../Click/ClickBlack";
 
 const Keyboard = ({ actions }) => {
@@ -83,9 +82,6 @@ const Keyboard = ({ actions }) => {
       actions.S3CodingAni12.stop();
       setButton((prev) => !prev);
     }, 19200);
-    //   setTimeout(() => {
-    //     actions.S3CodingAni12.paused = true;
-    //   }, 19120);
   };
 
   return (

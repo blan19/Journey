@@ -1,6 +1,5 @@
 import { useFrame } from "@react-three/fiber";
-// import ClickWhite from "../Click";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ClickBlack from "../Click/ClickBlack";
 
 const Pencil = ({ actions }) => {
@@ -42,7 +41,6 @@ const Pencil = ({ actions }) => {
       actions.S2NewspaperAni3.stop();
       actions.S2NewspaperAni4.stop();
       setButton((prev) => !prev);
-      console.log(button);
     }, 8000);
   };
 
@@ -55,9 +53,6 @@ const Pencil = ({ actions }) => {
       actions.S2NewspaperAni4.reset();
     }
   });
-  useEffect(() => {
-    console.log(button);
-  }, []);
   return (
     <>
       <mesh
