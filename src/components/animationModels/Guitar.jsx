@@ -32,7 +32,7 @@ const Guitar = ({ light }) => {
             target={scene}
             ref={lightRef}
             position={[-3.4, 4.6, -38.85]}
-            color={"#ffffeaccc"}
+            color={"#b2e1ffccc"}
             anglePower={5}
             radiusTop={0.02}
             radiusBottom={bottom}

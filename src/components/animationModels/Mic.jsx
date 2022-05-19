@@ -19,8 +19,8 @@ const Mic = ({ light }) => {
       setCheck(false);
     }
     check
-      ? setBottom((prev) => (prev -= Math.sin(elapsedTime) * 0.8))
-      : setBottom((prev) => (prev += Math.sin(elapsedTime) * 0.8));
+      ? setBottom((prev) => (prev -= Math.sin(elapsedTime)))
+      : setBottom((prev) => (prev += Math.sin(elapsedTime)));
   });
   return (
     <>
