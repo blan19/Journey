@@ -2,13 +2,13 @@ import React from "react";
 import { If } from "./lib/Condition";
 import Mobile from "./View/Mobile";
 import Browser from "./View/Browser";
-import { isMobile, isBrowser } from "react-device-detect";
+import { isMobile, isBrowser, isIPad13 } from "react-device-detect";
 import "./styles.css";
 
 const App = () => {
   return (
     <>
-      <If condition={isMobile}>
+      <If condition={isMobile || isIPad13}>
         <Mobile />
       </If>
       <If condition={isBrowser}>

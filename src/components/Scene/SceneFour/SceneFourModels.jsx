@@ -21,7 +21,7 @@ const SceneFourModel = () => {
           scale={[0.25, 0.25, 0.25]}
           onClick={onStageClick}
         />
-        transform
+
         <mesh
           position={[-3, 3.07, -40.2]}
           rotation={[0, Math.PI * 0.5, 0]}

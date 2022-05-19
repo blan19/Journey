@@ -1,12 +1,2 @@
 .text {
-  border: 1px dotted white;
-  border-radius: 50%;
-  color: white;
-  font-weight: lighter;
-  text-align: center;
-  font-size: small;
-
-  width: 2rem;
-  height: 2rem;
-  line-height: 2rem;
 }
