@@ -281,6 +281,26 @@ const MobilePostsContainer = styled.div`
       font-size: var(--font-title-2);
     }
   }
+  .posts-button {
+    margin: 4.5rem 0;
+    ${flexCenter}
+    button {
+      cursor: pointer;
+      margin: 0 1rem;
+      padding: 1rem 2rem;
+      outline: none;
+      border-radius: 5rem;
+      border: none;
+      background-color: #000;
+      font-weight: bold;
+      color: #fff;
+      font-size: var(--font-sub-1);
+      &:disabled {
+        background-color: #e6e6e6;
+        cursor: not-allowed;
+      }
+    }
+  }
 `;
 
 const MobilePostsItemContainer = styled.li`
@@ -295,7 +315,7 @@ const MobilePostsItemContainer = styled.li`
   }
   img {
     width: 100%;
-    border-radius: 0.5rem;
+    border-radius: 1rem;
   }
 `;
 
