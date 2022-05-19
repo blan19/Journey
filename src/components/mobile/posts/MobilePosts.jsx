@@ -6,7 +6,24 @@ import {
 } from "../Mobile.styles";
 import { BiArrowBack } from "react-icons/bi";
 import { useLocation } from "wouter";
+import ContentLoader from "react-content-loader";
 import Modal from "../Modal";
+
+const Loading = ({ ...props }) => {
+  return (
+    <ContentLoader
+      speed={2}
+      width={"100%"}
+      height={300}
+      viewBox="0 0 400 160"
+      backgroundColor="#f3f3f3"
+      foregroundColor="#ecebeb"
+      {...props}
+    >
+      <rect x="8" y="15" rx="3" ry="3" width="100%" height="400" />
+    </ContentLoader>
+  );
+};
 
 const MobilePostsItem = ({ post }) => {
   const [show, setShow] = useState(false);
@@ -67,7 +84,20 @@ const MobilePosts = () => {
         <BiArrowBack onClick={onPushBack} />
         <h1>방명록</h1>
       </div>
-      <ul>{loading ? <p>loading..</p> : memorizedPosts}</ul>
+      <ul>
+        {loading ? (
+          <>
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+            <Loading />
+          </>
+        ) : (
+          memorizedPosts
+        )}
+      </ul>
       <div className="posts-button">
         <button disabled={page === 1 ? true : false} onClick={onPrev}>
           이전

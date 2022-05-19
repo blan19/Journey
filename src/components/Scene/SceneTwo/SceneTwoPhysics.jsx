@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
 import { useBox } from "@react-three/cannon";
 
 const SceneTwoPhysics = (props) => {
@@ -46,6 +46,15 @@ const SceneTwoPhysics = (props) => {
     ...props,
   }));
 
+  // 이벤트
+  const onClick = useCallback(() => {
+    window.open(
+      "/grade/index.html",
+      "팝업",
+      "width=780px,height=210px,scrollbars=yes"
+    );
+  }, []);
+
   return (
     <group>
       <mesh
@@ -78,6 +87,11 @@ const SceneTwoPhysics = (props) => {
       <mesh position={[2.45, 1.5, -24]} rotation={[Math.PI * -1.575, 0, 0]}>
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
+      </mesh>
+      {/* 우편 */}
+      <mesh position={[-2, 2.725, -17.73]} onClick={onClick}>
+        <boxGeometry args={[0.3, 0.3, 0.3]} />
+        <meshBasicMaterial color="white" visible={false} />
       </mesh>
     </group>
   );

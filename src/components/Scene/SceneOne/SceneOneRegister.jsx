@@ -8,7 +8,7 @@ import {
 } from "./styled";
 import { FiLoader } from "react-icons/fi";
 import { BiArrowBack } from "react-icons/bi";
-import { Choose, If, OtherWise, When } from "../../../lib/Condition";
+import { If } from "../../../lib/Condition";
 
 const Register = () => {
   const { register, setRegister, setControlFalse } = useStore((state) => state);

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>성적표</title>
+  </head>
+  <body>
+    <div class="성적">
+      <div class="타이틀">
+        <h1>학기별 세부 성적</h1>
+      </div>
+      <table>
+        <tr>
+          <th></th>
+          <th>이수학년도</th>
+          <th>이수학기</th>
+          <th>과목코드</th>
+          <th>과목명</th>
+          <th>과목학점</th>
+          <th>성적</th>
+          <th>교수명</th>
+        </tr>
+        <tr>
+          <td class="박스"></td>
+          <td>2022학년도</td>
+          <td>1학기</td>
+          <td>124125</td>
+          <td>기초조형 및 실습</td>
+          <td>3</td>
+          <td class="학점"></td>
+          <td>존도</td>
+        </tr>
+        <tr>
+          <td class="박스"></td>
+          <td>2022학년도</td>
+          <td>1학기</td>
+          <td>125124</td>
+          <td>디지털미디어 원리</td>
+          <td>3</td>
+          <td class="학점"></td>
+          <td>철수</td>
+        </tr>
+        <tr>
+          <td class="박스"></td>
+          <td>2022학년도</td>
+          <td>1학기</td>
+          <td>124124</td>
+          <td>디자인론</td>
+          <td>3</td>
+          <td class="학점"></td>
+          <td>슝슝이</td>
+        </tr>
+        <tr>
+          <td class="박스"></td>
+          <td>2022학년도</td>
+          <td>1학기</td>
+          <td>357932</td>
+          <td>알고리즘</td>
+          <td>3</td>
+          <td class="학점"></td>
+          <td>안나</td>
+        </tr>
+        <tr>
+          <td class="박스"></td>
+          <td>2022학년도</td>
+          <td>1학기</td>
+          <td>129841</td>
+          <td>자료구조</td>
+          <td>3</td>
+          <td class="학점"></td>
+          <td>박미구엘</td>
+        </tr>
+        <tr>
+          <td class="박스"></td>
+          <td>2022학년도</td>
+          <td>1학기</td>
+          <td>125124</td>
+          <td>운영체제</td>
+          <td>3</td>
+          <td class="학점"></td>
+          <td>민수</td>
+        </tr>
+      </table>
+    </div>
+  </body>
+  <script>
+    const 등급 = ["A+", "A", "B+", "B", "C+", "C", "D+", "D", "F"];
+    const $학점들 = document.querySelectorAll(".학점");
+    $학점들.forEach(
+      ($학점) => ($학점.innerHTML = `${등급[Math.floor(Math.random() * 9)]}`)
+    );
+  </script>
+</html>
