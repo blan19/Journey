@@ -16,6 +16,12 @@ const SceneTwoPhysics = (props) => {
     args: [3, 0.4, 5],
     ...props,
   }));
+  const [water] = useBox(() => ({
+    mass: 0,
+    position: [2.6, 1, -16.8],
+    args: [2, 0.2, 2],
+    ...props,
+  }));
 
   const [floor_2] = useBox(() => ({
     mass: 0,
@@ -57,6 +63,10 @@ const SceneTwoPhysics = (props) => {
         <meshStandardMaterial color="red" />
       </mesh>
       <mesh ref={floor_1} position={[-0.6, 1.4, -18]}>
+        <boxGeometry args={[0, 0, 0]} />
+        <meshStandardMaterial color="red" />
+      </mesh>
+      <mesh ref={water} position={[1, 1.4, -18]}>
         <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
