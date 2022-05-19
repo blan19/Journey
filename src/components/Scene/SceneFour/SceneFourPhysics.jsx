@@ -84,7 +84,7 @@ const SceneFourPhysics = (props) => {
         <meshStandardMaterial color="red" />
       </mesh>
       <mesh ref={stone_stair4} position={[1.4, 2.3, -38.75]}>
-        <boxGeometry args={[1.5, 1, 5]} />
+        <boxGeometry args={[0, 0, 0]} />
         <meshStandardMaterial color="red" />
       </mesh>
       {/* 콘서트홀 */}
