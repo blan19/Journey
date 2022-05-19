@@ -1,19 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { Drum, Guitar, Mic } from "../../animationModels";
-import { Html } from "@react-three/drei";
-import { SpotLight, useGLTF, useHelper } from "@react-three/drei";
-import * as THREE from "three";
 import "./styles.css";
-import { useFrame } from "@react-three/fiber";
-import { Vector3 } from "three";
-import Light from "../../animationModels/Light";
-import Virtualizer from "../../common/Virtualizer";
-import ClickBlack from "../../Click/ClickBlack";
 import ClickWhite from "../../Click";
-import Fireworks from "../../animationModels/Fireworks";
 
 const SceneFourModel = () => {
-  const light = useRef();
   // useHelper(light, THREE.SpotLightHelper, "cyan");
 
   const [IsLightOn, setIsLightOn] = useState(false);
