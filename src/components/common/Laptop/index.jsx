@@ -2,7 +2,7 @@ import React, { useCallback, useRef, useState } from "react";
 import { useGLTF } from "@react-three/drei";
 import useStore from "../../../store";
 import { useFrame } from "@react-three/fiber";
-import ClickWhite from "../../Click";
+import ClickBlack from "../../Click/ClickBlack";
 
 function Laptop({ control, ...props }) {
   const { setRegister, setControlTrue } = useStore((state) => state);
@@ -38,7 +38,7 @@ function Laptop({ control, ...props }) {
     <>
       <group>
         {rotation ? (
-          <ClickWhite
+          <ClickBlack
             position={[4.6, 1.86, -10.6]}
             rotation={[Math.PI * 0.5, 0, 0]}
             scale={[0.05, 0.05, 0.05]}
