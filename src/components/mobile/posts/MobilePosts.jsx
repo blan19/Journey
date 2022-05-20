@@ -83,7 +83,7 @@ const MobilePosts = () => {
         <BiArrowBack onClick={onPushBack} />
         <h1>방명록</h1>
       </div>
-      {/* <ul>
+      <ul>
         {loading ? (
           <>
             <Loading />
@@ -96,14 +96,6 @@ const MobilePosts = () => {
         ) : (
           memorizedPosts
         )}
-      </ul> */}
-      <ul>
-        <Loading />
-        <Loading />
-        <Loading />
-        <Loading />
-        <Loading />
-        <Loading />
       </ul>
       <div className="posts-button">
         <button disabled={page === 1 ? true : false} onClick={onPrev}>
