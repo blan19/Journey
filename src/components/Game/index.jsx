@@ -14,33 +14,35 @@ const Game = ({ position, scale, control }) => {
 
   return (
     <group>
-      <group position={[0, -0.05, 0]}>
-        <Text
-          position={[4.65, 2.1, -10.75]}
-          scale={[0.5, 0.5, 0.5]}
-          color="white"
-          anchorX="center"
-          anchorY="middle"
-        >
-          The Dungeon
-        </Text>
-        <Text
-          position={[4.65, 2, -10.75]}
-          scale={[0.25, 0.25, 0.25]}
-          color="white"
-          anchorX="center"
-          anchorY="middle"
-        >
-          Game Start
-        </Text>
+      <group position={[0.45, 0, 0]}>
+        <group position={[0, -0.05, 0]}>
+          <Text
+            position={[4.65, 2.1, -10.75]}
+            scale={[0.5, 0.5, 0.5]}
+            color="white"
+            anchorX="center"
+            anchorY="middle"
+          >
+            The Dungeon
+          </Text>
+          <Text
+            position={[4.65, 2, -10.75]}
+            scale={[0.25, 0.25, 0.25]}
+            color="white"
+            anchorX="center"
+            anchorY="middle"
+          >
+            Game Start
+          </Text>
+        </group>
+        <primitive
+          position={position}
+          scale={scale}
+          object={scene}
+          rotation={[0, -Math.PI / 2, 0]}
+          onClick={onClick}
+        />
       </group>
-      <primitive
-        position={position}
-        scale={scale}
-        object={scene}
-        rotation={[0, -Math.PI / 2, 0]}
-        onClick={onClick}
-      />
       <primitive
         position={[4.2, 1.78, -10.7]}
         scale={[0.08, 0.08, 0.08]}

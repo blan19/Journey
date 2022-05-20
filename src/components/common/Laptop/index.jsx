@@ -39,8 +39,8 @@ function Laptop({ control, ...props }) {
       <group>
         {rotation ? (
           <ClickWhite
-            position={[5.08, 1.86, -10.6]}
-            rotation={[Math.PI * 0.5, 0, Math.PI * 0.2]}
+            position={[4.6, 1.86, -10.6]}
+            rotation={[Math.PI * 0.5, 0, 0]}
             scale={[0.05, 0.05, 0.05]}
           />
         ) : (
@@ -48,9 +48,9 @@ function Laptop({ control, ...props }) {
         )}
       </group>
       <group
-        position={[5.2, 1.8, -10.7]}
+        position={[4.65, 1.8, -10.7]}
         scale={[0.03, 0.03, 0.03]}
-        rotation={[0, Math.PI / 0.55, 0]}
+        rotation={[0, 0, 0]}
         ref={group}
         {...props}
         dispose={null}
