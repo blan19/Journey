@@ -36,7 +36,7 @@ const Clouds = (props) => {
         radius={100}
         depth={50}
         count={5000}
-        factor={4}
+        factor={7}
         saturation={0}
         fade
         speed={1}
