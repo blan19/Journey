@@ -5,7 +5,7 @@ import { firebaseDb } from "../lib/clientApp";
 const store = (set) => ({
   control: false,
   register: false,
-  start: false,
+  start: true,
   end: false,
   isLocked: false,
   imgMesh: null,

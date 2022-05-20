@@ -58,3 +58,5 @@ const Drum = ({ light }) => {
 };
 
 export default Drum;
+
+useGLTF.preload("/gltf/drum.glb");

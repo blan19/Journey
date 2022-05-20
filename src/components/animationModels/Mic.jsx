@@ -50,3 +50,5 @@ const Mic = ({ light }) => {
 };
 
 export default Mic;
+
+useGLTF.preload("/gltf/mic.glb");

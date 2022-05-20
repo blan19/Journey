@@ -5,13 +5,12 @@ const Game = ({ position, scale, control }) => {
   const { scene } = useGLTF("/gltf/PcMonitor.glb");
   const { scene: scene2 } = useGLTF("/gltf/pc.glb");
   const onClick = useCallback(() => {
-    control.current.unlock();
     window.open(
       "/game/index.html",
       "팝업",
       "width=700px,height=800px,scrollbars=yes"
     );
-  }, [control]);
+  }, []);
 
   return (
     <group>
@@ -53,3 +52,6 @@ const Game = ({ position, scale, control }) => {
 };
 
 export default Game;
+
+useGLTF.preload("/gltf/PcMonitor.glb");
+useGLTF.preload("/gltf/pc.glb");

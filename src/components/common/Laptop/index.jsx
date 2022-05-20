@@ -107,3 +107,5 @@ function Laptop({ control, ...props }) {
   );
 }
 export default Laptop;
+
+useGLTF.preload("/gltf/mac-draco.glb");

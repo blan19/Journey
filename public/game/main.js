@@ -1,11 +1,3 @@
-/*
-  _    _ _   _ _ _ _        _          
- | |  | | | (_) (_) |      (_)         
- | |  | | |_ _| |_| |_ __ _ _ _ __ ___ 
- | |  | | __| | | | __/ _` | | '__/ _ \
- | |__| | |_| | | | || (_| | | | |  __/
-  \____/ \__|_|_|_|\__\__,_|_|_|  \___|
-*/
 var Utl = {};
 // true si valeur est entre deux autres aleurs
 Utl.entre = function (valeur, min, max) {
@@ -53,16 +45,6 @@ Utl.tablifier = function (tableaux) {
   console.log(resultat);
   document.write(JSON.stringify(resultat));
 };
-
-/*
-  __  __           _       _           
- |  \/  |         | |     | |          
- | \  / | ___   __| |_   _| | ___  ___ 
- | |\/| |/ _ \ / _` | | | | |/ _ \/ __|
- | |  | | (_) | (_| | |_| | |  __/\__ \
- |_|  |_|\___/ \__,_|\__,_|_|\___||___/
-                                       
-*/
 class Menu {
   constructor(parent, x, y, choix) {
     this.parent = parent;

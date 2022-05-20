@@ -55,9 +55,8 @@ export const Player = (props) => {
   const { forward, backward, left, right, jump } = usePlayerControls();
   const velocity = useRef([0, 0, 0]);
   useEffect(() => api.velocity.subscribe((v) => (velocity.current = v)), []);
-  useEffect(() => {}, []);
 
-  useFrame((state) => {
+  useFrame(() => {
     // move
     ref.current.getWorldPosition(camera.position);
     // move

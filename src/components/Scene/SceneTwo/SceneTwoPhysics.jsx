@@ -54,13 +54,12 @@ const SceneTwoPhysics = ({ control, ...props }) => {
 
   // 이벤트
   const onClick = useCallback(() => {
-    control.current.unlock();
     window.open(
       "/grade/index.html",
       "팝업",
       "width=780px,height=210px,scrollbars=yes"
     );
-  }, [control]);
+  }, []);
 
   return (
     <group>

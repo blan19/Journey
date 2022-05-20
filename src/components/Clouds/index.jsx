@@ -44,7 +44,7 @@ const Clouds = (props) => {
       {/* 구름 */}
       <Cloud
         position={[50, 50, 0]}
-        speed={0.2}
+        // speed={0.2}
         opacity={0.2}
         depth={1}
         segments={50}

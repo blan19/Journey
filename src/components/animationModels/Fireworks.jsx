@@ -26,3 +26,5 @@ const Fireworks = () => {
 };
 
 export default Fireworks;
+
+useGLTF.preload("/gltf/fireworks.glb");

@@ -1,17 +1,22 @@
 import styled from "styled-components";
 
 const StartContainer = styled.div`
-  background-color: #efefef;
+  z-index: 96733855;
   width: 100%;
   height: 100vh;
-
+  background-color: #fff;
   position: absolute;
+  display: ${(props) => (props.visible ? "block" : "none")};
+  opacity: ${(props) => (props.visible ? 1 : 0)};
   top: 0;
   left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-
+  background-color: #efefef;
+  .start-wrapper {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+  }
   .intro {
     display: flex;
     flex-direction: column;

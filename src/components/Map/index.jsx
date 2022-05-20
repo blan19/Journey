@@ -44,3 +44,5 @@ export default function Map({ control, getImage, image }) {
     </>
   );
 }
+
+useGLTF.preload("/gltf/MapWithoutModels.glb");

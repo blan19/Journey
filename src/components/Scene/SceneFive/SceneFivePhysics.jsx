@@ -160,3 +160,5 @@ const SceneFivePhysics = ({ controlsRef, getImage, image, ...props }) => {
 };
 
 export default SceneFivePhysics;
+
+useGLTF.preload("/gltf/GradHat.glb");
