@@ -13,14 +13,14 @@ import { Pencil, Keyboard } from "../animationModels";
 import { Laptop } from "../common";
 
 export default function Map({ control, getImage, image }) {
-  const { scene, animations, nodes } = useGLTF("/gltf/MapWithoutModels.glb");
+  const { scene, animations } = useGLTF("/gltf/MapWithoutModels.glb");
   const { actions } = useAnimations(animations, scene);
 
   return (
     <>
       <SceneStrat />
-      <SceneOnePhysics />
-      <SceneTwoPhysics />
+      <SceneOnePhysics control={control} />
+      <SceneTwoPhysics control={control} />
       <SceneThreePhysics />
       <SceneFourPhysics />
       <SceneFivePhysics

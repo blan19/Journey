@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FiLoader } from "react-icons/fi";
 import styled from "styled-components";
-import { useLocation } from "wouter";
 
 const ScenePage = () => {
   const [page, setPage] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [location, setLocation] = useLocation();
   const onLoading = () => {
     setLoading(true);
     setTimeout(() => {
       setPage(true);
     }, 2000);
   };
-  useEffect(() => {
-    // if (page) {
-    //   setTimeout(() => {
-    //     setLocation("/1");
-    //   }, 3000);
-    // }
-  }, [page, setLocation]);
   return (
     <ScenePageContainer>
       {loading ? (

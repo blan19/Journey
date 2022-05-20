@@ -1,16 +1,17 @@
 import { Text, useGLTF } from "@react-three/drei";
 import React, { useCallback } from "react";
 
-const Game = ({ position, scale }) => {
+const Game = ({ position, scale, control }) => {
   const { scene } = useGLTF("/gltf/PcMonitor.glb");
   const { scene: scene2 } = useGLTF("/gltf/pc.glb");
   const onClick = useCallback(() => {
+    control.current.unlock();
     window.open(
       "/game/index.html",
-      "네이버팝업",
+      "팝업",
       "width=700px,height=800px,scrollbars=yes"
     );
-  }, []);
+  }, [control]);
 
   return (
     <group>

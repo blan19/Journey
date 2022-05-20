@@ -45,7 +45,6 @@ const usePlayerControls = () => {
 
 export const Player = (props) => {
   const { camera } = useThree();
-  const pos = camera.position.y <= -30 ? [0, 1, 0] : camera.position;
   const [ref, api] = useSphere(() => ({
     mass: 1,
     type: "Dynamic",
@@ -61,19 +60,6 @@ export const Player = (props) => {
   useFrame((state) => {
     // move
     ref.current.getWorldPosition(camera.position);
-    // y-position
-
-    // const prePosition = camera.position;
-    // ref.current.position.set(prePosition.x, 1, prePosition.z);
-    // camera.position.set(prePosition.x, 1, prePosition.z);
-
-    // if (camera.position.y <= -30) {
-    //   // camera.position.set(0, 2, 0);
-    //   // ref.current.copy(camera.position);
-    //   camera.position.set(prePosition);
-    //   ref.current.position.set(prePosition);
-    // }
-
     // move
     frontVector.set(0, 0, Number(backward) - Number(forward));
     sideVector.set(Number(left) - Number(right), 0, 0);

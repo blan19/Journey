@@ -98,10 +98,6 @@ const SceneFourPhysics = (props) => {
       </mesh>
 
       {/* 무대 앞 팬스, 스피커  */}
-      {/* <mesh position={[-1.5, 3, -38.8]}>
-        <boxGeometry args={[0.1, 1.15, 2.55]} />
-        <meshStandardMaterial color="red" />
-      </mesh> */}
     </group>
   );
 };

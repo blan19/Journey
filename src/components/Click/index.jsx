@@ -1,7 +1,6 @@
-import { useGLTF, Plane, Sphere } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import React, { useEffect, useRef, useState } from "react";
-import * as THREE from "three";
+import { useGLTF } from "@react-three/drei";
+import React from "react";
+
 const ClickWhite = ({ position, rotation, scale, onClick }) => {
   const { nodes } = useGLTF("/gltf/clickWhite.glb");
 

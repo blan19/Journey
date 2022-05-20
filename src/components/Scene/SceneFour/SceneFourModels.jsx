@@ -4,8 +4,6 @@ import "./styles.css";
 import ClickWhite from "../../Click";
 
 const SceneFourModel = () => {
-  // useHelper(light, THREE.SpotLightHelper, "cyan");
-
   const [IsLightOn, setIsLightOn] = useState(false);
 
   const onStageClick = () => {
@@ -35,7 +33,6 @@ const SceneFourModel = () => {
       <Drum light={IsLightOn} />
       <Mic light={IsLightOn} />
       <Guitar light={IsLightOn} />
-      {/* <Light /> */}
       {/* <Virtualizer show={IsLightOn} /> */}
     </>
   );

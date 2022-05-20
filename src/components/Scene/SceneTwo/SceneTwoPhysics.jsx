@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useBox } from "@react-three/cannon";
 
-const SceneTwoPhysics = (props) => {
+const SceneTwoPhysics = ({ control, ...props }) => {
   const [stairs] = useBox(() => ({
     mass: 0,
     position: [0.1, 1.2, -13],
@@ -54,12 +54,13 @@ const SceneTwoPhysics = (props) => {
 
   // 이벤트
   const onClick = useCallback(() => {
+    control.current.unlock();
     window.open(
       "/grade/index.html",
       "팝업",
       "width=780px,height=210px,scrollbars=yes"
     );
-  }, []);
+  }, [control]);
 
   return (
     <group>

@@ -13,14 +13,12 @@ const Loading = ({ ...props }) => {
   return (
     <ContentLoader
       speed={2}
-      width={"100%"}
-      height={300}
       viewBox="0 0 400 160"
       backgroundColor="#f3f3f3"
       foregroundColor="#ecebeb"
       {...props}
     >
-      <rect x="8" y="15" rx="3" ry="3" width="100%" height="400" />
+      <rect x="8" y="15" rx="3" ry="3" width="100%" height="40rem" />
     </ContentLoader>
   );
 };
@@ -75,7 +73,8 @@ const MobilePosts = () => {
   }, [first, getPrev]);
 
   useLayoutEffect(() => {
-    getPosts();
+    setLoading(true);
+    getPosts().then(() => setLoading(false));
   }, []);
 
   return (
@@ -84,7 +83,7 @@ const MobilePosts = () => {
         <BiArrowBack onClick={onPushBack} />
         <h1>방명록</h1>
       </div>
-      <ul>
+      {/* <ul>
         {loading ? (
           <>
             <Loading />
@@ -97,6 +96,14 @@ const MobilePosts = () => {
         ) : (
           memorizedPosts
         )}
+      </ul> */}
+      <ul>
+        <Loading />
+        <Loading />
+        <Loading />
+        <Loading />
+        <Loading />
+        <Loading />
       </ul>
       <div className="posts-button">
         <button disabled={page === 1 ? true : false} onClick={onPrev}>

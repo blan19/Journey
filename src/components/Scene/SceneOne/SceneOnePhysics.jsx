@@ -3,7 +3,7 @@ import { useBox } from "@react-three/cannon";
 import * as THREE from "three";
 import Game from "../../Game";
 
-const SceneOnePhysics = (props) => {
+const SceneOnePhysics = ({ control, ...props }) => {
   const [floor1] = useBox(() => ({
     mass: 0,
     position: [4, 0.3, -8],
@@ -135,7 +135,11 @@ const SceneOnePhysics = (props) => {
         position={[0.1, 0.4, -8]}
         scale={[0.2, 0.2, 0.2]}
       />
-      <Game position={[4.65, 2, -10.8]} scale={[0.15, 0.15, 0.15]} />
+      <Game
+        control={control}
+        position={[4.65, 2, -10.8]}
+        scale={[0.15, 0.15, 0.15]}
+      />
     </>
   );
 };

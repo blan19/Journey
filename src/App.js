@@ -8,7 +8,6 @@ import "./styles.css";
 const App = () => {
   return (
     <>
-      <Mobile />
       <If condition={isMobile}>
         <Mobile />
       </If>

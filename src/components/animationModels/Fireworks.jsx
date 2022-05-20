@@ -1,5 +1,5 @@
-import { useGLTF, useAnimations } from "@react-three/drei";
-import React, { useEffect, useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import React from "react";
 
 const Fireworks = () => {
   const { nodes } = useGLTF("/gltf/fireworks.glb");

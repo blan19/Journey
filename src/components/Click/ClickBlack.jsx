@@ -1,12 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 const ClickBlack = ({ position, rotation, onClick }) => {
   const { nodes } = useGLTF("/gltf/clickBlack.glb");
-
-  useEffect(() => {
-    console.log(nodes);
-  }, []);
 
   return (
     <group>
