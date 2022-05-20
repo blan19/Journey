@@ -40,7 +40,7 @@ function Laptop({ control, ...props }) {
         {rotation ? (
           <ClickBlack
             position={[4.6, 1.86, -10.6]}
-            rotation={[Math.PI * 0.5, 0, 0]}
+            rotation={[Math.PI * 0.5, -Math.PI * 0.5, 0]}
             scale={[0.05, 0.05, 0.05]}
           />
         ) : (
