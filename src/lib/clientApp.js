@@ -5,12 +5,12 @@ import "firebase/compat/storage";
 import { uploadBytesResumable } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDjKNjbpyUEbV5xRDfzxEsW935GmENGGvw",
-  authDomain: "journey-345d5.firebaseapp.com",
-  projectId: "journey-345d5",
-  storageBucket: "journey-345d5.appspot.com",
-  messagingSenderId: "153057873783",
-  appId: "1:153057873783:web:d2a1124a0b77359d2adb72",
+  apiKey: process.env.REACT_APP_API_KEY,
+  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_BUCKET,
+  messagingSenderId: process.env.REACT_APP_SENDER_ID,
+  appId: process.env.REACT_APP_APP_ID,
 };
 
 if (!firebase.apps.length) {
