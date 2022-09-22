@@ -135,11 +135,11 @@ const SceneOnePhysics = ({ control, ...props }) => {
         position={[0.1, 0.4, -8]}
         scale={[0.2, 0.2, 0.2]}
       />
-      {/* <Game
+      <Game
         control={control}
         position={[4.65, 2, -10.8]}
         scale={[0.15, 0.15, 0.15]}
-      /> */}
+      />
     </>
   );
 };
